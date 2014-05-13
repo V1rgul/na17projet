@@ -3,7 +3,9 @@ Espece(#espece,prix_consultation) with espece KEY
 Race(#race, fk_espece=>Espece.espece, prix_intervention) with race KEY
 
 
-Personne(#id_personne,nom,prenom,adresse,email,num_tel,type{Client, Veterinaire, Employe})
+Client(#id_client,nom,prenom,adresse,email,num_tel)
+Veterinaire(#id_veterinaire,nom,prenom,adresse,email,num_tel)
+Employe(#id_employe,nom,prenom,adresse,email,num_tel)
 
 
 RDV(#id_rdv,date,id_animal=>Animal,id_veterinaire=>Veterinaire,id_facture=>Facture, type{Consultation, Intervention, ConsultationEtIntervention}) with veterinaire and animal not NULL
