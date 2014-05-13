@@ -2,22 +2,17 @@ Animal(#id_animal,nom,code,taille,poids,genre,date_naissance,race=>Race,id_clien
 Espece(#espece,prix_consultation) with espece KEY 
 Race(#race, fk_espece=>Espece.espece, prix_intervention) with race KEY
 
-Héritage ?
-Client(#id_client,nom,prenom,email,adresse,num_tel)
-Veterinaire(#id_veterinaire,nom,prenom,adresse,email,num_tel)
-Employe(#id_employe,nom,prenom,adresse,email,num_tel)
 
-Consultation(#id_consultation,date=>RDV) date not null
-Intervention(#id_intervention,date=>RDV) date not null
-RDV(#id_rdv,date,id_animal=>Animal,id_veterinaire=>Veterinaire,id_facture=>Facture) with veterinaire and animal not NULL
+Personne(#id_personne,nom,prenom,adresse,email,num_tel,type{Client, Veterinaire, Employe})
 
-Facture(#id_facture, date_payement, paye, mode,id_employe=>Employe) with id_imploye not null
-Rel_facture_produit(#id_produit=>Produit,#id_facture=>Facture) 
+
+RDV(#id_rdv,date,id_animal=>Animal,id_veterinaire=>Veterinaire,id_facture=>Facture, type{Consultation, Intervention, ConsultationEtIntervention}) with veterinaire and animal not NULL
+
 
 Produit(#nom,quantite,prix_unite)
-
-Prescription(#nom=>Medicament,#id_ordonnance=>Ordonnance,quantité) 
-
+Facture(#id_facture, date_payement, paye, mode,id_employe=>Employe) with id_imploye not null
+Prescription(#nom=>Produit,#id_ordonnance=>Ordonnance,quantité)
 Ordonnance(#id_ordonnance,id_veterinaire=>Veterinaire)
 
+Rel_facture_produit(#id_produit=>Produit,#id_facture=>Facture)
 Rel_ordonnance_facture(#id_ordonnance=>Facture,#id_facture=>Facture)
