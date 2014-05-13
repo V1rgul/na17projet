@@ -1,0 +1,95 @@
+/* ============= Page structure ============= */
+/* Modify at your own risk */
+html,body{
+	margin:0;
+	padding:0;
+}
+div.tplPge{
+	position: relative;
+}
+div.tplPgeFra{
+	position: relative;
+	float:left;
+	width:100%;
+}
+div#header{
+	float:left;
+	width:100%;
+	padding:0;
+	margin:0;
+	z-index: 1;
+}
+div.tplFra{
+	position: relative;
+	clear:both;
+	float:left;
+	width:100%;
+	overflow:hidden;
+}
+div.tplColLft {
+	position:relative;
+	clear:both;
+	float:left;
+	width:100%;
+	overflow:hidden;
+}
+div.tplColMid {
+	float:left;
+	width:200%;
+	position:relative;
+}
+div.tplColRgt {
+	float:left;
+	width:100%;
+	position:relative;
+	left:50%;
+}
+div.tplColWrp {
+	float:right;
+	width:50%;
+	position:relative;
+	right:100%;
+}
+div.tplColPad {
+	overflow:hidden;
+}
+div#content {
+	width:100%;
+	overflow:hidden;
+}
+div#menu {
+	float:left;
+	position:relative;
+	margin-left:-50%;
+	overflow:hidden;
+}
+div#extras{
+	float:left;
+	position:relative;
+	overflow:hidden;
+}
+div#footer {
+	clear:both;
+	float:left;
+	width:100%;
+	padding:0;
+	margin:0;
+}
+/* ----- 1 and 2 col layout only ----- */
+div.tplNoMenu div.tplColMid,
+div.tplNoSideBars div.tplColMid{
+	left: 0px;
+}
+div.tplNoSideBars div.tplColRgt {
+	margin-left: 0px;
+}
+
+/* ============= Utilities ============= */
+.hidden{
+	position: absolute;
+	width:1px;
+	height:1px;
+	visibility: hidden;
+	top:-10000px;
+	left:-10000px;
+}
