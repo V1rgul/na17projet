@@ -1,4 +1,4 @@
-Animal(#id_animal,nom,code,taille,poids,genre,date_naissance,race=>Race,id_client=>Client) avec id_personne not null and id_animal KEY
+Animal(#id_animal,nom,code,taille,poids,genre,date_naissance,race=>Race,id_client=>Client) avec id_personne not null and id_animal KEY2
 Espece(#espece,prix_consultation) with espece KEY 
 Race(#race, fk_espece=>Espece.espece, prix_intervention) with race KEY
 
@@ -12,7 +12,7 @@ RDV(#id_rdv,date,id_animal=>Animal,id_veterinaire=>Veterinaire,id_facture=>Factu
 
 
 Produit(#nom,quantite,prix_unite)
-Facture(#id_facture, date_payement, paye, mode,id_employe=>Employe) with id_imploye not null
+Facture(#id_facture, date_payement, paye, mode,id_employe=>Employe) with id_employe not null
 Prescription(#nom=>Produit,#id_ordonnance=>Ordonnance,quantité)
 Ordonnance(#id_ordonnance,id_veterinaire=>Veterinaire)
 
