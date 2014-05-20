@@ -1,0 +1,18 @@
+//modification = visualisation, modification, creation
+
+
+accueil
+
+    liste+modification clients
+        liste+modification rendez vous
+        liste+modification animaux
+            liste+modification ordonnances
+                liste produits
+            liste+modification factures
+        
+    liste rendez vous par veto
+
+    liste+modification produits
+
+    stats
+

@@ -8,7 +8,7 @@ Veterinaire(#id_veterinaire,nom,prenom,adresse,email,num_tel)
 Employe(#id_employe,nom,prenom,adresse,email,num_tel)
 
 
-RDV(#id_rdv,date,id_animal=>Animal,id_veterinaire=>Veterinaire,id_facture=>Facture, type{Consultation, Intervention, ConsultationEtIntervention}) with veterinaire and animal not NULL
+RDV(#id_rdv,date,id_animal=>Animal,id_veterinaire=>Veterinaire,id_facture=>Facture, remise,  type{Consultation, Intervention, ConsultationEtIntervention}) with veterinaire and animal not NULL
 
 
 Produit(#nom,quantite,prix_unite)
@@ -16,5 +16,5 @@ Facture(#id_facture, date_payement, paye, mode,id_employe=>Employe) with id_empl
 Prescription(#nom=>Produit,#id_ordonnance=>Ordonnance,quantité)
 Ordonnance(#id_ordonnance,id_veterinaire=>Veterinaire)
 
-Rel_facture_produit(#id_produit=>Produit,#id_facture=>Facture)
+Rel_facture_produit(#id_produit=>Produit,#id_facture=>Facture, remise)
 Rel_ordonnance_facture(#id_ordonnance=>Facture,#id_facture=>Facture)
