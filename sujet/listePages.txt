@@ -1,18 +1,18 @@
 //modification = visualisation, modification, creation
-
+// *:meme page de modification
 
 accueil
 
     liste+modification clients
-        liste+modification rendez vous
+        liste+modification rendez vous*
         liste+modification animaux
             liste+modification ordonnances
                 liste produits
             liste+modification factures
         
-    liste rendez vous par veto
+    liste+modification veterinaires
+        liste+modification rendez vous*
 
     liste+modification produits
-
+1
     stats
-
