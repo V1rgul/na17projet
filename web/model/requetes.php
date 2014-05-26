@@ -30,15 +30,50 @@ function getRdvGBVeterinaires($idVeto){
 ------------------------------------*/
 
 /*
-Renvoie le nom et le prénom de tous les vétérinaires
+Renvoie les cols $columns pour la table $table
 */
-function getCols($columns){
+function getCols($table,$columns){
 	return " SELECT ".implode(",", $columns).
-		   " FROM Client;";
+		   " FROM $table;";
 }
 
 /*
-Renvoie la liste de tous les vétérinaires
+Update les cols d'un table
+*/
+
+function updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals){
+	if ((count($columns)!=count($Values))||(count($keyCols)!=count($keyVals))) {
+		echo('Erreur : '."columns et values n'ont pas la meme taille".'<br />');
+		return;
+	}
+
+	$requete="UPDATE $table SET ";
+	for ($i=0; $i < count($columns); $i++) { 
+		$requete=$requete.$columns[$i]."=".$values[$i].",";
+	}
+	$requete=trim($requete,",")." WHERE $keyCols[0]=$keyVals[0]";
+	for ($i=1; $i < count($keyCols); $i++) { 
+		$requete=$requete." AND $keyCols[$i]=$keyVals[$i]";
+	}
+	return $requete.";";
+}
+
+function deleteRowWithKeys($table,$keyCols,$keyVals)
+{
+	if (count($keyCols)!=count($keyVals)) {
+		echo('Erreur : '."columns et values n'ont pas la meme taille".'<br />');
+		return;
+	}
+
+	$requete="DELETE FROM $table WHERE $keyCols[0]=$keyVals[0]";
+	for ($i=1; $i < count($keyCols); $i++) { 
+		$requete=$requete." AND $keyCols[$i]=$keyVals[$i]";
+	}
+	return $requete.";";
+}
+
+/*
+Renvoie tous les cols de la table $table
 */
 function getAll($table){
 	return "SELECT *
@@ -53,7 +88,7 @@ function getRdvGBClient($idClient){
 	return "SELECT *
 			FROM RDV
 			WHERE id_animal 
-			in (
+			IN (
 				Select id_animal
 				FROM Animal
 				WHERE id_client= $idClient)
@@ -76,10 +111,12 @@ Renvoie la liste des ordonnances d'un animal (idAnimal)
 */
 function getOrdonnancesGBAnimal($idAnimal){
 	return "SELECT *
-			FROM Animal
-			WHERE 
-			id_animal=$idAnimal
-			ORDER BY nom;";
+			FROM Ordonnances
+			WHERE id_veterinaire
+			IN(
+				SELECT id_veterinaire
+				FROM RDV
+				WHERE id_animal=$idAnimal);";
 }
 
 /*
@@ -89,7 +126,7 @@ function getFacturesGBAnimal($idAnimal){
 	return "SELECT *
 			FROM Facture
 			WHERE id_facture 
-			in(
+			IN(
 				Select id_facture
 				FROM RDV
 				WHERE id_animal= $idAnimal)
@@ -97,12 +134,15 @@ function getFacturesGBAnimal($idAnimal){
 }
 
 /*
-Renvoie la liste des animals d'un client (idClient)
+Renvoie la liste des produit d'un ordonnaces (idOrdonnace,)
 */
-function getAnimalsGBClient($idClient){
+function getProduitGBOrdonnances($idOrdonnace){
 	return "SELECT *
-			FROM Animal
-			WHERE 
-			id_client=$idClient
-			ORDER BY nom;";
+			FROM Produit
+			WHERE nom_produit
+			IN(
+				SELECT *
+				FROM Prescription
+				WHERE id_ordonnaces=$idOrdonnace)
+			ORDER BY nom_produit;";
 }
