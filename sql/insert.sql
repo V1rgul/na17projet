@@ -1,6 +1,6 @@
 BEGIN;
 
-INSERT INTO Espeses VALUES
+INSERT INTO Especes VALUES
     ('chien',30),
     ('chat',50),
     ('rongeurs',20);
@@ -29,7 +29,7 @@ INSERT INTO Veterinaire VALUES
 
 INSERT INTO Employe VALUES
     (1, 'HAR', 'Zita','test@yahoo.com',NULL,'le parc', '09222', 'FahcileVille','0022113344'),
-    (2, 'TtoneL', 'Chffard','justatest@gmail',10,'rue des notre dame','17600', 'EasyTown', '0652182222');
+    (2, 'TtoneL', 'Chffard','justatest@gmail',10,'rue des notre dame','17600', 'EasyTown', '0652182222'),
     (3, 'TontoL', 'Chauffd','justatest@utc.fr',4,'rue des peups','87523', 'EasyTown', '0652444601');
 
 INSERT INTO Animal VALUES

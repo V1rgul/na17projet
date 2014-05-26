@@ -10,17 +10,29 @@ $PARAM_mot_passe='Y0dBxcA4';
 
 try {
 	$GLOBALS["BDD_CONNECTION"] = new PDO('pgsql:host='.$PARAM_hote.';port='.$PARAM_port.';dbname='.$PARAM_nom_bd, $PARAM_utilisateur, $PARAM_mot_passe);
-	echo('Connection reussie !');
+	echo('Connection reussie !<br/>');
 } catch(Exception $e) {
 	echo('Erreur : '.$e->getMessage().'<br />');
 	echo('N° : '.$e->getCode());
 	die();
 }
 
-
-
-
-
+/*
+Exécute une reqûete SQL
+*/
+function execQuery($query, $columns){
+	try {
+	$response=$GLOBALS["BDD_CONNECTION"]->query($query);
+	return constructArrayFromResponse($response, $columns);
+	} catch(Exception $e) {
+		echo('Erreur : '.$e->getMessage().'<br />');
+		echo('N° : '.$e->getCode());
+		die();
+	}
+}
+/*
+Construit un tableau avec la requête SQL
+*/
 function constructArrayFromResponse($response, $columns){
 	$r = array();
 	while($line = $response->fetch(PDO::FETCH_OBJ)){
@@ -32,17 +44,5 @@ function constructArrayFromResponse($response, $columns){
 	}
 	return $r;
 }
-
-function selectFromColumns($table, $columns){
-	try {
-		$response=$GLOBALS["BDD_CONNECTION"]->query("SELECT ".implode(",", $columns)." FROM ".$table);
-		return constructArrayFromResponse($response, $columns);
-	} catch(Exception $e) {
-		echo('Erreur : '.$e->getMessage().'<br />');
-		echo('N° : '.$e->getCode());
-		die();
-	}	
-}
-
 
 
