@@ -1,6 +1,6 @@
 <?php
 require_once("connect.php");
-include "requetes.php";
+require_once("requetes.php");
 $idClient;
 $columns = Array('id_animal','nom','code','taille','poids','data_naissance','race','id_client');
 

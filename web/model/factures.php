@@ -1,6 +1,6 @@
 <?php
 require_once("connect.php");
-include "requetes.php";
+require_once("requetes.php");
 $idAnimal;
 $columns = Array("id_facture","date_payment","paye","mode","id_employe");
 
