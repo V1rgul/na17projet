@@ -1,33 +1,10 @@
 <?php
 
 /*
-Renvoie le nom et le prénom de tous les vétérinaires
+--------------------------------------
+Requetes générales
+--------------------------------------
 */
-function getVeterinaires($col1, $col2){
-	return "SELECT $col1, $col2
-			FROM Veterinaire;";
-}
-
-/*
-Renvoie la liste de tous les vétérinaires
-*/
-function getVeterinairesAll(){
-	return "SELECT *
-			FROM Veterinaire;";
-}
-
-/*
-Renvoie la liste des rendez-vous d'un vétérinaire (idVeto)
-*/
-function getRdvGBVeterinaires($idVeto){
-	return "SELECT *
-			FROM RDV
-			WHERE id_veterinaire = $idVeto
-			ORDER BY date;";
-}
-
-/*-----------------------------------
-------------------------------------*/
 
 /*
 Renvoie les cols $columns pour la table $table
@@ -38,9 +15,16 @@ function getCols($table,$columns){
 }
 
 /*
-Update les cols d'un table
+Renvoie tous les cols de la table $table
 */
+function getAll($table){
+	return "SELECT *
+			FROM $table;";
+}
 
+/*
+Update les cols d'une table
+*/
 function updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals){
 	if ((count($columns)!=count($Values))||(count($keyCols)!=count($keyVals))) {
 		echo('Erreur : '."columns et values n'ont pas la meme taille".'<br />');
@@ -58,6 +42,9 @@ function updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals){
 	return $requete.";";
 }
 
+/*
+Delete les colonnes de la table $table
+*/
 function deleteRowWithKeys($table,$keyCols,$keyVals)
 {
 	if (count($keyCols)!=count($keyVals)) {
@@ -73,13 +60,20 @@ function deleteRowWithKeys($table,$keyCols,$keyVals)
 }
 
 /*
-Renvoie tous les cols de la table $table
+--------------------------------------
+Requetes Getters "GROUP BY"
+--------------------------------------
 */
-function getAll($table){
-	return "SELECT *
-			FROM $table;";
-}
 
+/*
+Renvoie la liste des rendez-vous d'un vétérinaire (idVeto)
+*/
+function getRdvGBVeterinaires($idVeto){
+	return "SELECT *
+			FROM RDV
+			WHERE id_veterinaire = $idVeto
+			ORDER BY date;";
+}
 
 /*
 Renvoie la liste des rendez-vous d'un client (idClient)
@@ -89,7 +83,7 @@ function getRdvGBClient($idClient){
 			FROM RDV
 			WHERE id_animal 
 			IN (
-				Select id_animal
+				SELECT id_animal
 				FROM Animal
 				WHERE id_client= $idClient)
 			ORDER BY date;";
@@ -127,22 +121,24 @@ function getFacturesGBAnimal($idAnimal){
 			FROM Facture
 			WHERE id_facture 
 			IN(
-				Select id_facture
+				SELECT id_facture
 				FROM RDV
 				WHERE id_animal= $idAnimal)
 			ORDER BY date_payment;";
 }
 
 /*
-Renvoie la liste des produit d'un ordonnaces (idOrdonnace,)
+Renvoie la liste des produit d'une ordonnace (idOrdonnace,)
 */
-function getProduitGBOrdonnances($idOrdonnace){
+function getProduitGBOrdonnances($idOrdonnance){
 	return "SELECT *
 			FROM Produit
-			WHERE nom_produit
+			WHERE nom
 			IN(
-				SELECT *
+				SELECT nom_produit
 				FROM Prescription
-				WHERE id_ordonnaces=$idOrdonnace)
-			ORDER BY nom_produit;";
+				WHERE id_ordonnances=$idOrdonnance)
+			ORDER BY nom;";
 }
+
+?>

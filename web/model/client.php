@@ -1,6 +1,6 @@
 <?php
 require_once("connect.php");
-require_once("requetes.php");
+include "requetes.php";
 
 $table="Client";
 

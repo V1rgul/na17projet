@@ -45,4 +45,4 @@ function constructArrayFromResponse($response, $columns){
 	return $r;
 }
 
-
+?>
