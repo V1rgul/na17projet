@@ -141,4 +141,47 @@ function getProduitGBOrdonnances($idOrdonnance){
 			ORDER BY nom;";
 }
 
+/*
+--------------------------------------
+Requetes Statistiques
+--------------------------------------
+*/
+
+/*
+Renvoie le nombre de prescriptions d'un médicament (d'un produit)
+*/
+function getNbPrescriptionsGBProduit(){
+	return "SELECT nom_produit, count(*) AS NbPrescriptions
+			FROM Prescription
+			GROUP BY nom_produit
+			ORDER BY NbPrescriptions;";
+}
+
+/*
+Renvoie le nombre des rendez-vous par animal
+*/
+function getNbPRdvGBAnimal(){
+	return "SELECT id_animal, count(id_rdv) AS NbRDV
+			FROM RDV
+			GROUP BY id_animal
+			ORDER BY NbRDV DESC;";
+}
+
+/*
+Renvoie le nombre des rendez-vous par client
+*/
+function getNbPRdvGBClient(){
+	return "SELECT id_client, count(id_rdv) AS NbRDV
+			FROM
+				(SELECT id_rdv, id_animal
+				FROM RDV) AS R,
+				(SELECT A.id_animal, C.id_client
+				FROM Animal A, Client C
+				WHERE A.id_client = C.id_client) AS JOINTURE_ANIMAL_CLIENT
+			WHERE R.id_animal = JOINTURE_ANIMAL_CLIENT.id_animal
+			GROUP BY id_client
+			ORDER BY NbRDV DESC;";
+}
+
+
 ?>
