@@ -183,5 +183,42 @@ function getNbPRdvGBClient(){
 			ORDER BY NbRDV DESC;";
 }
 
+/*
+Renvoie le l'age moyen des animaux soignés avec un médicament (produit)
+*/
+function getAgeOfAnimalCaredByProduct(){
+	return "SELECT AGE_OF_EACH_ANIMAL.nom_produit, avg(AGE_OF_EACH_ANIMAL.age_animal) age_moyen
+			FROM
+				(SELECT P.nom_produit, EXTRACT (YEAR FROM age(A.data_naissance)) age_animal
+				FROM Animal A, Rdv R, Ordonnances O, Prescription P
+				WHERE A.id_animal = R.id_animal
+				AND R.id_veterinaire = O.id_veterinaire
+				AND O.id_ordonnances = P.id_ordonnances) AS AGE_OF_EACH_ANIMAL
+			GROUP BY AGE_OF_EACH_ANIMAL.nom_produit
+			ORDER BY age_moyen DESC;";
+}
+
+/*
+Renvoie le montant moyen des factures
+*/
+function getAvgOfPriceByFacture(){
+	return "SELECT avg(PRIX_UNITAIRE_QUANTITE.prix_total_par_facture) AS montant_moyen_facture
+			FROM
+				(SELECT R.id_facture, sum((P.prix_unitaire * R.quantite) - R.remise) AS prix_total_par_facture
+				FROM Produit P, Rel_facture_produit R
+				WHERE P.nom = R.nom_produit
+				GROUP BY R.id_facture) AS PRIX_UNITAIRE_QUANTITE;";
+}
+
+/*
+Renvoie le nombre de médicaments (produits) prescrits par vétérinaire
+*/
+function getNbMedicamentPrescritsByVeterinaire(){
+	return "SELECT O.id_veterinaire, sum(P.quantite) AS nb_produit_prescrit
+			FROM Prescription P, Ordonnances O
+			WHERE P.id_ordonnances = O.id_ordonnances
+			GROUP BY id_veterinaire
+			ORDER BY nb_produit_prescrit DESC;";
+}
 
 ?>
