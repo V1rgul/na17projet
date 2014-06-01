@@ -16,29 +16,3 @@ $query3 = getRdvGBVeterinaires(1);
 $ligne1 = execQuery($query1, $columns1);
 $ligne2 = execQuery($query2, $columns2);
 $ligne3 = execQuery($query3, $columns3);
-
-//TODO A mettre dans la vue !
-function displayListe($ligne, $columns){
-	echo "<table border='1'>";
-	foreach($columns as $colName)
-	{
-		echo "<th>$colName</th>";
-	}
-	foreach($ligne as $col)
-	{
-		echo "<tr>";
-		foreach($col as $element)
-		{
-			echo "<td>$element</td>";
-		}
-		echo "</tr>";
-		echo "<br/>";
-	}
-	echo "</table>";
-}
-
-displayListe($ligne1, $columns1);
-displayListe($ligne2, $columns2);
-displayListe($ligne3, $columns3);
-
-?>
