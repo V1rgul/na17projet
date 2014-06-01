@@ -47,6 +47,7 @@ function modifListe($ligne,$columns,$targetModif,$detail,$targetDetail){
     {
         echo "\t<th>$colName</th>\n";
     }
+    echo "\t<th><a href='".$targetModif.".php?id=-1&&op=ajouter'><button>ajouter</button></a></th>\n";
     echo "</thead>\n";
     echo "<tbody>\n";
     foreach($ligne as $col)
@@ -63,7 +64,7 @@ function modifListe($ligne,$columns,$targetModif,$detail,$targetDetail){
         if($detail!=''){
             echo "\t\t<td>";
             for ($i=0; $i < count($detail); $i++) { 
-                echo "<a href='".$targetDetail[$i].".php?id=$id'><button>Voir ses $detail[$i]</button></a>\n";
+                echo "<a href='".$targetDetail[$i].".php?id=$id&&op=detail'><button>Voir ses $detail[$i]</button></a>\n";
             }
             echo "\t\t</td>";
             
