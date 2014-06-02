@@ -5,6 +5,7 @@ require_once("afficher.php");
 
 $table='Client';
 $id_client=$_GET['id'];
+$op=$_GET['op'];
 $keyCols=Array('id_client');
 $keyVals=Array($id_client);
 

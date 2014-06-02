@@ -10,4 +10,4 @@ $ordonnancesAnimal= execQuery($query, $columns);
 
 $detail=Array('produits');
 $targetDetail=Array('produitsOrdonnances');
-modifListe($ordonnances,$columns,"modif_ordonnances",$detail,$targetDetail);
+modifListe($ordonnancesAnimal,$columns,"modif_ordonnances",$detail,$targetDetail);

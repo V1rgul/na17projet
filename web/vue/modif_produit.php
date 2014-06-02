@@ -5,6 +5,7 @@ require_once("afficher.php");
 
 $table='Produit';
 $nom=$_GET['id'];
+$op=$_GET['op'];
 $keyCols=Array('nom');
 $keyVals=Array($nom);
 

@@ -16,6 +16,6 @@ $ligne1 = execQuery($query1, $columns1);
 $ligne2 = execQuery($query2, $columns2);
 
 
-$detail='rendez-vous';
-$targetDetail='rdvVeterinaire';
+$detail=Array('rendez-vous');
+$targetDetail=Array('rdvVeterinaire');
 modifListe($ligne2,$columns2,"modif_veterinaire",$detail,$targetDetail);

@@ -2,7 +2,7 @@
 require_once("../model/connect.php");
 require_once("../model/requetes.php");
 require_once("afficher.php");
-$id_animaux=$_GET['id'];
+$id_animal=$_GET['id'];
 $columns = Array("id_facture","date_payment","paye","mode","id_employe");
 
 $query= getFacturesGBAnimal($id_animal);

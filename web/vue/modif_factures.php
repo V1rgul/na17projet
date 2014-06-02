@@ -5,6 +5,7 @@ require_once("afficher.php");
 
 $table='Facture';
 $id_facture=$_GET['id'];
+$op=$_GET['op'];
 $keyCols=Array('id_facture');
 $keyVals=Array($id_facture);
 

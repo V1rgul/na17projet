@@ -6,7 +6,7 @@ require_once("afficher.php");
 $table = "Produit";
 $columns = Array("nom","quantite", "prix_unitaire");
 $query = getAll($table);
-$ligne = execQuery($query, $columns1);
+$ligne = execQuery($query, $columns);
 
 $detail='';
 $targetDetail='';

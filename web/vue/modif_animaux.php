@@ -5,6 +5,7 @@ require_once("afficher.php");
 
 $table='Animal';
 $id_animal=$_GET['id'];
+$op=$_GET['op'];
 $keyCols=Array('id_animal');
 $keyVals=Array($id_animal);
 
