@@ -3,6 +3,7 @@ require_once("../model/connect.php");
 require_once("../model/requetes.php");
 require_once("afficher.php");
 
+$table='Client';
 $columns1 = Array("nom", "prenom");
 $columns2 = Array("id_client", "nom", "prenom", "email", "adresse_num", "adresse_rue", "adresse_cp", "adresse_ville", "num_tel");
 
