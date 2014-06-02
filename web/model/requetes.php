@@ -23,6 +23,19 @@ function getAll($table){
 }
 
 /*
+Renvoie une ligne de certaine id de la table $table
+*/
+function getById($table,$keyCols,$keyVals){
+	$requete= 	"SELECT *
+				FROM $table
+				WHERE $keyCols[0]=$keyVals[0]";
+	for ($i=1; $i < count($keyCols); $i++) { 
+		$requete=$requete." AND $keyCols[$i]=$keyVals[$i]";
+	}
+	return $requete.";";
+}
+
+/*
 Update les cols d'une table
 */
 function updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals){
