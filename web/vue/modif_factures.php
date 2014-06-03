@@ -10,11 +10,12 @@ $keyCols=Array('id_facture');
 $keyVals=Array($id_facture);
 
 if ($op=='supprimer') {
-	deleteRowWithKeys($table,$keyCols,$keyVals);
+	$requete=deleteRowWithKeys($table,$keyCols,$keyVals);
+
 }
 if ($op=='ajouter'){
-	
+
 }
-if ($op=='modifer') {
-	getById($table,$keyCols,$keyVals);
+if ($op=='modifier') {
+	$requete=getById($table,$keyCols,$keyVals);
 }

@@ -40,7 +40,7 @@ function displayListe($ligne, $columns){
         $detail='';
         $target='';
     Pour recuperer des parametre:   $id=$_GET('id');  ou $id soit idClient soit idAnimal ...etc
-                                    $op=$_GET('op');  ou $op est {'ajouter','modifer','supprimer','detail'}
+                                    $op=$_GET('op');  ou $op est {'ajouter','modifier','supprimer','detail'}
 */
 function modifListe($ligne,$columns,$targetModif,$detail,$targetDetail){
     echo "<table border='1'>\n";

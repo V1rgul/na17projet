@@ -10,11 +10,12 @@ $keyCols=Array('nom');
 $keyVals=Array($nom);
 
 if ($op=='supprimer') {
-	deleteRowWithKeys($table,$keyCols,$keyVals);
+	$requete=deleteRowWithKeys($table,$keyCols,$keyVals);
+
 }
 if ($op=='ajouter'){
-	
+
 }
-if ($op=='modifer') {
-	getById($table,$keyCols,$keyVals);
+if ($op=='modifier') {
+	$requete=getById($table,$keyCols,$keyVals);
 }
