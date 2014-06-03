@@ -64,7 +64,7 @@ function updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals){
 		}
 		$requete=$requete.$columns[$i]."=$values[$i],";
 	}
-	$requete=trim($requete,",")." WHERE $keyCols[0]=$keyVals[0]";
+	$requete=trim($requete,",")." WHERE $keyCols[0]='$keyVals[0]'";
 	for ($i=1; $i < count($keyCols); $i++) {
 		$requete=$requete." AND $keyCols[$i]='$keyVals[$i]'";
 	}
