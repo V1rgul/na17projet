@@ -63,7 +63,7 @@ else{
 			poids:<input type="text" name="poids" value="<?php if ($op=='modifier') echo $poids;?>"> <br>
 			data_naissance:<input type="text" name="data_naissance" value="<?php if ($op=='modifier') echo $data_naissance;?>"> <br>
 			race:<input type="text" name="race" value="<?php if ($op=='modifier') echo $race;?>"> <br>
-			id_client:<input type="text" name="id_client" value="<?php if ($op=='modifier') echo $id_client;?>"> <br>
+			id_client:<input type="number" name="id_client" value="<?php if ($op=='modifier') echo $id_client;?>"> <br>
 
 			<input type="hidden" name='id_animal' value="<?php echo $id_animal;?>" >
 			<input type="hidden" name='op' value="<?php echo $op;?>" >

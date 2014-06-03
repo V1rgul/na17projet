@@ -56,7 +56,7 @@ function updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals){
 
 	$requete="UPDATE $table SET ";
 	for ($i=1; $i < count($columns); $i++) {
-		if (empty($values[$i]) {
+		if (empty($values[$i])) {
 			$values[$i]="NULL";
 		}
 		else{
