@@ -49,7 +49,7 @@ function modifListe($ligne,$columns,$targetModif,$detail,$targetDetail){
     {
         echo "\t<th>$colName</th>\n";
     }
-    echo "\t<th><a href='".$targetModif.".php?id=-1&&op=ajouter'><button>ajouter</button></a></th>\n";
+    echo "\t<th><a href='".$targetModif.".php?id=-1&op=ajouter'><button>ajouter</button></a></th>\n";
     echo "</thead>\n";
     echo "<tbody>\n";
     foreach($ligne as $col)
