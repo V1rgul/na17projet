@@ -7,10 +7,10 @@ $table='Facture';
 $columns = Array("id_facture","date_payment","paye","mode","id_employe");
 $keyCols=Array('id_facture');
 
-if(!isset($_GET['id_facture'])&&!empty($_GET['id_facture'])){
+if(isset($_POST['id_facture'])&&!empty($_POST['id_facture'])){
 	$id_facture=$_POST['id_facture'];
 	$date_payment=$_POST['date_payment'];
-	if(isset($_POST['paye']));
+	$paye=isset($_POST['paye'])?1:0;
 	$mode=$_POST['mode'];
 	$id_employe=$_POST['id_employe'];
 
