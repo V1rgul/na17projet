@@ -30,7 +30,7 @@ function getById($table,$keyCols,$keyVals){
 				FROM $table
 				WHERE $keyCols[0]=$keyVals[0]";
 	for ($i=1; $i < count($keyCols); $i++) { 
-		$requete=$requete." AND $keyCols[$i]=$keyVals[$i]";
+		$requete=$requete." AND $keyCols[$i]='$keyVals[$i]'";
 	}
 	return $requete.";";
 }
@@ -55,7 +55,7 @@ function updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals){
 	}
 
 	$requete="UPDATE $table SET ";
-	for ($i=1; $i < count($columns); $i++) {
+	for ($i=0; $i < count($columns); $i++) {
 		if (empty($values[$i])) {
 			$values[$i]="NULL";
 		}
