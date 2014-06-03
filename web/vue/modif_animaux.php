@@ -23,7 +23,7 @@ if(isset($_POST['id_animal'])&&!empty($_POST['id_animal'])){
 		$requete=updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals);
 		execQueryNoResponse($requete);
 	}
-	else if ($_POST['op']='ajouter') {
+	else if ($_POST['op']=='ajouter') {
 		echo "ajouter";
 	}
 }
@@ -57,16 +57,16 @@ else{
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
 			<?php if ($op=='modifier') echo "id:".$id_animal ?><br>
 
-			nom:<input type="text" name="nom" value="<?php if ($op=='modifier') echo $nom;?> "> <br>
-			code:<input type="text" name="code" value="<?php if ($op=='modifier') echo $code;?> "> <br>
-			taille:<input type="text" name="taille" value="<?php if ($op=='modifier') echo $taille;?> "> <br>
-			poids:<input type="text" name="poids" value="<?php if ($op=='modifier') echo $poids;?> "> <br>
-			data_naissance:<input type="text" name="data_naissance" value="<?php if ($op=='modifier') echo $data_naissance;?> "> <br>
-			race:<input type="text" name="race" value="<?php if ($op=='modifier') echo $race;?> "> <br>
-			id_client:<input type="text" name="id_client" value="<?php if ($op=='modifier') echo $id_client;?> "> <br>
+			nom:<input type="text" name="nom" value="<?php if ($op=='modifier') echo $nom;?>"> <br>
+			code:<input type="text" name="code" value="<?php if ($op=='modifier') echo $code;?>"> <br>
+			taille:<input type="text" name="taille" value="<?php if ($op=='modifier') echo $taille;?>"> <br>
+			poids:<input type="text" name="poids" value="<?php if ($op=='modifier') echo $poids;?>"> <br>
+			data_naissance:<input type="text" name="data_naissance" value="<?php if ($op=='modifier') echo $data_naissance;?>"> <br>
+			race:<input type="text" name="race" value="<?php if ($op=='modifier') echo $race;?>"> <br>
+			id_client:<input type="text" name="id_client" value="<?php if ($op=='modifier') echo $id_client;?>"> <br>
 
-			<input type="hidden" name='id_animal' value="<?php echo $id_animal;?> >
-			<input type="hidden" name='op' value="<?php echo $op;?> >
+			<input type="hidden" name='id_animal' value="<?php echo $id_animal;?>" >
+			<input type="hidden" name='op' value="<?php echo $op;?>" >
 			<input type="submit" value="Send">
 			<input type="reset" value="Reset">
 		</form>

@@ -24,7 +24,7 @@ if(isset($_POST['id_client'])&&!empty($_POST['id_client'])){
 		$requete=updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals);
 		execQueryNoResponse($requete);
 	}
-	else if ($_POST['op']='ajouter') {
+	else if ($_POST['op']=='ajouter') {
 		echo "ajouter";
 	}
 }
