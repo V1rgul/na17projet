@@ -46,20 +46,20 @@ else{
 		}	
 		else if($op=='ajouter'){
 		}
-	?>
+?>
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
 			<?php if ($op=='modifier') echo "id:".$id_facture ?><br>
 
-			date_payment:<input type="date" name="date_payment" value=<?php if ($op=='modifier') echo $date_payment;?>><br>
-			paye:<input type="checkbox" name="paye" value=<?php if ($op=='modifier'&& $paye) echo "checked";?>><br>
+			date_payment:<input type="date" name="date_payment" value="<?php if ($op=='modifier') echo $date_payment;?>"><br>
+			paye:<input type="checkbox" name="paye" value="<?php if ($op=='modifier'&& $paye) echo "checked";?>" ><br>
 			mode:<select name="mode">
 				  <option value="espèces" <?php if ($op=='modifier'&& $mode=='espèces') echo 'selected';?> >especes</option>
 				  <option value="carteBleue" <?php if ($op=='modifier'&& $mode=='carteBleue') echo 'selected';?> >carteBleue</option>
 				  <option value="chèque" <?php if ($op=='modifier'&& $mode=='chèque') echo 'selected';?> >cheque</option>
 				</select><br>
-			id_employe:<input type="" name="id_employe" value=<?php if ($op=='modifier') echo $id_employe;?>><br>
-			<input type="hidden" name='id_facture' value=<?php echo $id_facture;?> >
-			<input type="hidden" name='op' value=<?php echo $op;?> >
+			id_employe:<input type="" name="id_employe" value="<?php if ($op=='modifier') echo $id_employe;?>"><br>
+			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>" >
+			<input type="hidden" name='op' value="<?php echo $op;?>" >
 			<input type="submit" value="Send">
 			<input type="reset" value="Reset">
 		</form>
