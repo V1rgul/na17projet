@@ -30,6 +30,20 @@ function execQuery($query, $columns){
 		die();
 	}
 }
+
+/*
+Exécute une reqûete SQL sans reponse
+*/
+function execQueryNoResponse($query){
+	try {
+	$GLOBALS["BDD_CONNECTION"]->query($query);
+	} catch(Exception $e) {
+		echo('Erreur : '.$e->getMessage().'<br />');
+		echo('N° : '.$e->getCode());
+		die();
+	}
+}
+
 /*
 Construit un tableau avec la requête SQL
 */

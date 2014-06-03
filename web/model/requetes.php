@@ -36,21 +36,31 @@ function getById($table,$keyCols,$keyVals){
 }
 
 /*
+insert les cols d'une table
+*/
+function insertColsWithKeys($table,$columns,$values,$keyCols,$keyVals){
+	if ((count($columns)!=count($values))||(count($keyCols)!=count($keyVals))) {
+		echo('Erreur : '."columns et values n'ont pas la meme taille".'<br />');
+		return;
+	}
+}
+
+/*
 Update les cols d'une table
 */
 function updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals){
-	if ((count($columns)!=count($Values))||(count($keyCols)!=count($keyVals))) {
+	if ((count($columns)!=count($values))||(count($keyCols)!=count($keyVals))) {
 		echo('Erreur : '."columns et values n'ont pas la meme taille".'<br />');
 		return;
 	}
 
 	$requete="UPDATE $table SET ";
-	for ($i=0; $i < count($columns); $i++) { 
-		$requete=$requete.$columns[$i]."=".$values[$i].",";
+	for ($i=1; $i < count($columns); $i++) {
+		$requete=$requete.$columns[$i]."='$values[$i]',";
 	}
 	$requete=trim($requete,",")." WHERE $keyCols[0]=$keyVals[0]";
-	for ($i=1; $i < count($keyCols); $i++) { 
-		$requete=$requete." AND $keyCols[$i]=$keyVals[$i]";
+	for ($i=1; $i < count($keyCols); $i++) {
+		$requete=$requete." AND $keyCols[$i]='$keyVals[$i]'";
 	}
 	return $requete.";";
 }
@@ -67,7 +77,7 @@ function deleteRowWithKeys($table,$keyCols,$keyVals)
 
 	$requete="DELETE FROM $table WHERE $keyCols[0]=$keyVals[0]";
 	for ($i=1; $i < count($keyCols); $i++) { 
-		$requete=$requete." AND $keyCols[$i]=$keyVals[$i]";
+		$requete=$requete." AND $keyCols[$i]='$keyVals[$i]'";
 	}
 	return $requete.";";
 }
