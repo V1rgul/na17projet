@@ -7,8 +7,6 @@ $table='Client';
 $columns = Array("id_client", "nom", "prenom", "email", "adresse_num", "adresse_rue", "adresse_cp", "adresse_ville", "num_tel");
 $keyCols=Array('id_client');
 
-
-
 if(!empty($_POST)){
 	$id_client=$_POST['id_client'];
 	$nom=$_POST['nom'];
@@ -23,7 +21,8 @@ if(!empty($_POST)){
 	$keyVals=Array($id_client);
 	$values=Array($id_client,$nom,$prenom,$email,$adresse_num,$adresse_rue,$adresse_cp,$adresse_ville,$num_tel);
 	if ($_POST['op']=='modifier') {
-		updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals);
+		$requete=updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals);
+		execQueryNoResponse($requete);
 	}
 	else if ($_POST['op']='ajouter') {
 		echo "ajouter";
@@ -36,7 +35,7 @@ else{
 	if ($op=='supprimer') {
 		$requete=deleteRowWithKeys($table,$keyCols,$keyVals);
 		execQueryNoResponse($requete);
-		echo "supprimer réussit!<br>";
+		echo "supprimer reussit!<br>";
 	}
 	else{
 		if ($op=='modifier') {
