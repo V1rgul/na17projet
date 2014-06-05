@@ -10,38 +10,6 @@
 
 <?php
 
-
-/*
---------------------------------------
-Requetes générales
---------------------------------------
-*/
-
-/*
-//Renvoie les cols $columns pour la table $table
-function getCols($table,$columns){
-	return " SELECT ".implode(",", $columns).
-		   " FROM $table;";
-}
-
-//Renvoie tous les cols de la table $table
-function getAll($table){
-	return "SELECT *
-			FROM $table;";
-}
-
-
-//Renvoie une ligne de certaine id de la table $table
-function getById($table,$keyCols,$keyVals){
-	$requete= 	"SELECT *
-				FROM $table
-				WHERE $keyCols[0]='$keyVals[0]'";
-	for ($i=1; $i < count($keyCols); $i++) { 
-		$requete=$requete." AND $keyCols[$i]='$keyVals[$i]'";
-	}
-	return $requete.";";
-}
-
 /*
 insert les cols d'une table
 */
@@ -93,12 +61,53 @@ function deleteRowWithKeys($table,$keyCols,$keyVals)
 	}
 	return $requete.";";
 }
-*/
+
+
+
+
+
+
+
+
 /*
 --------------------------------------
-Requetes Getters "GROUP BY"
+Requetes générales
 --------------------------------------
 */
+
+/*
+//Renvoie les cols $columns pour la table $table
+function getCols($table,$columns){
+	return " SELECT ".implode(",", $columns).
+		   " FROM $table;";
+}
+
+//Renvoie tous les cols de la table $table
+function getAll($table){
+	return "SELECT *
+			FROM $table;";
+}
+
+
+//Renvoie une ligne de certaine id de la table $table
+function getById($table,$keyCols,$keyVals){
+	$requete= 	"SELECT *
+				FROM $table
+				WHERE $keyCols[0]='$keyVals[0]'";
+	for ($i=1; $i < count($keyCols); $i++) { 
+		$requete=$requete." AND $keyCols[$i]='$keyVals[$i]'";
+	}
+	return $requete.";";
+}
+*/
+
+
+
+
+
+
+
+
 
 
 
