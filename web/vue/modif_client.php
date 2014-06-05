@@ -1,6 +1,6 @@
 <?php
-require_once("../model/connect.php");
-require_once("../model/requetes.php");
+
+require_once("../model/client.php");
 require_once("afficher.php");
 
 $table='Client';
@@ -18,14 +18,12 @@ if(isset($_POST['id_client'])&&!empty($_POST['id_client'])){
 	$adresse_ville=$_POST['adresse_ville'];
 	$num_tel=$_POST['num_tel'];
 
-	$keyVals=Array($id_client);
-	$values=Array($id_client,$nom,$prenom,$email,$adresse_num,$adresse_rue,$adresse_cp,$adresse_ville,$num_tel);
 	if ($_POST['op']=='modifier') {
-		$requete=updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals);
-		execQueryNoResponse($requete);
+		updateClient($id_client, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
 	}
 	else if ($_POST['op']=='ajouter') {
 		echo "ajouter";
+		addClient($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
 	}
 }
 else{

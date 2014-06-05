@@ -32,20 +32,7 @@ function execQuery($query, $columns){
 }
 function execUpdate($query){
 	try {
-		$response=$GLOBALS["BDD_CONNECTION"]->query($query);
-	} catch(Exception $e) {
-		echo('Erreur : '.$e->getMessage().'<br />');
-		echo('N° : '.$e->getCode());
-		die();
-	}
-}
-
-/*
-Exécute une reqûete SQL sans reponse
-*/
-function execQueryNoResponse($query){
-	try {
-	$GLOBALS["BDD_CONNECTION"]->query($query);
+		$GLOBALS["BDD_CONNECTION"]->query($query);
 	} catch(Exception $e) {
 		echo('Erreur : '.$e->getMessage().'<br />');
 		echo('N° : '.$e->getCode());
