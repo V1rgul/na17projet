@@ -1,4 +1,15 @@
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//                       DO NOT USE THIS FILE !!!                       //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
+
+
+
 <?php
+
 
 /*
 --------------------------------------
@@ -75,7 +86,7 @@ Requetes Getters "GROUP BY"
 
 
 
-
+/*
 //Renvoie la liste des produit d'une ordonnace (idOrdonnace,)
 function getProduitOrdonnance($idOrdonnance){
 	return "SELECT *
@@ -87,7 +98,7 @@ function getProduitOrdonnance($idOrdonnance){
 				WHERE id_ordonnances=$idOrdonnance)
 			ORDER BY nom;";
 }
-
+*/
 /*
 --------------------------------------
 Requetes Statistiques

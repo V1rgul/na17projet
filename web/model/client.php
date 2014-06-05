@@ -49,7 +49,7 @@ function addRdvAnimal($date, $id_animal, $id_facture, $type){
 function updateRdvAnimal($id_rdv, $date, $id_animal, $id_facture, $type){
 	$query = "UPDATE rdv
 			WHERE id_rdv=".$id_rdv."
-			SET date=".$date.", id_animal=".$id_animal.", id_facture=".$id_facture.", type=".$type.")";
+			SET date=".$date.", id_animal=".$id_animal.", id_facture=".$id_facture.", type=".$type;
 	execUpdate($query);
 }
 
@@ -58,31 +58,33 @@ function updateRdvAnimal($id_rdv, $date, $id_animal, $id_facture, $type){
 
 
 
-
-
-
-
-
-
-
-
-
-
 //Renvoie la liste des animals d'un client (idClient)
-function getAnimauxClient($idClient){
-	$columns = Array("id_animal", "nom", "code", "taille", "poids", "data_naissance", "race");
+function getAnimauxClient($id_client){
+	$columns = Array("id_animal", "nom", "code", "taille", "poids", "date_naissance", "race");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Animal
 			WHERE 
-			id_client=".$idClient."
+			id_client=".$id_client."
 			ORDER BY nom;";
 	return execQuery($query, $columns);
+}
+function addAnimalClient($id_client, $nom, $code, $taille, $poids, $date_naissance, $race){
+	$query = "INSERT INTO Animal (id_client, nom, code, taille, poids, date_naissance, race)
+			VALUES (".$id_client.", ".$nom.", ".$code.", ".$taille.", ".$poids.", ".$date_naissance.", ".$race.")";
+	execUpdate($query);
+}
+function updateAnimalClient($id_animal, $id_client, $nom, $code, $taille, $poids, $date_naissance, $race){
+	$query = "UPDATE Animal
+			WHERE id_animal=".$id_animal."
+			SET id_client=".$id_client.", nom=".$nom.", code=".$code.", taille=".$taille.", poids=".$poids.", data_naissance=".$data_naissance.", race=".$race;
+	execUpdate($query);
 }
 
 
 
+
 //Renvoie la liste des ordonnances d'un animal (idAnimal)
-function getOrdonnancesAnimal($idAnimal){
+function getOrdonnancesAnimal($id_animal){
 	$columns = Array("id_ordonnances","id_veterinaire");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Ordonnances
@@ -90,14 +92,26 @@ function getOrdonnancesAnimal($idAnimal){
 			IN(
 				SELECT id_veterinaire
 				FROM RDV
-				WHERE id_animal=$idAnimal);";
+				WHERE id_animal=$id_animal);";
 	return execQuery($query, $columns);
 }
+function addOrdonnanceAnimal($id_animal, $id_veterinaire){
+	$query = "INSERT INTO Ordonnances (id_animal, id_veterinaire)
+			VALUES (".$id_animal.", ".$id_veterinaire.")";
+	execUpdate($query);
+}
+function updateOrdonnanceAnimal($id_ordonnance, $id_animal, $id_veterinaire){
+	$query = "UPDATE Animal
+			WHERE id_ordonnance=".$id_ordonnance."
+			SET id_animal=".$id_animal.", id_veterinaire=".$id_veterinaire;
+	execUpdate($query);
+}
 
-/*
+
 //Renvoie la liste des factures d'un animal (idAnimal)
 function getFacturesAnimal($idAnimal){
-	return "SELECT *
+	$columns = Array("id_facture", "date_payment", "paye", "mode", "id_employe");
+	return "SELECT ".implode(",", $columns)."
 			FROM Facture
 			WHERE id_facture 
 			IN(
@@ -105,5 +119,16 @@ function getFacturesAnimal($idAnimal){
 				FROM RDV
 				WHERE id_animal= $idAnimal)
 			ORDER BY date_payment;";
+	return execQuery($query, $columns);
 }
-*/
+function addFactureAnimal($date_payment, $paye, $mode, $id_employe){
+	$query = "INSERT INTO Facture (date_payment, paye, mode, id_employe)
+			VALUES (".$date_payment.", ".$paye.", ".$mode.", ".$id_employe.")";
+	execUpdate($query);
+}
+function updateFactureAnimal($id_facture, $date_payment, $paye, $mode, $id_employe){
+	$query = "UPDATE Facture
+			WHERE id_facture=".$id_facture."
+			SET date_payment=".$date_payment.", paye=".$paye.", mode=".$mode.", id_employe=".$id_employe;
+	execUpdate($query);
+}
