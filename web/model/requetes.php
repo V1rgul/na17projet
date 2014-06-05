@@ -1,4 +1,15 @@
+
+//////////////////////////////////////////////////////////////////////////
+//                                                                      //
+//                       DO NOT USE THIS FILE !!!                       //
+//                                                                      //
+//////////////////////////////////////////////////////////////////////////
+
+
+
+
 <?php
+
 
 /*
 --------------------------------------
@@ -7,24 +18,20 @@ Requetes générales
 */
 
 /*
-Renvoie les cols $columns pour la table $table
-*/
+//Renvoie les cols $columns pour la table $table
 function getCols($table,$columns){
 	return " SELECT ".implode(",", $columns).
 		   " FROM $table;";
 }
 
-/*
-Renvoie tous les cols de la table $table
-*/
+//Renvoie tous les cols de la table $table
 function getAll($table){
 	return "SELECT *
 			FROM $table;";
 }
 
-/*
-Renvoie une ligne de certaine id de la table $table
-*/
+
+//Renvoie une ligne de certaine id de la table $table
 function getById($table,$keyCols,$keyVals){
 	$requete= 	"SELECT *
 				FROM $table
@@ -71,9 +78,8 @@ function updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals){
 	return $requete.";";
 }
 
-/*
-Delete les colonnes de la table $table
-*/
+
+//Delete les colonnes de la table $table
 function deleteRowWithKeys($table,$keyCols,$keyVals)
 {
 	if (count($keyCols)!=count($keyVals)) {
@@ -87,79 +93,19 @@ function deleteRowWithKeys($table,$keyCols,$keyVals)
 	}
 	return $requete.";";
 }
-
+*/
 /*
 --------------------------------------
 Requetes Getters "GROUP BY"
 --------------------------------------
 */
 
-/*
-Renvoie la liste des rendez-vous d'un vétérinaire (idVeto)
-*/
-function getRdvGBVeterinaires($idVeto){
-	return "SELECT *
-			FROM RDV
-			WHERE id_veterinaire = $idVeto
-			ORDER BY date;";
-}
+
+
 
 /*
-Renvoie la liste des rendez-vous d'un client (idClient)
-*/
-function getRdvGBClient($idClient){
-	return "SELECT *
-			FROM RDV
-			WHERE id_animal 
-			IN (
-				SELECT id_animal
-				FROM Animal
-				WHERE id_client= $idClient)
-			ORDER BY date;";
-}
-
-/*
-Renvoie la liste des animals d'un client (idClient)
-*/
-function getAnimalsGBClient($idClient){
-	return "SELECT *
-			FROM Animal
-			WHERE 
-			id_client=$idClient
-			ORDER BY nom;";
-}
-
-/*
-Renvoie la liste des ordonnances d'un animal (idAnimal)
-*/
-function getOrdonnancesGBAnimal($idAnimal){
-	return "SELECT *
-			FROM Ordonnances
-			WHERE id_veterinaire
-			IN(
-				SELECT id_veterinaire
-				FROM RDV
-				WHERE id_animal=$idAnimal);";
-}
-
-/*
-Renvoie la liste des factures d'un animal (idAnimal)
-*/
-function getFacturesGBAnimal($idAnimal){
-	return "SELECT *
-			FROM Facture
-			WHERE id_facture 
-			IN(
-				SELECT id_facture
-				FROM RDV
-				WHERE id_animal= $idAnimal)
-			ORDER BY date_payment;";
-}
-
-/*
-Renvoie la liste des produit d'une ordonnace (idOrdonnace,)
-*/
-function getProduitGBOrdonnances($idOrdonnance){
+//Renvoie la liste des produit d'une ordonnace (idOrdonnace,)
+function getProduitOrdonnance($idOrdonnance){
 	return "SELECT *
 			FROM Produit
 			WHERE nom
@@ -169,7 +115,7 @@ function getProduitGBOrdonnances($idOrdonnance){
 				WHERE id_ordonnances=$idOrdonnance)
 			ORDER BY nom;";
 }
-
+*/
 /*
 --------------------------------------
 Requetes Statistiques
@@ -177,8 +123,7 @@ Requetes Statistiques
 */
 
 /*
-Renvoie le nombre de prescriptions d'un médicament (d'un produit)
-*/
+//Renvoie le nombre de prescriptions d'un médicament (d'un produit)
 function getNbPrescriptionsGBProduit(){
 	return "SELECT nom_produit, count(*) AS NbPrescriptions
 			FROM Prescription
@@ -186,9 +131,8 @@ function getNbPrescriptionsGBProduit(){
 			ORDER BY NbPrescriptions;";
 }
 
-/*
-Renvoie le nombre des rendez-vous par animal
-*/
+
+//Renvoie le nombre des rendez-vous par animal
 function getNbPRdvGBAnimal(){
 	return "SELECT id_animal, count(id_rdv) AS NbRDV
 			FROM RDV
@@ -196,9 +140,8 @@ function getNbPRdvGBAnimal(){
 			ORDER BY NbRDV DESC;";
 }
 
-/*
-Renvoie le nombre des rendez-vous par client
-*/
+
+//Renvoie le nombre des rendez-vous par client
 function getNbPRdvGBClient(){
 	return "SELECT id_client, count(id_rdv) AS NbRDV
 			FROM
@@ -212,9 +155,8 @@ function getNbPRdvGBClient(){
 			ORDER BY NbRDV DESC;";
 }
 
-/*
-Renvoie le l'age moyen des animaux soignés avec un médicament (produit)
-*/
+
+//Renvoie le l'age moyen des animaux soignés avec un médicament (produit)
 function getAgeOfAnimalCaredByProduct(){
 	return "SELECT AGE_OF_EACH_ANIMAL.nom_produit, avg(AGE_OF_EACH_ANIMAL.age_animal) age_moyen
 			FROM
@@ -227,9 +169,8 @@ function getAgeOfAnimalCaredByProduct(){
 			ORDER BY age_moyen DESC;";
 }
 
-/*
-Renvoie le montant moyen des factures
-*/
+
+//Renvoie le montant moyen des factures
 function getAvgOfPriceByFacture(){
 	return "SELECT avg(PRIX_UNITAIRE_QUANTITE.prix_total_par_facture) AS montant_moyen_facture
 			FROM
@@ -239,9 +180,8 @@ function getAvgOfPriceByFacture(){
 				GROUP BY R.id_facture) AS PRIX_UNITAIRE_QUANTITE;";
 }
 
-/*
-Renvoie le nombre de médicaments (produits) prescrits par vétérinaire
-*/
+
+//Renvoie le nombre de médicaments (produits) prescrits par vétérinaire
 function getNbMedicamentPrescritsByVeterinaire(){
 	return "SELECT O.id_veterinaire, sum(P.quantite) AS nb_produit_prescrit
 			FROM Prescription P, Ordonnances O
@@ -249,5 +189,5 @@ function getNbMedicamentPrescritsByVeterinaire(){
 			GROUP BY id_veterinaire
 			ORDER BY nb_produit_prescrit DESC;";
 }
+*/
 
-?>

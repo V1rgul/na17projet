@@ -114,7 +114,7 @@ CREATE TABLE RDV(
 );
 
 CREATE TABLE Ordonnances(
-    id_ordonnances      INTEGER,
+    id_ordonnance       INTEGER,
     id_veterinaire      INTEGER,
     PRIMARY KEY(id_ordonnances),
     FOREIGN KEY(id_veterinaire) REFERENCES Veterinaire(id_veterinaire)
@@ -122,7 +122,7 @@ CREATE TABLE Ordonnances(
 
 CREATE TABLE Prescription(
     nom_produit     VARCHAR,
-    id_ordonnances  INTEGER,
+    id_ordonnance   INTEGER,
     quantite        INTEGER,
     PRIMARY KEY(nom_produit,id_ordonnances),
     FOREIGN KEY(nom_produit)    REFERENCES Produit(nom),
@@ -141,7 +141,7 @@ CREATE TABLE Rel_facture_produit(
 );
 
 CREATE TABLE Rel_ordonnance_facture(
-    id_ordonnances  INTEGER,
+    id_ordonnance   INTEGER,
     id_facture      INTEGER,
     PRIMARY KEY(id_ordonnances,id_facture),
     FOREIGN KEY(id_ordonnances) REFERENCES  Ordonnances(id_ordonnances),
@@ -149,7 +149,7 @@ CREATE TABLE Rel_ordonnance_facture(
 );
 
 CREATE SEQUENCE id_facture      START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE id_ordonnances  START WITH 1 INCREMENT BY 1;
+CREATE SEQUENCE id_ordonnance   START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE id_veterinaire  START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE id_employe      START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE id_animal       START WITH 1 INCREMENT BY 1;
