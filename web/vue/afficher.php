@@ -2,24 +2,28 @@
 /*
  *  Afficher un liste
  */
-function displayListe($ligne, $columns){
+function displayListe($data){
+    if(count($data) == 0){
+        echo("Table vide !");
+        return ;
+    }
     echo "<table border='1'>\n";
     echo "<thead>\n";
 
-    foreach($columns as $colName)
+    foreach($data[0] as $key => $val)
     {
-        echo "<th>\t$colName</th>\n";
+        echo "<th>$key</th>\n";
     }
     echo "</thead>\n";
     echo "<tbody>\n";
-    foreach($ligne as $col)
+    foreach($data as $ligne)
     {
-        echo "\t<tr>\n";
-        foreach($col as $element)
+        echo "<tr>\n";
+        foreach($ligne as $key =>$val)
         {
-            echo "\t\t<td>$element</td>\n";
+            echo "<td>$val</td>\n";
         }
-        echo "\t</tr>\n";
+        echo "</tr>\n";
     }
     echo "</tbody>\n";
     echo "</table>";
@@ -42,36 +46,40 @@ function displayListe($ligne, $columns){
     Pour recuperer des parametre:   $id=$_GET('id');  ou $id soit idClient soit idAnimal ...etc
                                     $op=$_GET('op');  ou $op est {'ajouter','modifier','supprimer','detail'}
 */
-function modifListe($ligne,$columns,$targetModif,$detail,$targetDetail){
+function modifListe($data,$targetModif,$detail,$targetDetail){
+    if(count($data) == 0){
+        echo("Table vide ! <a href='".$targetModif.".php?id=-1&op=ajouter'><button>ajouter</button></a>");
+        return ;
+    }
     echo "<table border='1'>\n";
     echo "<thead>\n";
-    foreach($columns as $colName)
+    foreach($data[0] as $key => $val)
     {
-        echo "\t<th>$colName</th>\n";
+        echo "<th>$key</th>\n";
     }
-    echo "\t<th><a href='".$targetModif.".php?id=-1&op=ajouter'><button>ajouter</button></a></th>\n";
+    echo "<th><a href='".$targetModif.".php?id=-1&op=ajouter'><button>ajouter</button></a></th>\n";
     echo "</thead>\n";
     echo "<tbody>\n";
-    foreach($ligne as $col)
+    foreach($data as $ligne)
     {
-        echo "\t<tr>\n";
-        foreach($col as $element)
+        echo "<tr>\n";
+        foreach($ligne as $key =>$val)
         {
-            echo "\t\t<td>$element</td>\n";
+            echo "<td>$val</td>\n";
         }
-        $contents=array_values($col);
+        $contents=array_values($ligne);
         $id=$contents[0];
-        echo "\t\t<td><a href='".$targetModif.".php?id=$id&&op=modifier'><button>modifier</button></a></td>\n";
-        echo "\t\t<td><a href='".$targetModif.".php?id=$id&&op=supprimer'><button>supprimer</button></a></td>\n";
+        echo "<td><a href='".$targetModif.".php?id=$id&&op=modifier'><button>modifier</button></a></td>\n";
+        echo "<td><a href='".$targetModif.".php?id=$id&&op=supprimer'><button>supprimer</button></a></td>\n";
         if($detail!=''){
-            echo "\t\t<td>";
+            echo "<td>";
             for ($i=0; $i < count($detail); $i++) { 
                 echo "<a href='".$targetDetail[$i].".php?id=$id&&op=detail'><button>Voir ses $detail[$i]</button></a>\n";
             }
-            echo "\t\t</td>";
+            echo "</td>";
             
         }
-        echo "\t</tr>\n";
+        echo "</tr>\n";
     }
     echo "</tbody>\n";
     echo "</table>\n";

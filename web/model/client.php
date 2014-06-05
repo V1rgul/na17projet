@@ -7,7 +7,7 @@ require_once("connect.php");
 
 //Liste des Clients
 function getClients(){
-	$colums = Array("id_client", "nom", "prenom", "email", "adresse_num");
+	$columns = Array("id_client", "nom", "prenom", "email", "adresse_num");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM client;";
 	return execQuery($query, $columns);
