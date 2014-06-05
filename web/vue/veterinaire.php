@@ -1,4 +1,6 @@
 <?php
+include("header.php");
+
 require_once("../model/connect.php");
 require_once("../model/requetes.php");
 require_once("afficher.php");
@@ -19,3 +21,6 @@ $ligne2 = execQuery($query2, $columns2);
 $detail=Array('rendez-vous');
 $targetDetail=Array('rdvVeterinaire');
 modifListe($ligne2,$columns2,"modif_veterinaire",$detail,$targetDetail);
+
+
+include("footer.php");

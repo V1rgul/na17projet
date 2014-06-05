@@ -1,4 +1,6 @@
 <?php
+include("header.php");
+
 require_once("../model/connect.php");
 require_once("../model/requetes.php");
 require_once("afficher.php");
@@ -17,3 +19,5 @@ $clientFullTable = execQuery($query2, $columns2);
 $detail=Array('rendez-vous','animaux');
 $targetDetail=Array('rdvClient','animaux');
 modifListe($clientFullTable,$columns2,"modif_client",$detail,$targetDetail);
+
+include("footer.php");

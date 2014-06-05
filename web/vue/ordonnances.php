@@ -1,4 +1,6 @@
 <?php
+include("header.php");
+
 require_once("../model/connect.php");
 require_once("../model/requetes.php");
 require_once("afficher.php");
@@ -11,3 +13,5 @@ $ordonnancesAnimal= execQuery($query, $columns);
 $detail=Array('produits');
 $targetDetail=Array('produitsOrdonnances');
 modifListe($ordonnancesAnimal,$columns,"modif_ordonnances",$detail,$targetDetail);
+
+include("footer.php");
