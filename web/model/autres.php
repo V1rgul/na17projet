@@ -25,14 +25,10 @@ function updateProduit($nom, $quantite, $prix_unitaire){
 //Renvoie la liste des produit d'une ordonnace (idOrdonnace,)
 function getProduitsOrdonnance($id_ordonnance){
 	$columns = Array("nom", "quantite", "prix_unitaire");
-	$query = "SELECT ".implode(",", $columns)."
-			FROM Produit
-			WHERE nom
-			IN(
-				SELECT nom_produit
-				FROM Prescription
-				WHERE id_ordonnance=$id_ordonnance)
-			ORDER BY nom;";
+	$query = "pro.nom, pres.quantite, pro.prix_unitaire 
+			FROM Produit as pro JOIN Prescription as pres
+			WHERE pro.nom = pres.nom_produit
+			ORDER BY pro.nom;";
 	return execQuery($query, $columns);
 }
 function addProduitOrdonnance($nom_produit, $id_ordonnance, $quantite){
