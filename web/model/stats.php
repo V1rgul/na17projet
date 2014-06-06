@@ -61,7 +61,8 @@ function getAgeOfAnimalCaredByProduct(){
 
 //Renvoie le montant moyen des factures
 function getAvgOfPriceByFacture(){
-	return "SELECT avg(PRIX_TOTAL.prix_total_par_facture)
+	$columns=Array("prix_total_par_facture");
+	$query="SELECT avg(PRIX_TOTAL.prix_total_par_facture)
 			FROM
 				(
 					(SELECT Re.id_facture, sum(P.prix_unitaire * Re.quantite) + PRIX_INTERV.prix_intervention - Re.remise  AS prix_total_par_facture
@@ -116,6 +117,7 @@ function getAvgOfPriceByFacture(){
 					GROUP BY Re.id_facture, PRIX_CONSULT.prix_consultation, Re.remise)
 				) AS PRIX_TOTAL
 		;";
+	return execQuery($query, $columns);
 }
 
 
