@@ -61,14 +61,61 @@ function getAgeOfAnimalCaredByProduct(){
 
 //Renvoie le montant moyen des factures
 function getAvgOfPriceByFacture(){
-	$columns = Array("montant_moyen_facture");
-	$query ="SELECT avg(PRIX_UNITAIRE_QUANTITE.prix_total_par_facture) AS montant_moyen_facture
+	return "SELECT avg(PRIX_TOTAL.prix_total_par_facture)
 			FROM
-				(SELECT R.id_facture, sum((P.prix_unitaire * R.quantite) - R.remise) AS prix_total_par_facture
-				FROM Produit P, Rel_facture_produit R
-				WHERE P.nom = R.nom_produit
-				GROUP BY R.id_facture) AS PRIX_UNITAIRE_QUANTITE;";
-	return execQuery($query, $columns);
+				(
+					(SELECT Re.id_facture, sum(P.prix_unitaire * Re.quantite) + PRIX_INTERV.prix_intervention - Re.remise  AS prix_total_par_facture
+					FROM Produit P, Rel_facture_produit Re,
+
+						(SELECT F.id_facture, sum(Ra.prix_intervention) as prix_intervention
+						FROM Facture F, RDV R, Animal A, Race Ra
+						WHERE F.id_facture = R.id_facture
+						AND R.id_animal = A.id_animal
+						AND A.race = Ra.race
+						AND R.type = 'intervention'
+						GROUP BY F.id_facture) AS PRIX_INTERV
+
+					WHERE P.nom = Re.nom_produit
+					AND Re.id_facture = PRIX_INTERV.id_facture
+					GROUP BY Re.id_facture, PRIX_INTERV.prix_intervention, Re.remise)
+
+					UNION
+
+					(SELECT Re.id_facture, sum(P.prix_unitaire * Re.quantite) + PRIX_PRESTATIONS.prix_prestation - Re.remise  AS prix_total_par_facture
+					FROM Produit P, Rel_facture_produit Re,
+
+					(SELECT F.id_facture, (sum(Ra.prix_intervention) + sum(E.prix_consultation)) as prix_prestation
+						FROM Facture F, RDV R, Animal A, Race Ra, Especes E
+						WHERE F.id_facture = R.id_facture
+						AND R.id_animal = A.id_animal
+						AND A.race = Ra.race
+						AND Ra.especes = E.especes
+						AND R.type = 'consultationEtIntervention'
+						GROUP BY F.id_facture) AS PRIX_PRESTATIONS
+
+					WHERE P.nom = Re.nom_produit
+					AND Re.id_facture = PRIX_PRESTATIONS.id_facture
+					GROUP BY Re.id_facture, PRIX_PRESTATIONS.prix_prestation, Re.remise)
+
+					UNION
+
+					(SELECT Re.id_facture, sum(P.prix_unitaire * Re.quantite) + PRIX_CONSULT.prix_consultation - Re.remise  AS prix_total_par_facture
+					FROM Produit P, Rel_facture_produit Re,
+
+						(SELECT F.id_facture, sum(E.prix_consultation) as prix_consultation
+						FROM Facture F, RDV R, Animal A, Race Ra, Especes E
+						WHERE F.id_facture = R.id_facture
+						AND R.id_animal = A.id_animal
+						AND A.race = Ra.race
+						AND Ra.especes = E.especes
+						AND R.type = 'consultation'
+						GROUP BY F.id_facture) AS PRIX_CONSULT
+
+					WHERE P.nom = Re.nom_produit
+					AND Re.id_facture = PRIX_CONSULT.id_facture
+					GROUP BY Re.id_facture, PRIX_CONSULT.prix_consultation, Re.remise)
+				) AS PRIX_TOTAL
+		;";
 }
 
 
