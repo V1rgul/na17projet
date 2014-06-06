@@ -31,7 +31,6 @@ function displayListe($data){
 
 /*
  *  Afficher une liste avec ces bouttons pour la modification
-    $columns            le premier columns est id (idclient/idAnimal... etc)
     $targetModif        le nom de la page de modification
     $detail             le nom de detail ('rdv' d'un client / 'animal' d'un client)
     $targetDetail       le nom de lage de detail

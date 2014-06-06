@@ -13,7 +13,7 @@ function getClients(){
 	return execQuery($query, $columns);
 }
 function addClient($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel){
-	$query = "INSERT INTO client (prenom, email, adresse_num, adresse_rue, adresse_cp, adresse_ville, num_tel)
+	$query = "INSERT INTO client (nom, prenom, email, adresse_num, adresse_rue, adresse_cp, adresse_ville, num_tel)
 			VALUES (".$nom.",".$prenom.",".$email.",".$adresse_num.",".$adresse_rue.",".$adresse_cp.",".$adresse_ville.",".$num_tel.")";
 	execUpdate($query);
 }

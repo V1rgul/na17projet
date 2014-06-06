@@ -1,9 +1,9 @@
 <?php
 include("header.php");
 
-require_once("../model/connect.php");
-require_once("../model/requetes.php");
+require_once("../model/client.php");
 require_once("afficher.php");
+
 $id_animal=$_GET['id'];
 $columns = Array("id_facture","date_payment","paye","mode","id_employe");
 
@@ -12,7 +12,7 @@ $facturesAnimal= execQuery($query, $columns);
 
 $detail='';
 $targetDetail='';
-modifListe($facturesAnimal,$columns,"modif_factures",$detail,$targetDetail);
+modifListe(getFacturesAnimal($id_animal),"modif_factures",$detail,$targetDetail);
 
 
 include("footer.php");
