@@ -122,13 +122,20 @@ function getFacturesAnimal($idAnimal){
 	return execQuery($query, $columns);
 }
 function addFactureAnimal($date_payment, $paye, $mode, $id_employe){
-	$query = "INSERT INTO Facture (date_payment, paye, mode, id_employe)
+	$query ="INSERT INTO Facture (date_payment, paye, mode, id_employe)
 			VALUES (".$date_payment.", ".$paye.", ".$mode.", ".$id_employe.")";
 	execUpdate($query);
 }
 function updateFactureAnimal($id_facture, $date_payment, $paye, $mode, $id_employe){
-	$query = "UPDATE Facture
+	$query ="UPDATE Facture
 			WHERE id_facture=".$id_facture."
 			SET date_payment=".$date_payment.", paye=".$paye.", mode=".$mode.", id_employe=".$id_employe;
+	execUpdate($query);
+}
+
+function payerFactureAnimal($id_facture, $date_payment, $mode_payment){
+	$query ="UPDATE Facture
+			WHERE id_facture=".$id_facture."
+			SET date_payment=".$date_payment.", paye=true, mode=".$mode_payment;
 	execUpdate($query);
 }
