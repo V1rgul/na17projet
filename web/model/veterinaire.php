@@ -6,7 +6,7 @@ require_once("connect.php");
 
 //Liste des Clients
 function getVeterinaires(){
-	$columns = Array("id_veterinare", "nom", "prenom", "email", "adresse_num");
+	$columns = Array("id_veterinaire", "nom", "prenom", "email", "adresse_num");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM veterinaire;";
 	return execQuery($query, $columns);

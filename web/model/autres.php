@@ -31,7 +31,7 @@ function getProduitsOrdonnance($id_ordonnance){
 			IN(
 				SELECT nom_produit
 				FROM Prescription
-				WHERE id_ordonnances=$id_ordonnance)
+				WHERE id_ordonnance=$id_ordonnance)
 			ORDER BY nom;";
 	return execQuery($query, $columns);
 }

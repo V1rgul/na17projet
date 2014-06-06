@@ -43,7 +43,7 @@ CREATE TABLE Animal(
     code            INTEGER, 
     taille          REAL CHECK(taille>0),
     poids           REAL CHECK(poids>0),
-    data_naissance  DATE,
+    date_naissance  DATE,
     race            VARCHAR,
     id_client       INTEGER NOT NULL,
     PRIMARY KEY(id_animal),

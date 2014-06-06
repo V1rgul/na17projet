@@ -35,7 +35,7 @@ INSERT INTO Employe (nom,prenom,email,adresse_num,adresse_rue,adresse_cp,adresse
     ( 'TtoneL', 'Chffard','justatest@gmail',10,'rue des notre dame','17600', 'EasyTown', '0652182222'),
     ( 'TontoL', 'Chauffd','justatest@utc.fr',4,'rue des peups','87523', 'EasyTown', '0652444601');
 
-INSERT INTO Animal (nom,code,taille,poids,data_naissance,race,id_client)
+INSERT INTO Animal (nom,code,taille,poids,date_naissance,race,id_client)
     VALUES
     ('dog',NULL,50,25,'20/09/2010','shiba Inu',1),
     ('hello',41312341,40,20,'20/10/2011','boxer',1),

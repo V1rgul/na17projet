@@ -85,7 +85,7 @@ function updateAnimalClient($id_animal, $id_client, $nom, $code, $taille, $poids
 
 //Renvoie la liste des ordonnances d'un animal (idAnimal)
 function getOrdonnancesAnimal($id_animal){
-	$columns = Array("id_ordonnances","id_veterinaire");
+	$columns = Array("id_ordonnance","id_veterinaire");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Ordonnances
 			WHERE id_veterinaire
@@ -111,7 +111,7 @@ function updateOrdonnanceAnimal($id_ordonnance, $id_animal, $id_veterinaire){
 //Renvoie la liste des factures d'un animal (idAnimal)
 function getFacturesAnimal($idAnimal){
 	$columns = Array("id_facture", "date_payment", "paye", "mode", "id_employe");
-	return "SELECT ".implode(",", $columns)."
+	$query="SELECT ".implode(",", $columns)."
 			FROM Facture
 			WHERE id_facture 
 			IN(
