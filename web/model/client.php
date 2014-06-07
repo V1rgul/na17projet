@@ -103,6 +103,17 @@ function getAnimauxClient($id_client){
 			ORDER BY nom;";
 	return execQuery($query, $columns);
 }
+
+function getAnimaux($id_animal){
+	$columns = Array("id_animal", "nom", "code", "taille", "poids", "date_naissance", "race");
+	$query = "SELECT ".implode(",", $columns)."
+			FROM Animal
+			WHERE 
+			id_animal=".$id_animal;
+	$date_naissance=execQuery($query, $columns);
+	return $datas[0];
+}
+
 function addAnimalClient($id_client, $nom, $code, $taille, $poids, $date_naissance, $race){
 	if(empty($nom)) $nom='NULL';else $nom="'".$nom."'";
 	if(empty($code)) $code='NULL';

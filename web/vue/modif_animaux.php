@@ -3,10 +3,6 @@ require_once("../model/connect.php");
 require_once("../model/requetes.php");
 require_once("afficher.php");
 
-$table='Animal';
-$columns = Array('id_animal','nom','code','taille','poids','data_naissance','race','id_client');
-$keyCols=Array('id_animal');
-
 if(isset($_POST['id_animal'])&&!empty($_POST['id_animal'])){
 	$id_animal=$_POST['id_animal'];
 	$nom=$_POST['nom'];
@@ -17,13 +13,12 @@ if(isset($_POST['id_animal'])&&!empty($_POST['id_animal'])){
 	$race=$_POST['race'];
 	$id_client=$_POST['id_client'];
 
-	$keyVals=Array($id_animal);
-	$values=Array($id_animal,$nom,$code,$taille,$poids,$data_naissance,$race,$id_client);
 	if ($_POST['op']=='modifier') {
-		$requete=updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals);
-		execQueryNoResponse($requete);
+		updateAnimalClient($id_animal, $id_client, $nom, $code, $taille, $poids, $date_naissance, $race);
+		echo "modifier";
 	}
 	else if ($_POST['op']=='ajouter') {
+		addAnimalClient($id_client, $nom, $code, $taille, $poids, $date_naissance, $race);
 		echo "ajouter";
 	}
 }
@@ -32,24 +27,19 @@ else{
 	$op=$_GET['op'];
 	$keyVals=Array($id_animal);
 	if ($op=='supprimer') {
-		$requete=deleteRowWithKeys($table,$keyCols,$keyVals);
-		execQueryNoResponse($requete);
-		echo "supprimer reussit!<br>";
+		//TODO
+		echo "supprimer<br>";
 	}
 	else{
 		if ($op=='modifier') {
-			$requete=getById($table,$keyCols,$keyVals);
-			$ligne=execQuery($requete,$columns);
-			$ligne=$ligne[0];
-
-			$id_animal=$ligne['id_animal'];
-			$nom=$ligne['nom'];
-			$code=$ligne['code'];
-			$taille=$ligne['taille'];
-			$poids=$ligne['poids'];
-			$data_naissance=$ligne['data_naissance'];
-			$race=$ligne['race'];
-			$id_client=$ligne['id_client'];
+			$data=getAnimaux($id_animal);
+			$nom=$data['nom'];
+			$code=$data['code'];
+			$taille=$data['taille'];
+			$poids=$data['poids'];
+			$data_naissance=$data['data_naissance'];
+			$race=$data['race'];
+			$id_client=$data['id_client'];
 		}	
 		else if($op=='ajouter'){
 		}
