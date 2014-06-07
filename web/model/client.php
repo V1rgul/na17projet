@@ -105,11 +105,10 @@ function getAnimauxClient($id_client){
 }
 
 function getAnimaux($id_animal){
-	$columns = Array("id_animal", "nom", "code", "taille", "poids", "date_naissance", "race");
+	$columns = Array("id_animal", "nom", "code", "taille", "poids", "date_naissance", "race","id_client");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Animal
-			WHERE 
-			id_animal=".$id_animal;
+			WHERE id_animal=".$id_animal;
 	$datas=execQuery($query, $columns);
 	return $datas[0];
 }
