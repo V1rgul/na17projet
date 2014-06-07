@@ -43,9 +43,9 @@ else{
 			date_payment:<input type="date" name="date_payment" value="<?php if ($op=='modifier') echo $date_payment;?>"><br>
 			paye:<input type="checkbox" name="paye" value="<?php if ($op=='modifier'&& $paye) echo "checked";?>" ><br>
 			mode:<select name="mode">
-				  <option value="espèces" <?php if ($op=='modifier'&& $mode=='espèces') echo 'selected';?> >especes</option>
+				  <option value="especes" <?php if ($op=='modifier'&& $mode=='especes') echo 'selected';?> >especes</option>
 				  <option value="carteBleue" <?php if ($op=='modifier'&& $mode=='carteBleue') echo 'selected';?> >carteBleue</option>
-				  <option value="chèque" <?php if ($op=='modifier'&& $mode=='chèque') echo 'selected';?> >cheque</option>
+				  <option value="cheque" <?php if ($op=='modifier'&& $mode=='cheque') echo 'selected';?> >cheque</option>
 				</select><br>
 			<input type="hidden" name="id_employe" value="<?php echo $id_employe;?>">
 			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>">

@@ -2,7 +2,7 @@
 
 -- ENUM
 
-CREATE TYPE enum_payment    AS ENUM ('espèces','carteBleue','chèque');
+CREATE TYPE enum_payment    AS ENUM ('especes','carteBleue','cheque');
 CREATE TYPE enum_prestation AS ENUM ('consultation','intervention','consultationEtIntervention');
 
 -- TABLE

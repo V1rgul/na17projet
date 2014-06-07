@@ -54,9 +54,9 @@ INSERT INTO Produit (nom,quantite,prix_unitaire)
 
 INSERT INTO Facture (date_payment,paye,mode,id_employe)
     VALUES
-    (NULL,false,'chèque',1),
+    (NULL,false,'cheque',1),
     ('20/09/2009',true,'carteBleue',2),
-    ('20/09/2003',true,'espèces',3);
+    ('20/09/2003',true,'especes',3);
 
 INSERT INTO Ordonnances (id_veterinaire)
     VALUES

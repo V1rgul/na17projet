@@ -202,7 +202,7 @@ function updateFactureAnimal($id_facture, $date_payment, $paye, $mode, $id_emplo
 	if(empty($mode)) $mode='NULL';else $mode="'".$mode."'";
 	if(empty($id_employe)) $id_employe='NULL';
 	$query ="UPDATE Facture
-			SET date_payment=".$date_payment.", paye=".$paye.", mode=".$mode.", id_employe=".$id_employe."
+			SET date_payment=".$date_payment.", paye='".$paye."', mode=".$mode.", id_employe=".$id_employe."
 			WHERE id_facture=".$id_facture;
 	execUpdate($query);
 }
