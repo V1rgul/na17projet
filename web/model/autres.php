@@ -72,6 +72,79 @@ function deleteEmploye($id_employe){
 	execUpdate($query);
 }
 
+// gestion des factures (rel_facture_employe)
+function getRel_facture_produit(){
+	$columns = Array("nom_produit", "id_facture", "remise", "quantite");
+	$query = "SELECT ".implode(",", $columns)."
+			FROM Rel_facture_produit
+			ORDER BY nom_produit, id_facture;";
+	return execQuery($query, $columns);
+}
+function addRel_facture_produit($nom_produit, $id_facture, $remise, $quantite){
+	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
+	if(empty($id_facture)) $id_facture='NULL';else $id_facture="'".$id_facture."'";
+	if(empty($remise)) $remise='NULL';else $remise="'".$remise."'";
+	if(empty($quantite)) $quantite='NULL';else $quantite="'".$quantite."'";
+
+	$query = "INSERT INTO Rel_facture_produit (nom_produit, id_facture, remise, quantite)
+			VALUES (".$nom_produit.",".$id_facture.",".$remise.",".$quantite.")";
+	execUpdate($query);
+}
+function updateRel_facture_produit($nom_produit, $id_facture, $remise, $quantite){
+	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
+	if(empty($id_facture)) $id_facture='NULL';else $id_facture="'".$id_facture."'";
+	if(empty($remise)) $remise='NULL';else $remise="'".$remise."'";
+	if(empty($quantite)) $quantite='NULL';else $quantite="'".$quantite."'";
+	$query = "UPDATE Rel_facture_produit
+			SET remise=".$remise.", quantite=".$quantite."
+			WHERE nom_produit=".$nom_produit." AND id_facture=".$id_facture;
+	execUpdate($query);
+}
+function deleteRel_facture_produit($nom_produit, $id_facture){
+	$query = "DELETE FROM Rel_facture_produit
+			  WHERE nom_produit=".$nom_produit." AND id_facture=".$id_facture;
+	execUpdate($query);
+}
+
+// gestion des factures (Rdv)
+function getRdv(){
+	$columns = Array("id_rdv", "date", "id_animal", "id_veterinaire", "id_facture", "type");
+	$query = "SELECT ".implode(",", $columns)."
+			FROM Rdv
+			ORDER BY id_rdv;";
+	return execQuery($query, $columns);
+}
+function addRdv($date, $id_animal, $id_veterinaire, $id_facture , $type){
+	if(empty($date)) $date='NULL';else $date="'".$date."'";
+	if(empty($id_animal)) $id_animal='NULL';else $id_animal="'".$id_animal."'";
+	if(empty($id_veterinaire)) $id_veterinaire='NULL';else $id_veterinaire="'".$id_veterinaire."'";
+	if(empty($id_facture)) $id_facture='NULL';else $id_facture="'".$id_facture."'";
+	if(empty($type)) $type='NULL';else $type="'".$type."'";
+
+	$query = "INSERT INTO Rdv (date, id_animal, id_veterinaire, id_facture , type)
+			VALUES (".$date.",".$id_animal.",".$id_veterinaire.",".$id_facture.",".$type.")";
+	execUpdate($query);
+}
+function updateRdv($id_rdv, $date, $id_animal, $id_veterinaire, $id_facture , $type){
+	if(empty($id_rdv)) $id_rdv='NULL';else $id_rdv="'".$id_rdv."'";
+	if(empty($date)) $date='NULL';else $date="'".$date."'";
+	if(empty($id_animal)) $id_animal='NULL';else $id_animal="'".$id_animal."'";
+	if(empty($id_veterinaire)) $id_veterinaire='NULL';else $id_veterinaire="'".$id_veterinaire."'";
+	if(empty($id_facture)) $id_facture='NULL';else $id_facture="'".$id_facture."'";
+	if(empty($type)) $type='NULL';else $type="'".$type."'";
+	
+	$query = "UPDATE Rdv
+			SET date=".$date.", id_animal=".$id_animal.", id_veterinaire=".$id_veterinaire."
+			id_facture=".$id_facture.", type=".$type."
+			WHERE id_rdv=".$id_rdv;
+	execUpdate($query);
+}
+function deleteRdv($id_rdv){
+	$query = "DELETE FROM Rdv
+			  WHERE id_rdv=".$id_rdv;
+	execUpdate($query);
+}
+
 //Gestion des produits d'ordonnances
 function getProduitsOrdonnance($id_ordonnance){
 	$columns = Array("nom", "quantite", "prix_unitaire");
