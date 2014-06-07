@@ -1,11 +1,6 @@
 <?php
-
 require_once("../model/client.php");
 require_once("afficher.php");
-
-$table='Client';
-$columns = Array("id_client", "nom", "prenom", "email", "adresse_num", "adresse_rue", "adresse_cp", "adresse_ville", "num_tel");
-$keyCols=Array('id_client');
 
 if(isset($_POST['id_client'])&&!empty($_POST['id_client'])){
 	$id_client=$_POST['id_client'];
@@ -20,20 +15,19 @@ if(isset($_POST['id_client'])&&!empty($_POST['id_client'])){
 
 	if ($_POST['op']=='modifier') {
 		updateClient($id_client, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
+		echo "modifier<br>";
 	}
 	else if ($_POST['op']=='ajouter') {
-		echo "ajouter";
 		addClient($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
+		echo "ajouter<br>";
 	}
 }
 else{
 	$id_client=$_GET['id'];
 	$op=$_GET['op'];
-	$keyVals=Array($id_client);
 	if ($op=='supprimer') {
 		//TODO 
-		
-		echo "supprimer reussit!<br>";
+		echo "supprimer<br>";
 	}
 	else{
 		if ($op=='modifier') {
