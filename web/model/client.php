@@ -110,7 +110,7 @@ function getAnimaux($id_animal){
 			FROM Animal
 			WHERE 
 			id_animal=".$id_animal;
-	$date_naissance=execQuery($query, $columns);
+	$datas=execQuery($query, $columns);
 	return $datas[0];
 }
 
