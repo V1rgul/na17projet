@@ -12,7 +12,7 @@ DROP TABLE Facture CASCADE;
 DROP TABLE Ordonnances CASCADE;
 DROP TABLE Prescription CASCADE;
 DROP TABLE Rel_facture_produit CASCADE;
-DROP TABLE Rel_ordonnance_facture CASCADE;               
+-- DROP TABLE Rel_ordonnance_facture CASCADE;               
 
 DROP TYPE enum_payment CASCADE;
 DROP TYPE enum_prestation CASCADE;

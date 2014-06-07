@@ -140,13 +140,13 @@ CREATE TABLE Rel_facture_produit(
     FOREIGN KEY(id_facture)     REFERENCES Facture(id_facture)
 );
 
-CREATE TABLE Rel_ordonnance_facture(
-    id_ordonnance   INTEGER,
-    id_facture      INTEGER,
-    PRIMARY KEY(id_ordonnance,id_facture),
-    FOREIGN KEY(id_ordonnance) REFERENCES  Ordonnances(id_ordonnance),
-    FOREIGN KEY(id_facture)     REFERENCES  Facture(id_facture)
-);
+-- CREATE TABLE Rel_ordonnance_facture(
+--     id_ordonnance   INTEGER,
+--     id_facture      INTEGER,
+--     PRIMARY KEY(id_ordonnance,id_facture),
+--     FOREIGN KEY(id_ordonnance) REFERENCES  Ordonnances(id_ordonnance),
+--     FOREIGN KEY(id_facture)     REFERENCES  Facture(id_facture)
+-- );
 
 -- Calcul le prix total d'une facture
 CREATE OR REPLACE function calcPrixTotal(num_facture integer)

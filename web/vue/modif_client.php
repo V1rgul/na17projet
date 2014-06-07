@@ -19,6 +19,15 @@ if(isset($_POST['id_client'])&&!empty($_POST['id_client'])){
 	$num_tel=$_POST['num_tel'];
 
 	if ($_POST['op']=='modifier') {
+		$id_client=$_POST['id_client'];
+		if(empty($nom)) $nom='NULL';
+		if(empty($prenom)) $prenom='NULL';
+		if(empty($email)) $email='NULL';
+		if(empty($adresse_num)) $adresse_num='NULL';
+		if(empty($adresse_rue)) $adresse_rue='NULL';
+		if(empty($adresse_cp)) $adresse_cp='NULL';
+		if(empty($adresse_ville)) $adresse_ville='NULL';
+		if(empty($num_tel)) $num_tel='NULL';
 		updateClient($id_client, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
 	}
 	else if ($_POST['op']=='ajouter') {
@@ -31,41 +40,38 @@ else{
 	$op=$_GET['op'];
 	$keyVals=Array($id_client);
 	if ($op=='supprimer') {
-		$requete=deleteRowWithKeys($table,$keyCols,$keyVals);
-		execQueryNoResponse($requete);
+		//TODO 
+		
 		echo "supprimer reussit!<br>";
 	}
 	else{
 		if ($op=='modifier') {
-			$requete=getById($table,$keyCols,$keyVals);
-			$ligne=execQuery($requete,$columns);
-			$ligne=$ligne[0];
-			$id_client=$ligne['id_client'];
-			$nom=$ligne['nom'];
-			$prenom=$ligne['prenom'];
-			$email=$ligne['email'];
-			$adresse_num=$ligne['adresse_num'];
-			$adresse_rue=$ligne['adresse_rue'];
-			$adresse_cp=$ligne['adresse_cp'];
-			$adresse_ville=$ligne['adresse_ville'];
-			$num_tel=$ligne['num_tel'];
+			$data=getClient($id_client);
+			$nom=$data['nom'];
+			$prenom=$data['prenom'];
+			$email=$data['email'];
+			$adresse_num=$data['adresse_num'];
+			$adresse_rue=$data['adresse_rue'];
+			$adresse_cp=$data['adresse_cp'];
+			$adresse_ville=$data['adresse_ville'];
+			$num_tel=$data['num_tel'];
 		}	
 		else if($op=='ajouter'){
 		}
 ?>
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
 			<?php if ($op=='modifier') echo "id:".$id_client ?><br>
-			nom: <input type="text" name="nom" value="<?php if ($op=='modifier') echo $nom ?>"><br>
-			prenom: <input type="text" name="prenom" value="<?php if ($op=='modifier') echo $prenom ?>"><br>
-			email: <input type="email" name="email" value="<?php if ($op=='modifier') echo $email ?>"><br>
+			nom: <input type="text" name="nom" value="<?php if ($op=='modifier') echo $nom;?>"><br>
+			prenom: <input type="text" name="prenom" value="<?php if ($op=='modifier') echo $prenom;?>"><br>
+			email: <input type="email" name="email" value="<?php if ($op=='modifier') echo $email;?>"><br>
 			addresse<br>
-			numero: <input type="number" name="adresse_num" value="<?php if ($op=='modifier') echo $adresse_num ?>"><br>
-			rue: <input type="text" name="adresse_rue" value="<?php if ($op=='modifier') echo $adresse_rue ?>"><br>
-			code postale: <input type="text" name="adresse_cp" value="<?php if ($op=='modifier') echo $adresse_cp ?>"><br>
-			ville: <input type="text" name="adresse_ville" value="<?php if ($op=='modifier') echo $adresse_ville ?>"><br>
-			numero telephone: <input type="text" name="num_tel" value="<?php if ($op=='modifier') echo $num_tel ?>"><br>
-			<input type="hidden" name='id_client' value="<?php echo $id_client;?> ">
-			<input type="hidden" name='op' value="<?php echo $op;?> ">
+			numero: <input type="number" name="adresse_num" value="<?php if ($op=='modifier') echo $adresse_num;?>"><br>
+			rue: <input type="text" name="adresse_rue" value="<?php if ($op=='modifier') echo $adresse_rue;?>"><br>
+			code postale: <input type="text" name="adresse_cp" value="<?php if ($op=='modifier') echo $adresse_cp;?>"><br>
+			ville: <input type="text" name="adresse_ville" value="<?php if ($op=='modifier') echo $adresse_ville;?>"><br>
+			numero telephone: <input type="text" name="num_tel" value="<?php if ($op=='modifier') echo $num_tel;?>"><br>
+			<input type="hidden" name='id_client' value="<?php echo $id_client;?>">
+			<input type="hidden" name='op' value="<?php echo $op;?>">
 			<input type="submit" value="Send">
 			<input type="reset" value="Reset">
 		</form>

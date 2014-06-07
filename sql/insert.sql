@@ -76,14 +76,14 @@ INSERT INTO Prescription (nom_produit,id_ordonnance,quantite)
     ('Apiguard',4,4),
     ('Apiguard',1,5);
 
-INSERT INTO Rel_ordonnance_facture (id_ordonnance,id_facture)
-    VALUES
-    (1,1),
-    (2,2),
-    (3,3),
-    (4,2),
-    (5,3),
-    (6,3);
+-- INSERT INTO Rel_ordonnance_facture (id_ordonnance,id_facture)
+--     VALUES
+--     (1,1),
+--     (2,2),
+--     (3,3),
+--     (4,2),
+--     (5,3),
+--     (6,3);
 
 INSERT INTO RDV (date,id_animal,id_veterinaire,id_facture,type)
     VALUES
