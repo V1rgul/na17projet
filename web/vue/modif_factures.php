@@ -29,7 +29,7 @@ else{
 	}
 	else{
 		if ($op=='modifier') {
-			$data=getFactures($id_facture);
+			$data=getFacture($id_facture);
 			$date_payment=$data['date_payment'];
 			$paye=$data['paye'];
 			$mode=$data['mode'];
