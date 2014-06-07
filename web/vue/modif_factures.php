@@ -7,7 +7,8 @@ if(isset($_POST['id_facture'])&&!empty($_POST['id_facture'])){
 	$date_payment=$_POST['date_payment'];
 	$paye=isset($_POST['paye'])?1:0;
 	$mode=$_POST['mode'];
-	$id_employe=$_POST['id_employe'];
+	// $id_employe=$_POST['id_employe'];
+	$id_employe=0;
 
 	$keyVals=Array($id_facture);
 	$values=Array($id_facture,$date_payment,$paye,$mode,$id_employe);
@@ -29,7 +30,7 @@ else{
 	}
 	else{
 		if ($op=='modifier') {
-			$data=getFactures($id_facture);
+			$data=getFacture($id_facture);
 			$date_payment=$data['date_payment'];
 			$paye=$data['paye'];
 			$mode=$data['mode'];
@@ -43,9 +44,9 @@ else{
 			date_payment:<input type="date" name="date_payment" value="<?php if ($op=='modifier') echo $date_payment;?>"><br>
 			paye:<input type="checkbox" name="paye" value="<?php if ($op=='modifier'&& $paye) echo "checked";?>" ><br>
 			mode:<select name="mode">
-				  <option value="espèces" <?php if ($op=='modifier'&& $mode=='espèces') echo 'selected';?> >especes</option>
+				  <option value="especes" <?php if ($op=='modifier'&& $mode=='especes') echo 'selected';?> >especes</option>
 				  <option value="carteBleue" <?php if ($op=='modifier'&& $mode=='carteBleue') echo 'selected';?> >carteBleue</option>
-				  <option value="chèque" <?php if ($op=='modifier'&& $mode=='chèque') echo 'selected';?> >cheque</option>
+				  <option value="cheque" <?php if ($op=='modifier'&& $mode=='cheque') echo 'selected';?> >cheque</option>
 				</select><br>
 			<input type="hidden" name="id_employe" value="<?php echo $id_employe;?>">
 			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>">

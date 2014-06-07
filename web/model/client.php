@@ -191,20 +191,19 @@ function getFacture($id_facture){
 
 function addFactureAnimal($date_payment, $paye, $mode, $id_employe){
 	if(empty($date_payment)) $date_payment='NULL';else $date_payment="'".$date_payment."'";
-	if(empty($paye)) $paye='NULL';else $paye="'".$paye."'";
 	if(empty($mode)) $mode='NULL';else $mode="'".$mode."'";
 	if(empty($id_employe)) $id_employe='NULL';
 	$query ="INSERT INTO Facture (date_payment, paye, mode, id_employe)
-			VALUES (".$date_payment.", ".$paye.", ".$mode.", ".$id_employe.")";
+			VALUES (".$date_payment.", '".$paye."', ".$mode.", ".$id_employe.")";
 	execUpdate($query);
 }
+
 function updateFactureAnimal($id_facture, $date_payment, $paye, $mode, $id_employe){
 	if(empty($date_payment)) $date_payment='NULL';else $date_payment="'".$date_payment."'";
-	if(empty($paye)) $paye='NULL';else $paye="'".$paye."'";
 	if(empty($mode)) $mode='NULL';else $mode="'".$mode."'";
 	if(empty($id_employe)) $id_employe='NULL';
 	$query ="UPDATE Facture
-			SET date_payment='".$date_payment."', paye='".$paye."', mode='".$mode."', id_employe='".$id_employe."'
+			SET date_payment=".$date_payment.", paye='".$paye."', mode=".$mode.", id_employe=".$id_employe."
 			WHERE id_facture=".$id_facture;
 	execUpdate($query);
 }
@@ -213,7 +212,7 @@ function payerFactureAnimal($id_facture, $date_payment, $mode_payment){
 	if(empty($date_payment)) $date_payment='NULL';else $date_payment="'".$date_payment."'";
 	if(empty($mode)) $mode='NULL';else $mode="'".$mode."'";
 	$query ="UPDATE Facture
-			SET date_payment='".$date_payment."', paye='true', mode='".$mode_payment."'
+			SET date_payment=".$date_payment.", paye=1, mode=".$mode_payment."
 			WHERE id_facture=".$id_facture;
 	execUpdate($query);
 }
