@@ -7,7 +7,8 @@ if(isset($_POST['id_facture'])&&!empty($_POST['id_facture'])){
 	$date_payment=$_POST['date_payment'];
 	$paye=isset($_POST['paye'])?1:0;
 	$mode=$_POST['mode'];
-	$id_employe=$_POST['id_employe'];
+	// $id_employe=$_POST['id_employe'];
+	$id_employe=0;
 
 	$keyVals=Array($id_facture);
 	$values=Array($id_facture,$date_payment,$paye,$mode,$id_employe);

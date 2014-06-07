@@ -194,9 +194,10 @@ function addFactureAnimal($date_payment, $paye, $mode, $id_employe){
 	if(empty($mode)) $mode='NULL';else $mode="'".$mode."'";
 	if(empty($id_employe)) $id_employe='NULL';
 	$query ="INSERT INTO Facture (date_payment, paye, mode, id_employe)
-			VALUES (".$date_payment.", ".$paye.", ".$mode.", ".$id_employe.")";
+			VALUES (".$date_payment.", '".$paye."', ".$mode.", ".$id_employe.")";
 	execUpdate($query);
 }
+
 function updateFactureAnimal($id_facture, $date_payment, $paye, $mode, $id_employe){
 	if(empty($date_payment)) $date_payment='NULL';else $date_payment="'".$date_payment."'";
 	if(empty($mode)) $mode='NULL';else $mode="'".$mode."'";
