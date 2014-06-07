@@ -1,11 +1,6 @@
 <?php
-require_once("../model/connect.php");
-require_once("../model/requetes.php");
+require_once("../model/client.php");
 require_once("afficher.php");
-
-$table='RDV';
-$columns = Array("id_rdv", "date", "id_animal","id_veterinaire","id_facture", "type");
-$keyCols=Array('id_rdv');
 
 if(isset($_POST['id_rdv'])&&!empty($_POST['id_rdv'])){
 
@@ -16,36 +11,30 @@ if(isset($_POST['id_rdv'])&&!empty($_POST['id_rdv'])){
 	$id_facture=$_POST['id_facture'];
 	$type=$_POST['type'];
 
-	$keyVals=Array($id_rdv);
-	$values=Array($id_rdv,$date,$id_animal,$id_veterinaire,$id_facture,$type);
 	if ($_POST['op']=='modifier') {
-		$requete=updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals);
-		execQueryNoResponse($requete);
+		updateRdvAnimal($id_rdv, $date, $id_animal,$id_veterinaire,$id_facture, $type);
+		echo "modifier<br>";
 	}
 	else if ($_POST['op']=='ajouter') {
-		echo "ajouter";
+		addRdvAnimal($date, $id_animal,$id_veterinaire,$id_facture, $type);
+		echo "ajouter<br>";
 	}
 }
 else{
 	$id_rdv=$_GET['id'];
 	$op=$_GET['op'];
-	$keyVals=Array($id_rdv);
 	if ($op=='supprimer') {
-		$requete=deleteRowWithKeys($table,$keyCols,$keyVals);
-		execQueryNoResponse($requete);
-		echo "supprimer reussit!<br>";
+		//TODO
+		echo "supprimer<br>";
 	}
 	else{
 		if ($op=='modifier') {
-			$requete=getById($table,$keyCols,$keyVals);
-			$ligne=execQuery($requete,$columns);
-			$ligne=$ligne[0];
-
-			$date=$ligne['date'];
-			$id_animal=$ligne['id_animal'];
-			$id_veterinaire=$ligne['id_veterinaire'];
-			$id_facture=$ligne['id_facture'];
-			$type=$ligne['type'];
+			$data=getRdv($id_rdv);
+			$date=$data['date'];
+			$id_animal=$data['id_animal'];
+			$id_veterinaire=$data['id_veterinaire'];
+			$id_facture=$data['id_facture'];
+			$type=$data['type'];
 		}	
 		else if($op=='ajouter'){
 		}
