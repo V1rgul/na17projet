@@ -179,6 +179,16 @@ function getFacturesAnimal($idAnimal){
 			ORDER BY date_payment;";
 	return execQuery($query, $columns);
 }
+
+function getFacture($id_facture){
+	$columns = Array("date_payment", "paye", "mode", "id_employe");
+	$query="SELECT ".implode(",", $columns)."
+			FROM Facture
+			WHERE id_facture =".$id_facture;
+	$datas=execQuery($query, $columns);
+	return $datas[0];
+}
+
 function addFactureAnimal($date_payment, $paye, $mode, $id_employe){
 	if(empty($date_payment)) $date_payment='NULL';else $date_payment="'".$date_payment."'";
 	if(empty($paye)) $paye='NULL';else $paye="'".$paye."'";
