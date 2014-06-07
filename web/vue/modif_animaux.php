@@ -8,7 +8,7 @@ if(isset($_POST['id_animal'])&&!empty($_POST['id_animal'])){
 	$code=$_POST['code'];
 	$taille=$_POST['taille'];
 	$poids=$_POST['poids'];
-	$data_naissance=$_POST['date_naissance'];
+	$date_naissance=$_POST['date_naissance'];
 	$race=$_POST['race'];
 	$id_client=$_POST['id_client'];
 
@@ -36,7 +36,7 @@ else{
 			$code=$data['code'];
 			$taille=$data['taille'];
 			$poids=$data['poids'];
-			$data_naissance=$data['date_naissance'];
+			$date_naissance=$data['date_naissance'];
 			$race=$data['race'];
 		}	
 		else if($op=='ajouter'){
@@ -49,7 +49,7 @@ else{
 			code:<input type="text" name="code" value="<?php if ($op=='modifier') echo $code;?>"> <br>
 			taille:<input type="text" name="taille" value="<?php if ($op=='modifier') echo $taille;?>"> <br>
 			poids:<input type="text" name="poids" value="<?php if ($op=='modifier') echo $poids;?>"> <br>
-			data_naissance:<input type="text" name="data_naissance" value="<?php if ($op=='modifier') echo $date_naissance;?>"> <br>
+			date_naissance:<input type="text" name="date_naissance" value="<?php if ($op=='modifier') echo $date_naissance;?>"> <br>
 			race:<input type="text" name="race" value="<?php if ($op=='modifier') echo $race;?>"> <br>
 
 			<input type="hidden" name="id_client" value="<?php echo $id_client;?>"> 
