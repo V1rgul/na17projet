@@ -2,9 +2,6 @@
 
 require_once("connect.php");
 
-
-
-
 //Liste des Clients
 function getClients(){
 	$columns = Array("id_client", "nom", "prenom", "email","adresse_num","adresse_rue","adresse_cp","adresse_ville","num_tel");
@@ -52,10 +49,6 @@ function updateClient($id_client, $nom, $prenom, $email, $adresse_num, $adresse_
 	execUpdate($query);
 }
 
-
-
-
-
 //Renvoie la liste des rendez-vous d'un client (idClient)
 function getRdvClient($idClient){
 	$columns = Array("id_rdv", "date", "id_animal", "id_facture", "type");
@@ -69,30 +62,36 @@ function getRdvClient($idClient){
 			ORDER BY date;";
 	return execQuery($query, $columns);
 }
-function addRdvAnimal($date, $id_animal, $id_facture, $type){
+
+function getRdv($id_rdv){
+	$columns = Array("id_rdv", "date", "id_animal","id_veterinaire" ,"id_facture", "type");
+	$query = "SELECT ".implode(",", $columns)."
+			FROM rdv
+			WHERE id_rdv=".$id_rdv;
+	$datas=execQuery($query, $columns);
+	return $datas[0];
+}
+
+function addRdvAnimal($date, $id_animal, $id_veterinaire , $id_facture, $type){
 	if(empty($date)) $date='NULL';else $date="'".$date."'";
 	if(empty($id_animal)) $id_animal='NULL';	
 	if(empty($id_facture)) $id_facture='NULL';
 	if(empty($type)) $type='NULL';else $type="'".$type."'";
-	$query = "INSERT INTO rdv (date, id_animal, id_facture, type)
-			VALUES (".$date.",".$id_animal.",".$id_facture.",".$type.")";
+	if(empty($id_veterinaire)) $id_veterinaire='NULL'; 
+	$query = "INSERT INTO rdv (date, id_animal, id_veterinaire, id_facture, type)
+			VALUES (".$date.",".$id_animal.",".$id_veterinaire.",".$id_facture.",".$type.")";
 	execUpdate($query);
 }
-function updateRdvAnimal($id_rdv, $date, $id_animal, $id_facture, $type){
+function updateRdvAnimal($id_rdv, $date, $id_animal, $id_veterinaire, $id_facture, $type){
 	if(empty($date)) $date='NULL';else $date="'".$date."'";
 	if(empty($id_animal)) $id_animal='NULL';
 	if(empty($id_facture)) $id_facture='NULL';
 	if(empty($type)) $type='NULL';else $type="'".$type."'";
 	$query = "UPDATE rdv
-			SET date=".$date.", id_animal=".$id_animal.", id_facture=".$id_facture.", type=".$type."
+			SET date=".$date.", id_animal=".$id_animal.", id_veterinaire=".$id_veterinaire.", id_facture=".$id_facture.", type=".$type."
 			WHERE id_rdv=".$id_rdv;
 	execUpdate($query);
 }
-
-
-
-
-
 
 //Renvoie la liste des animals d'un client (idClient)
 function getAnimauxClient($id_client){
