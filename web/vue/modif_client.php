@@ -19,15 +19,6 @@ if(isset($_POST['id_client'])&&!empty($_POST['id_client'])){
 	$num_tel=$_POST['num_tel'];
 
 	if ($_POST['op']=='modifier') {
-		$id_client=$_POST['id_client'];
-		if(empty($nom)) $nom='NULL';
-		if(empty($prenom)) $prenom='NULL';
-		if(empty($email)) $email='NULL';
-		if(empty($adresse_num)) $adresse_num='NULL';
-		if(empty($adresse_rue)) $adresse_rue='NULL';
-		if(empty($adresse_cp)) $adresse_cp='NULL';
-		if(empty($adresse_ville)) $adresse_ville='NULL';
-		if(empty($num_tel)) $num_tel='NULL';
 		updateClient($id_client, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
 	}
 	else if ($_POST['op']=='ajouter') {
