@@ -1,9 +1,9 @@
 <?php
-require_once("../model/veterinaire.php");
+require_once("../model/autres.php");
 require_once("afficher.php");
 
-if(isset($_POST['id_veterinaire'])&&!empty($_POST['id_veterinaire'])){
-	$id_veterinaire=$_POST['id_veterinaire'];
+if(isset($_POST['id_employe'])&&!empty($_POST['id_employe'])){
+	$id_employe=$_POST['id_employe'];
 	$nom=$_POST['nom'];
 	$prenom=$_POST['prenom'];
 	$email=$_POST['email'];
@@ -14,16 +14,16 @@ if(isset($_POST['id_veterinaire'])&&!empty($_POST['id_veterinaire'])){
 	$num_tel=$_POST['num_tel'];
 
 	if ($_POST['op']=='modifier') {
-		updateVeterinaire($id_veterinaire, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
+		updateEmploye($id_employe, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
 		echo "modifier<br>";
 	}
 	else if ($_POST['op']=='ajouter') {
-		addVeterinaire($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
+		addEmploye($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
 		echo "ajouter<br>";
 	}
 }
 else{
-	$id_veterinaire=$_GET['id'];
+	$id_employe=$_GET['id'];
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		//TODO 
@@ -31,7 +31,7 @@ else{
 	}
 	else{
 		if ($op=='modifier') {
-			$data=getVeterinaire($id_veterinaire);
+			$data=getClient($id_employe);
 			$nom=$data['nom'];
 			$prenom=$data['prenom'];
 			$email=$data['email'];
@@ -45,7 +45,7 @@ else{
 		}
 ?>
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
-			<?php if ($op=='modifier') echo "id:".$id_veterinaire ?><br>
+			<?php if ($op=='modifier') echo "id:".$id_employe ?><br>
 			nom: <input type="text" name="nom" value="<?php if ($op=='modifier') echo $nom;?>"><br>
 			prenom: <input type="text" name="prenom" value="<?php if ($op=='modifier') echo $prenom;?>"><br>
 			email: <input type="email" name="email" value="<?php if ($op=='modifier') echo $email;?>"><br>
@@ -55,7 +55,7 @@ else{
 			code postale: <input type="text" name="adresse_cp" value="<?php if ($op=='modifier') echo $adresse_cp;?>"><br>
 			ville: <input type="text" name="adresse_ville" value="<?php if ($op=='modifier') echo $adresse_ville;?>"><br>
 			numero telephone: <input type="text" name="num_tel" value="<?php if ($op=='modifier') echo $num_tel;?>"><br>
-			<input type="hidden" name='id_veterinaire' value="<?php echo $id_veterinaire;?>">
+			<input type="hidden" name='id_employe' value="<?php echo $id_employe;?>">
 			<input type="hidden" name='op' value="<?php echo $op;?>">
 			<input type="submit" value="Send">
 			<input type="reset" value="Reset">

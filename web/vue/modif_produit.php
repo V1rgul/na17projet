@@ -3,43 +3,33 @@ require_once("../model/connect.php");
 require_once("../model/requetes.php");
 require_once("afficher.php");
 
-$table='Produit';
-$columns = Array("nom","quantite", "prix_unitaire");
-$keyCols=Array('nom');
-
 if(isset($_POST['nom'])&&!empty($_POST['nom'])){
 	
 	$nom=$_POST['nom'];
 	$quantite=$_POST['quantite'];
 	$prix_unitaire=$_POST['prix_unitaire'];
 
-	$keyVals=Array($nom);
-	$values=Array($nom,$quantite,$prix_unitaire);
 	if ($_POST['op']=='modifier') {
-		$requete=updateColsWithKeys($table,$columns,$values,$keyCols,$keyVals);
-		execQueryNoResponse($requete);
+		updateProduit($nom, $quantite, $prix_unitaire);
+		echo "modif";
 	}
 	else if ($_POST['op']=='ajouter') {
+		addProduit($nom,$quantite,$prix_unitaire);
 		echo "ajouter";
 	}
 }
 else{
 	$nom=$_GET['id'];
 	$op=$_GET['op'];
-	$keyVals=Array($nom);
 	if ($op=='supprimer') {
-		$requete=deleteRowWithKeys($table,$keyCols,$keyVals);
-		execQueryNoResponse($requete);
-		echo "supprimer reussit!<br>";
+		
+		echo "supprimer<br>";
 	}
 	else{
 		if ($op=='modifier') {
-			$requete=getById($table,$keyCols,$keyVals);
-			$ligne=execQuery($requete,$columns);
-			$ligne=$ligne[0];
-			$nom=$ligne['nom'];
-			$quantite=$ligne['quantite'];
-			$prix_unitaire=$ligne['prix_unitaire'];
+			$data=getProduit($nom);
+			$quantite=$data['quantite'];
+			$prix_unitaire=$data['prix_unitaire'];
 		}	
 		else if($op=='ajouter'){
 		}

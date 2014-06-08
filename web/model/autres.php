@@ -10,6 +10,15 @@ function getProduits(){
 			ORDER BY nom;";
 	return execQuery($query, $columns);
 }
+
+function getProduit($nom){
+	$columns = Array("nom", "quantite", "prix_unitaire");
+	$query = "SELECT ".implode(",", $columns)."
+			FROM Produit
+			WHERE nom=.'"$nom."';";
+	return execQuery($query, $columns);
+}
+
 function addProduit($nom, $quantite, $prix_unitaire){
 	if(empty($nom)) $nom='NULL';else $nom="'".$nom."'";
 	if(empty($quantite)) $quantite='NULL';else $quantite="'".$quantite."'";
@@ -36,6 +45,16 @@ function getEmployes(){
 			ORDER BY id_employe;";
 	return execQuery($query, $columns);
 }
+
+function getClient($id_employe){
+	$columns = Array("nom", "prenom", "email","adresse_num","adresse_rue","adresse_cp","adresse_ville","num_tel");
+	$query = "SELECT ".implode(",", $columns)."
+			FROM Employe
+			WHERE id_employe=".$id_employe.";";
+	$datas=execQuery($query, $columns);
+	return $datas[0];
+}
+
 function addEmploye($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel){
 	if(empty($nom)) $nom='NULL';else $nom="'".$nom."'";
 	if(empty($prenom)) $prenom='NULL';else $prenom="'".$prenom."'";

@@ -153,14 +153,23 @@ function getOrdonnancesAnimal($id_animal){
 				WHERE id_animal=$id_animal);";
 	return execQuery($query, $columns);
 }
-function addOrdonnanceAnimal($id_animal, $id_veterinaire){
-	$query = "INSERT INTO Ordonnances (id_animal, id_veterinaire)
-			VALUES (".$id_animal.", ".$id_veterinaire.")";
+
+function getOrdonnance($id_ordonnance){
+	$columns = Array("id_ordonnance","id_veterinaire");
+	$query = "SELECT ".implode(",", $columns)."
+			FROM Ordonnances
+			WHERE id_ordonnance=".$id_ordonnance;
+	return execQuery($query, $columns);
+}
+
+function addOrdonnanceAnimal($id_veterinaire){
+	$query = "INSERT INTO Ordonnances (id_veterinaire)
+			VALUES (".$id_veterinaire.")";
 	execUpdate($query);
 }
-function updateOrdonnanceAnimal($id_ordonnance, $id_animal, $id_veterinaire){
+function updateOrdonnanceAnimal($id_ordonnance, $id_veterinaire){
 	$query = "UPDATE Animal
-			SET id_animal=".$id_animal.", id_veterinaire=".$id_veterinaire."
+			SET id_veterinaire=".$id_veterinaire."
 			WHERE id_ordonnance=".$id_ordonnance;
 	execUpdate($query);
 }
