@@ -42,7 +42,7 @@ else{
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
 			<?php if ($op=='modifier') echo "id:".$id_facture ?><br>
 			date_payment:<input type="date" name="date_payment" value="<?php if ($op=='modifier') echo $date_payment;?>"><br>
-			paye:<input type="checkbox" name="paye" value="<?php if ($op=='modifier'&& $paye) echo "checked";?>" ><br>
+			paye:<input type="checkbox" name="paye" <?php if ($op=='modifier'&& $paye) echo "checked";?>" ><br>
 			mode:<select name="mode">
 				  <option value="especes" <?php if ($op=='modifier'&& $mode=='especes') echo 'selected';?> >especes</option>
 				  <option value="carteBleue" <?php if ($op=='modifier'&& $mode=='carteBleue') echo 'selected';?> >carteBleue</option>
