@@ -51,6 +51,9 @@ INSERT INTO Produit (nom,quantite,prix_unitaire)
     ('Shampoing pour rongeurs',30,20),
     ('Croquettes pour chien',200,5),
     ('Os pour chien',80,2),
+    ('Pilules bleues',80,15),
+    ('Soin dantaire',80,55),
+    ('Brosse special rongeur',80,2),
     ('Tondeuse',30,20);
 
 INSERT INTO Facture (date_payment,paye,mode,id_employe)
@@ -78,6 +81,7 @@ INSERT INTO Prescription (nom_produit,id_ordonnance,quantite)
     ('Shampoing pour chien',3,1),
     ('Shampoing pour chat',6,3),
     ('Shampoing pour chat',2,2),
+    ('Soin dantaire',2,2),
     ('Tondeuse',4,4),
     ('Croquettes pour chien',1,5),
     ('Os pour chien',1,5),
@@ -108,6 +112,7 @@ INSERT INTO Rel_facture_produit (nom_produit,id_facture,remise,quantite)
     VALUES
     ('Os pour chien',1,0,5),
     ('Os pour chien',2,0,6),
+    ('Soin dantaire',2,0,1),
     ('Croquettes pour chien',1,3,2),
     ('Tondeuse',3,0,4);
     
