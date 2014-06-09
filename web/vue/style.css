@@ -44,6 +44,9 @@ body{
 	min-height: 100%;
 }
 
+a, button{
+	cursor:pointer;
+}
 a{
 	color:#179C8C;
 	transition:color .2s;
@@ -51,6 +54,21 @@ a{
 }
 a:hover{
 	color:#E80000;
+}
+
+a.button{
+	background:#AEEBE4;
+	color:black;
+	border:none;
+	padding: 3px;
+	transition:background .2s, color .2s;
+}
+a.button:hover{
+	background:#179C8C;
+	color:white;
+}
+a.button:active{
+	outline:1px solid #179C8C;
 }
 
 

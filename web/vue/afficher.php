@@ -47,7 +47,7 @@ function displayListe($data){
 */
 function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
     if(count($data) == 0){
-        echo("Table vide ! <a href='".$targetModif.".php?id=".$id_parent."&id_parent=$id_parent&op=ajouter'><button>ajouter</button></a>");
+        echo("Table vide ! <a href='".$targetModif.".php?id=".$id_parent."&id_parent=$id_parent&op=ajouter' class='add'><span class='icons'>a</span> Ajouter</a>");
         return ;
     }
     echo "<table border='1'>\n";
@@ -66,7 +66,7 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
 
         echo "<tr>\n";
         echo "<td><a href='".$targetModif.".php?id=$id&id_parent=$id_parent&op=modifier' class='edit'><span class='icons'>e</span></a>\n";
-        echo "<a href='".$targetModif.".php?id=$id&id_parent=$id_parent&op=supprimer' class='delete'><span class='icons'>d</span></a></td>\n";
+        echo "<a href='".$targetModif.".php?id=$id&id_parent=$id_parent&op=supprimer' class='delete'><span class='icons'>r</span></a></td>\n";
         foreach($ligne as $key =>$val)
         {
             echo "<td>$val</td>\n";
@@ -75,7 +75,7 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
         if($detail!=''){
             echo "<td>";
             for ($i=0; $i < count($detail); $i++) { 
-                echo "<a href='".$targetDetail[$i].".php?id=$id&id_parent=$id_parent&op=detail'><button>$detail[$i]</button></a>\n";
+                echo "<a href='".$targetDetail[$i].".php?id=$id&id_parent=$id_parent&op=detail' class='button'>$detail[$i]</a>\n";
             }
             echo "</td>";
             
@@ -84,4 +84,11 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
     }
     echo "</tbody>\n";
     echo "</table>\n";
+}
+
+
+function retour(){
+?>
+<a class="button" href="javascript:history.back()" style="display:inline-block;margin-bottom:5px;"><span class='icons'>l</span> retour</a>
+<?php
 }

@@ -3,6 +3,7 @@ include("header.php");
 
 require_once("../model/veterinaire.php");
 require_once("afficher.php");
+retour();
 $id_veterinaire=$_GET['id'];
 
 $detail='';

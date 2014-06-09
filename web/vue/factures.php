@@ -3,7 +3,7 @@ include("header.php");
 
 require_once("../model/client.php");
 require_once("afficher.php");
-
+retour();
 $id_animal=$_GET['id'];
 
 $detail=Array('produit');
