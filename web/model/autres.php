@@ -37,6 +37,11 @@ function updateProduit($nom, $quantite, $prix_unitaire){
 			  WHERE nom=".$nom;
 	execUpdate($query);
 }
+function deleteProduit($nom){
+	$query = "DELETE FROM Produit
+			  WHERE nom='".$nom."'";
+	execUpdate($query);
+}
 
 // gestion des employes
 function getEmployes(){

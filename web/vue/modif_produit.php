@@ -21,8 +21,7 @@ else{
 	$nom=$_GET['id'];
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
-		
-		echo "supprimer<br>";
+		deleteProduit($nom);
 	}
 	else{
 		if ($op=='modifier') {
