@@ -17,6 +17,7 @@ if(isset($_POST['id_ordonnance'])&&!empty($_POST['id_ordonnance'])){
 }
 else{
 	$id_animal=$_GET['id'];
+	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		//TODO
 		echo "supprimer<br>";
