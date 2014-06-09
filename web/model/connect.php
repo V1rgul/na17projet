@@ -25,13 +25,13 @@ function execQuery($query, $columns){
 		$response=$GLOBALS["BDD_CONNECTION"]->query($query);
 		$err=$GLOBALS["BDD_CONNECTION"]->errorInfo();
 		if (!empty($err[2])) {
-			echo "error query".$query."<br>";
-			echo $err[2]."<br>";
+			echo "error <pre>query= ".$query."</pre><br>";
+			echo "<pre>".$err[2]."</pre><br>";
 		}
 		return constructArrayFromResponse($response, $columns);
 	} catch(Exception $e) {
-		echo('Erreur : '.$e->getMessage().'<br />');
-		echo('N° : '.$e->getCode());
+		echo('Erreur : <pre>'.$e->getMessage().'</pre><br />');
+		echo('N° : <pre>'.$e->getCode().'</pre>');
 		die();
 	}
 }
@@ -40,12 +40,12 @@ function execUpdate($query){
 		$GLOBALS["BDD_CONNECTION"]->query($query);
 		$err=$GLOBALS["BDD_CONNECTION"]->errorInfo();
 		if (!empty($err[2])) {
-			echo "error query".$query."<br>";
-			echo $err[2]."<br>";
+			echo "error <pre>query= ".$query."</pre><br>";
+			echo "<pre>".$err[2]."</pre><br>";
 		}
 	} catch(Exception $e) {
-		echo('Erreur : '.$e->getMessage().'<br />');
-		echo('N° : '.$e->getCode());
+		echo('Erreur : <pre>'.$e->getMessage().'</pre><br />');
+		echo('N° : <pre>'.$e->getCode().'</pre>');
 		die();
 	}
 }

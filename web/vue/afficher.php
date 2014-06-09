@@ -66,7 +66,7 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
 
         echo "<tr>\n";
         echo "<td><a href='".$targetModif.".php?id=$id&id_parent=$id_parent&op=modifier' class='edit'><span class='icons'>e</span></a>\n";
-        echo "<a href='".$targetModif.".php?id=$id&id_parent=$id_parent&op=supprimer' class='delete'><span class='icons'>r</span></a></td>\n";
+        echo "<a href='".$targetModif.".php?id=$id&id_parent=$id_parent&op=supprimer' class='delete'><span class='icons'>s</span></a></td>\n";
         foreach($ligne as $key =>$val)
         {
             echo "<td>$val</td>\n";
