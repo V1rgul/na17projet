@@ -26,7 +26,7 @@ else{
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		//TODO
-		echo "supprimer reussit!<br>";
+		echo "suppression reussie!<br>";
 	}
 	else{
 		if ($op=='modifier') {
