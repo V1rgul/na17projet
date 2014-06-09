@@ -1,6 +1,7 @@
 <?php
 require_once("../model/client.php");
 require_once("afficher.php");
+include("include.php");
 
 if(isset($_POST['id_facture'])&&!empty($_POST['id_facture'])){
 	$id_facture=$_POST['id_facture'];

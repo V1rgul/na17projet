@@ -1,6 +1,7 @@
 <?php
 require_once("../model/veterinaire.php");
 require_once("afficher.php");
+include("include.php");
 
 if(isset($_POST['id_veterinaire'])&&!empty($_POST['id_veterinaire'])){
 	$id_veterinaire=$_POST['id_veterinaire'];

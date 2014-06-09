@@ -1,6 +1,7 @@
 <?php
 require_once("../model/client.php");
 require_once("afficher.php");
+include("include.php");
 
 if(isset($_POST['id_client'])&&!empty($_POST['id_client'])){
 	$id_client=$_POST['id_client'];

@@ -4,12 +4,12 @@
 
 
 {
-	var popup = (function(){
+	var popup = ( function(){
 
-		var opened = null;
+		var opened = { url: null };
 		
-		return function(url){
-			if(opened != null){
+		return function(url, title){
+			if(opened.url != null){
 				if(opened.url == url){
 					opened.ref.focus();
 					return ;
@@ -25,17 +25,21 @@
 				url: url,
 				ref: window.open(url, "", 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left)
 			};
+			opened.ref.onbeforeunload = function(){
+				console.log(opened);
+				opened.url = null;
+			}
 
 			console.log(opened);
 			
 		};
-	}());
+	}() );
 
 	$(window).ready(function(){
 
-
 		$("table a:not(.button)").click(function(){
-			popup($(this).attr("href"));
+			var url = $(this).attr("href");
+			popup(url);
 			return false;
 		});
 

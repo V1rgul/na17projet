@@ -1,6 +1,7 @@
 <?php
 require_once("../model/autres.php");
 require_once("afficher.php");
+include("include.php");
 
 if(isset($_POST['nom'])&&!empty($_POST['nom'])){
 	

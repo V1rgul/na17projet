@@ -1,6 +1,7 @@
 <?php
 require_once("../model/autres.php");
 require_once("afficher.php");
+include("include.php");
 
 if(isset($_POST['id_employe'])&&!empty($_POST['id_employe'])){
 	$id_employe=$_POST['id_employe'];
