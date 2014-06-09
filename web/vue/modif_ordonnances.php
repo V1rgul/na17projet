@@ -7,7 +7,7 @@ if(isset($_POST['id_ordonnance'])&&!empty($_POST['id_ordonnance'])){
 	$id_veterinaire=$_POST['id_veterinaire'];
 
 	if ($_POST['op']=='modifier') {
-		updateOrdonnanceAnimal($id_veterinaire, $id_veterinaire);
+		updateOrdonnanceAnimal($id_ordonnance, $id_veterinaire);
 		echo "modifier";
 	}
 	else if ($_POST['op']=='ajouter') {
