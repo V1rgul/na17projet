@@ -100,10 +100,13 @@ th, td{
 th, tr:nth-child(even) {
     background-color: #EFFCFA;
 }
-
 th:first-child, td:first-child{
 	padding-right:10px;
 }
+th:last-child, td:last-child{
+	padding-left:10px;
+}
+
 .add, .edit, .delete{
 	font-size:20px;
 }

@@ -41,6 +41,7 @@ else{
 ?>
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
 			<?php if ($op=='modifier') echo "id:".$id_facture ?><br>
+			id_employe:<input type="number" name="id_employe" value="<?php if ($op=='modifier') echo $id_employe;?>"><br>
 			date_payment:<input type="date" name="date_payment" value="<?php if ($op=='modifier') echo $date_payment;?>"><br>
 			paye:<input type="checkbox" name="paye" <?php if ($op=='modifier'&& $paye) echo "checked";?>" ><br>
 			mode:<select name="mode">
@@ -48,7 +49,6 @@ else{
 				  <option value="carteBleue" <?php if ($op=='modifier'&& $mode=='carteBleue') echo 'selected';?> >carteBleue</option>
 				  <option value="cheque" <?php if ($op=='modifier'&& $mode=='cheque') echo 'selected';?> >cheque</option>
 				</select><br>
-			<input type="hidden" name="id_employe" value="<?php echo $id_employe;?>">
 			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>">
 			<input type="hidden" name='op' value="<?php echo $op;?>" >
 			<input type="submit" value="Send">
