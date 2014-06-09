@@ -24,7 +24,10 @@ function execQuery($query, $columns){
 	try {
 		$response=$GLOBALS["BDD_CONNECTION"]->query($query);
 		$err=$GLOBALS["BDD_CONNECTION"]->errorInfo();
-		echo $err[2];
+		if (empty($err[2])) {
+			echo "error query".$query."<br>";
+			echo $err[2]."<br>";
+		}
 		return constructArrayFromResponse($response, $columns);
 	} catch(Exception $e) {
 		echo('Erreur : '.$e->getMessage().'<br />');
@@ -36,7 +39,10 @@ function execUpdate($query){
 	try {
 		$GLOBALS["BDD_CONNECTION"]->query($query);
 		$err=$GLOBALS["BDD_CONNECTION"]->errorInfo();
-		echo $err[2];
+		if (empty($err[2])) {
+			echo "error query".$query."<br>";
+			echo $err[2]."<br>";
+		}
 	} catch(Exception $e) {
 		echo('Erreur : '.$e->getMessage().'<br />');
 		echo('N° : '.$e->getCode());
