@@ -139,6 +139,8 @@ function updateRel_facture_produit($nom_produit, $id_facture, $remise, $quantite
 	execUpdate($query);
 }
 function deleteRel_facture_produit($nom_produit, $id_facture){
+	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
+	if(empty($id_facture)) $id_facture='NULL';else $id_facture="'".$id_facture."'";
 	$query = "DELETE FROM Rel_facture_produit
 			  WHERE nom_produit=".$nom_produit." AND id_facture=".$id_facture;
 	execUpdate($query);
