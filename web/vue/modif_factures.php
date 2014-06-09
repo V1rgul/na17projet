@@ -25,7 +25,7 @@ else{
 	$id_facture=$_GET['id'];
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
-		//TODO
+		deleteFacture($id_facture);
 		echo "suppression reussie!<br>";
 	}
 	else{
