@@ -36,10 +36,15 @@ else{
 		}
 ?>
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
-			nom_produit: <?php echo $nom;?> <br>	
+				id facture: <?php echo $id_facture; ?>
+			<?php if ($op=='ajouter'):?>
+				nom: <input type="text" name='nom'><br>
+			<?php else:?>
+				nom_produit: <?php echo $nom;?> <br>
+				<input type="hidden" name='nom' value="<?php echo $nom;?>">
+			<?php endif;?>
 			remise: <input type="text" name="remise" value="<?php if ($op=='modifier') echo $remise ?>"><br>
 			quantite: <input type="number" name="quantite" value="<?php if ($op=='modifier') echo $quantite ?>"><br>
-			<input type="hidden" name='nom' value="<?php echo $nom;?>">
 			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>">
 			<input type="hidden" name='op' value="<?php echo $op;?>">
 			<input type="submit" value="Send">
