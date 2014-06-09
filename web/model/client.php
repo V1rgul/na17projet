@@ -221,7 +221,7 @@ function getFactures(){
 	$columns = Array("date_payment", "paye", "mode", "id_employe");
 	$query="SELECT ".implode(",", $columns)."
 			FROM Facture
-			WHERE paye=1 ";
+			WHERE paye=false";
 	return execQuery($query, $columns);
 }
 
