@@ -8,7 +8,7 @@ $id_animal=$_GET['id'];
 
 $detail='';
 $targetDetail='';
-modifListe(getFacturesAnimal($id_animal),"modif_factures",$detail,$targetDetail);
+modifListe(getFacturesAnimal($id_animal),"modif_factures",$detail,$targetDetail,$id_animal);
 
 
 include("footer.php");
