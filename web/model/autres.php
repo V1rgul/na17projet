@@ -47,7 +47,7 @@ function getEmployes(){
 	return execQuery($query, $columns);
 }
 
-function getClient($id_employe){
+function getEmploye($id_employe){
 	$columns = Array("nom", "prenom", "email","adresse_num","adresse_rue","adresse_cp","adresse_ville","num_tel");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Employe
