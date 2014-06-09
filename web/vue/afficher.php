@@ -52,7 +52,7 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
     }
     echo "<table border='1'>\n";
     echo "<thead>\n";
-    echo "<tr><th><a href='".$targetModif.".php?id=".$id_parent."&op=ajouter' class='add'><span class='icons'>a</span></a></th>\n";
+    echo "<tr><th><a href='".$targetModif.".php?id=".$id_parent."&id_parent=$id_parent&op=ajouter' class='add'><span class='icons'>a</span></a></th>\n";
     foreach($data[0] as $key => $val)
     {
         echo "<th>$key</th>\n";
