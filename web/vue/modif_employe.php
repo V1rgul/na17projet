@@ -14,11 +14,11 @@ if(isset($_POST['id_employe'])&&!empty($_POST['id_employe'])){
 	$num_tel=$_POST['num_tel'];
 
 	if ($_POST['op']=='modifier') {
-		updateClient($id_employe, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
+		updateEmploye($id_employe, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
 		echo "modifier<br>";
 	}
 	else if ($_POST['op']=='ajouter') {
-		addClient($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
+		addEmploye($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
 		echo "ajouter<br>";
 	}
 }
