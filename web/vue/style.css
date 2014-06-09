@@ -6,6 +6,30 @@
 		light light Green	#EFFCFA
 		Red 				#E80000
 */
+
+/* Icons */
+@font-face {
+  font-family: 'icons';
+  src: url('img/font/icons.eot?47470415');
+  src: url('img/font/icons.eot?47470415#iefix') format('embedded-opentype'),
+       url('img/font/icons.woff?47470415') format('woff'),
+       url('img/font/icons.ttf?47470415') format('truetype'),
+       url('img/font/icons.svg?47470415#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.icons{
+	font-family: "icons";
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+ 	text-transform: none;
+ 	margin-left: .2em;
+}
+
+
+
+
 *{
 	margin:0;
 	padding:0;
@@ -22,7 +46,8 @@ body{
 
 a{
 	color:#179C8C;
-	transition:color .3s;
+	transition:color .2s;
+	text-decoration:none;
 }
 a:hover{
 	color:#E80000;
@@ -75,3 +100,16 @@ th, td{
 th, tr:nth-child(even) {
     background-color: #EFFCFA;
 }
+
+th:first-child, td:first-child{
+	padding-right:10px;
+}
+.add, .edit, .delete{
+	font-size:20px;
+}
+.add			{color:#00AA00;}
+.add:hover		{color:#00FF00;}
+.edit			{color:#AA6600;}
+.edit:hover		{color:#FFAA00;}
+.delete			{color:#AA0000;}
+.delete:hover	{color:#FF0000;}
