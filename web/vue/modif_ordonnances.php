@@ -7,7 +7,7 @@ if(isset($_POST['id_ordonnance'])&&!empty($_POST['id_ordonnance'])){
 	$id_veterinaire=$_POST['id_veterinaire'];
 
 	if ($_POST['op']=='modifier') {
-		updateOrdonnanceAnimal($id_veterinaire, $id_veterinaire);
+		updateOrdonnanceAnimal($id_ordonnance, $id_veterinaire);
 		echo "modifier";
 	}
 	else if ($_POST['op']=='ajouter') {
@@ -16,7 +16,8 @@ if(isset($_POST['id_ordonnance'])&&!empty($_POST['id_ordonnance'])){
 	}
 }
 else{
-	$id_animal=$_GET['id'];
+	$id_ordonnance=$_GET['id'];
+	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		//TODO
 		echo "supprimer<br>";
