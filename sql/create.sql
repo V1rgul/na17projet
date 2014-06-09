@@ -28,7 +28,7 @@ CREATE TABLE Client(
     email           VARCHAR,
     adresse_num     INTEGER CHECK(adresse_num>=0),
     adresse_rue     VARCHAR,
-    adresse_cp      VARCHAR(5) CHECK(VALUE ~ '^\\d{5}$'),
+    adresse_cp      VARCHAR(5),
     adresse_ville   VARCHAR,
     num_tel         VARCHAR(10),
     PRIMARY KEY(id_client),
