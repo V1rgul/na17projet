@@ -15,5 +15,7 @@ accueil
         liste+modification rendez vous*
 
     liste+modification produits
-1
+
     stats
+
+    liste+modification employe
