@@ -1,10 +1,77 @@
 
 
+/* Colors
+		Green 				#179C8C
+		light Green 		#AEEBE4
+		light light Green	#EFFCFA
+		Red 				#E80000
+*/
+*{
+	margin:0;
+	padding:0;
+}
+html{
+  height: 100%;
+}
+
+body{
+	font-family:sans-serif;
+	position:relative;
+	min-height: 100%;
+}
+
+a{
+	color:#179C8C;
+	transition:color .3s;
+}
+a:hover{
+	color:#E80000;
+}
 
 
 
+
+
+#sidebar, #main{
+	padding: 10px;
+}
+
+#sidebar{
+	position:absolute;
+	left:0;
+	top:0;
+	bottom:0;
+	width:200px;
+	background:#EFFCFA;
+}
+#sidebar > div{
+	margin-bottom:20px;
+}
+#sidebar > div > a, #sidebar > div > span, #sidebar > a{
+	display:block;
+}
+#sidebar > div > a {
+	margin-left:15px;
+}
+
+
+
+
+
+#main{
+	margin-left:220px;
+}
 
 table{
 	border-collapse:collapse;
-	border:1px solid black;
+	border:1px solid #179C8C;
+}
+th, td, tr{
+	border:none;
+}
+th, td{
+	padding:3px;
+}
+th, tr:nth-child(even) {
+    background-color: #EFFCFA;
 }

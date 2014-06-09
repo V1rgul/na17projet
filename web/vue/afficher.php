@@ -56,7 +56,7 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
     {
         echo "<th>$key</th>\n";
     }
-    echo "<th><a href='".$targetModif.".php?id=".$id_parent."&op=ajouter'><button>ajouter</button></a></th>\n";
+    echo "<th colspan='".($detail==''?2:3)."'><a href='".$targetModif.".php?id=".$id_parent."&op=ajouter'><button>ajouter</button></a></th>\n";
     echo "</thead>\n";
     echo "<tbody>\n";
     foreach($data as $ligne)
