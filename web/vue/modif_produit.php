@@ -35,7 +35,7 @@ else{
 ?>
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
 			<?php if ($op=='ajouter'):?>
-				<input type="text" name='nom'><br>
+				nom: <input type="text" name='nom'><br>
 			<?php else:?>
 				<input type="hidden" name='nom' value="<?php echo $nom;?>">
 			<?php endif;?>
