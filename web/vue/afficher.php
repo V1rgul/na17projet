@@ -65,8 +65,8 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
         $id=$contents[0];
 
         echo "<tr>\n";
-        echo "<td><a href='".$targetModif.".php?id=$id&id_parent=&op=modifier' class='edit'><span class='icons'>e</span></a>\n";
-        echo "<a href='".$targetModif.".php?id=$id&id_parent=&op=supprimer' class='delete'><span class='icons'>d</span></a></td>\n";
+        echo "<td><a href='".$targetModif.".php?id=$id&id_parent=$id_parent&op=modifier' class='edit'><span class='icons'>e</span></a>\n";
+        echo "<a href='".$targetModif.".php?id=$id&id_parent=$id_parent&op=supprimer' class='delete'><span class='icons'>d</span></a></td>\n";
         foreach($ligne as $key =>$val)
         {
             echo "<td>$val</td>\n";
@@ -75,7 +75,7 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
         if($detail!=''){
             echo "<td>";
             for ($i=0; $i < count($detail); $i++) { 
-                echo "<a href='".$targetDetail[$i].".php?id=$id&id_parent=&$id_parent&op=detail'><button>$detail[$i]</button></a>\n";
+                echo "<a href='".$targetDetail[$i].".php?id=$id&id_parent=$id_parent&op=detail'><button>$detail[$i]</button></a>\n";
             }
             echo "</td>";
             
