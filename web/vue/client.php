@@ -8,6 +8,6 @@ require_once("afficher.php");
 
 $detail=Array('rendez-vous','animaux');
 $targetDetail=Array('rdvClient','animaux');
-modifListe(getClients(),"modif_client",$detail,$targetDetail);
+modifListe(getClients(),"modif_client",$detail,$targetDetail,-1);
 
 include("footer.php");

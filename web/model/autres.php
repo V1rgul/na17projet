@@ -66,7 +66,7 @@ function addEmploye($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_
 	if(empty($num_tel)) $num_tel='NULL';else $num_tel="'".$num_tel."'";
 	
 	$query = "INSERT INTO Employe (nom, prenom, email, adresse_num, adresse_rue, adresse_cp, adresse_ville, num_tel)
-			VALUES (".$nom.",".$prenom.",".$email.",".$adresse_num.",".$adresse_rue.",".$adresse_cp.",".$adresse_ville.",".$num_tel.")";
+			VALUES (".$nom.",".$prenom.",".$email.",".$adresse_num.",".$adresse_rue.",".$adresse_cp.",".$adresse_ville.",".$num_tel。")";
 	execUpdate($query);
 }
 function updateEmploye($id_employe, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel){

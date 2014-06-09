@@ -23,6 +23,7 @@ if(isset($_POST['id_animal'])&&!empty($_POST['id_animal'])){
 }
 else{
 	$id_animal=$_GET['id'];
+	$id_client=$_GET['id'];
 	$op=$_GET['op'];
 	$keyVals=Array($id_animal);
 	if ($op=='supprimer') {

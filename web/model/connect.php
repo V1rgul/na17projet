@@ -27,7 +27,7 @@ function execQuery($query, $columns){
 	} catch(Exception $e) {
 		echo('Erreur : '.$e->getMessage().'<br />');
 		echo('N° : '.$e->getCode());
-		die();
+		die(print_r($GLOBALS["BDD_CONNECTION"]->errorInfo());
 	}
 }
 function execUpdate($query){
@@ -36,7 +36,7 @@ function execUpdate($query){
 	} catch(Exception $e) {
 		echo('Erreur : '.$e->getMessage().'<br />');
 		echo('N° : '.$e->getCode());
-		die();
+		die(print_r($GLOBALS["BDD_CONNECTION"]->errorInfo()));
 	}
 }
 

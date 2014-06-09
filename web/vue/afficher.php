@@ -45,9 +45,9 @@ function displayListe($data){
     Pour recuperer des parametre:   $id=$_GET('id');  ou $id soit idClient soit idAnimal ...etc
                                     $op=$_GET('op');  ou $op est {'ajouter','modifier','supprimer','detail'}
 */
-function modifListe($data,$targetModif,$detail,$targetDetail){
+function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
     if(count($data) == 0){
-        echo("Table vide ! <a href='".$targetModif.".php?id=-1&op=ajouter'><button>ajouter</button></a>");
+        echo("Table vide ! <a href='".$targetModif.".php?id=".$id_parent."&op=ajouter'><button>ajouter</button></a>");
         return ;
     }
     echo "<table border='1'>\n";
@@ -56,7 +56,7 @@ function modifListe($data,$targetModif,$detail,$targetDetail){
     {
         echo "<th>$key</th>\n";
     }
-    echo "<th><a href='".$targetModif.".php?id=-1&op=ajouter'><button>ajouter</button></a></th>\n";
+    echo "<th><a href='".$targetModif.".php?id=".$id_parent."&op=ajouter'><button>ajouter</button></a></th>\n";
     echo "</thead>\n";
     echo "<tbody>\n";
     foreach($data as $ligne)
