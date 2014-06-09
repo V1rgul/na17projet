@@ -3,8 +3,8 @@ include("header.php");
 
 require_once("../model/autres.php");
 require_once("afficher.php");
-$id_ordonnances=$_GET['id'];
+$id_ordonnance=$_GET['id'];
 
-displayListe(getProduitsOrdonnance($id_ordonnances));
+displayListe(getProduitsOrdonnance($id_ordonnance));
 
 include("footer.php");

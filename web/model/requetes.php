@@ -121,7 +121,7 @@ function getProduitOrdonnance($idOrdonnance){
 			IN(
 				SELECT nom_produit
 				FROM Prescription
-				WHERE id_ordonnances=$idOrdonnance)
+				WHERE id_ordonnance=$idOrdonnance)
 			ORDER BY nom;";
 }
 */
@@ -173,7 +173,7 @@ function getAgeOfAnimalCaredByProduct(){
 				FROM Animal A, Rdv R, Ordonnances O, Prescription P
 				WHERE A.id_animal = R.id_animal
 				AND R.id_veterinaire = O.id_veterinaire
-				AND O.id_ordonnances = P.id_ordonnances) AS AGE_OF_EACH_ANIMAL
+				AND O.id_ordonnance = P.id_ordonnance) AS AGE_OF_EACH_ANIMAL
 			GROUP BY AGE_OF_EACH_ANIMAL.nom_produit
 			ORDER BY age_moyen DESC;";
 }
@@ -194,7 +194,7 @@ function getAvgOfPriceByFacture(){
 function getNbMedicamentPrescritsByVeterinaire(){
 	return "SELECT O.id_veterinaire, sum(P.quantite) AS nb_produit_prescrit
 			FROM Prescription P, Ordonnances O
-			WHERE P.id_ordonnances = O.id_ordonnances
+			WHERE P.id_ordonnance = O.id_ordonnance
 			GROUP BY id_veterinaire
 			ORDER BY nb_produit_prescrit DESC;";
 }

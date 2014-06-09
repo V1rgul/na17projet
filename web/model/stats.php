@@ -6,7 +6,7 @@ require_once("connect.php");
 
 //Renvoie le nombre de prescriptions d'un médicament (d'un produit)
 function getNbPrescriptionsGBProduit(){
-	$columns = Array("nom_produit", "NbPrescriptions");
+	$columns = Array("nom_produit", "nbprescriptions");
 	$query ="SELECT nom_produit, count(*) AS NbPrescriptions
 			FROM Prescription
 			GROUP BY nom_produit
@@ -17,7 +17,7 @@ function getNbPrescriptionsGBProduit(){
 
 //Renvoie le nombre des rendez-vous par animal
 function getNbPRdvGBAnimal(){
-	$columns = Array("id_animal", "NbRDV");
+	$columns = Array("id_animal", "nbrdv");
 	$query ="SELECT id_animal, count(id_rdv) AS NbRDV
 			FROM RDV
 			GROUP BY id_animal
@@ -28,7 +28,7 @@ function getNbPRdvGBAnimal(){
 
 //Renvoie le nombre des rendez-vous par client
 function getNbPRdvGBClient(){
-	$columns = Array("id_client", "NbRDV");
+	$columns = Array("id_client", "nbrdv");
 	$query ="SELECT id_client, count(id_rdv) AS NbRDV
 			FROM
 				(SELECT id_rdv, id_animal
@@ -52,7 +52,7 @@ function getAgeOfAnimalCaredByProduct(){
 				FROM Animal A, Rdv R, Ordonnances O, Prescription P
 				WHERE A.id_animal = R.id_animal
 				AND R.id_veterinaire = O.id_veterinaire
-				AND O.id_ordonnances = P.id_ordonnances) AS AGE_OF_EACH_ANIMAL
+				AND O.id_ordonnance = P.id_ordonnance) AS AGE_OF_EACH_ANIMAL
 			GROUP BY AGE_OF_EACH_ANIMAL.nom_produit
 			ORDER BY age_moyen DESC;";
 	return execQuery($query, $columns);
@@ -61,7 +61,7 @@ function getAgeOfAnimalCaredByProduct(){
 
 //Renvoie le montant moyen des factures
 function getAvgOfPriceByFacture(){
-	$columns=Array("prix_total_par_facture");
+	$columns=Array("avg");
 	$query="SELECT avg(PRIX_TOTAL.prix_total_par_facture)
 			FROM
 				(
@@ -126,7 +126,7 @@ function getNbMedicamentPrescritsByVeterinaire(){
 	$columns = Array("id_veterinaire", "nb_produit_prescrit");
 	$query ="SELECT O.id_veterinaire, sum(P.quantite) AS nb_produit_prescrit
 			FROM Prescription P, Ordonnances O
-			WHERE P.id_ordonnances = O.id_ordonnances
+			WHERE P.id_ordonnance = O.id_ordonnance
 			GROUP BY id_veterinaire
 			ORDER BY nb_produit_prescrit DESC;";
 	return execQuery($query, $columns);
