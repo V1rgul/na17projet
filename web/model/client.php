@@ -262,7 +262,7 @@ function payerFactureAnimal($id_facture, $date_payment, $mode_payment){
 
 function prix_facture($id_facture){
 	$columns=Array("calcprixtotal");
-	$query="select * from calcPrixTotal(."$id_facture".);";
+	$query="select * from calcPrixTotal(".$id_facture.");";
 	$data=execQuery($query, $columns);
 	return $data[0];
 }
