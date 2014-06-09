@@ -25,7 +25,7 @@ else{
 	$id_veterinaire=$_GET['id'];
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
-		//TODO
+		deleteRdv($id_rdv);
 		echo "supprimer<br>";
 	}
 	else{

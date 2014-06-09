@@ -27,7 +27,7 @@ else{
 	$op=$_GET['op'];
 	$keyVals=Array($id_animal);
 	if ($op=='supprimer') {
-		//TODO
+		deleteAnimal($id_animal);
 		echo "supprimer<br>";
 	}
 	else{

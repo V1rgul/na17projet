@@ -26,7 +26,7 @@ else{
 	$id_employe=$_GET['id'];
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
-		//TODO 	
+		deleteEmploye($id_employe);
 		echo "supprimer<br>";
 	}
 	else{
