@@ -22,6 +22,7 @@ if(isset($_POST['id_rdv'])&&!empty($_POST['id_rdv'])){
 }
 else{
 	$id_rdv=$_GET['id'];
+	$id_veterinaire=$_GET['id'];
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		//TODO
@@ -44,14 +45,14 @@ else{
 
 			date:<input type="date" name="date" value="<?php if ($op=='modifier') echo $date;?>"><br>
 			id_animal:<input type="number" name="id_animal" value="<?php if ($op=='modifier') echo $id_animal;?>"><br>
-			id_veterinaire:<input type="number" name="id_veterinaire" value="<?php if ($op=='modifier') echo $id_veterinaire;?>"><br>
+			
 			id_facture:<input type="number" name="id_facture" value="<?php if ($op=='modifier') echo $id_facture;?>"><br>
 			type:<select name="type">
 				  <option value="consultation" <?php if ($op=='modifier'&& $type=='consultation') echo 'selected';?> >consultation</option>
 				  <option value="intervention" <?php if ($op=='modifier'&& $type=='intervention') echo 'selected';?> >intervention</option>
 				  <option value="consultationEtIntervention" <?php if ($op=='modifier'&& $type=='consultationEtIntervention') echo 'selected';?> >consultationEtIntervention</option>
 				</select><br>
-
+			<input type="hidden" name="id_veterinaire" value="<?php echo $id_veterinaire;?>">
 			<input type="hidden" name='id_rdv' value="<?php echo $id_rdv;?>" >
 			<input type="hidden" name='op' value="<?php echo $op;?>" >
 			<input type="submit" value="Send">

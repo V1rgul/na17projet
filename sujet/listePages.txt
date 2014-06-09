@@ -3,12 +3,13 @@
 
 accueil
 
+    // suppression
     liste+modification clients
         liste+modification rendez vous*
         liste+modification animaux
             liste+modification ordonnances
                 liste produits
-            liste+modification factures
+            liste+modification factures  // TODO param id_employe
         
     liste+modification veterinaires
         liste+modification rendez vous*
