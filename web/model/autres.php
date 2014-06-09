@@ -15,7 +15,7 @@ function getProduit($nom){
 	$columns = Array("nom", "quantite", "prix_unitaire");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Produit
-			WHERE nom='".:$nom."';";
+			WHERE nom='".$nom."';";
 	return execQuery($query, $columns);
 }
 
