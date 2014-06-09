@@ -13,7 +13,7 @@ if(isset($_POST['id_animal'])&&!empty($_POST['id_animal'])){
 	$id_client=$_POST['id_client'];
 
 	if ($_POST['op']=='modifier') {
-		updateAnimalClient($id_animal, $id_client, $nom, $code, $taille, $poids, $date_naissance, $race);
+		updateAnimalClient($id_animal, $nom, $code, $taille, $poids, $date_naissance, $race);
 		echo "modifier";
 	}
 	else if ($_POST['op']=='ajouter') {

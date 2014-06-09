@@ -125,7 +125,7 @@ function addAnimalClient($id_client, $nom, $code, $taille, $poids, $date_naissan
 			VALUES (".$id_client.", ".$nom.", ".$code.", ".$taille.", ".$poids.", ".$date_naissance.", ".$race.")";
 	execUpdate($query);
 }
-function updateAnimalClient($id_animal, $id_client, $nom, $code, $taille, $poids, $date_naissance, $race){
+function updateAnimalClient($id_animal, $nom, $code, $taille, $poids, $date_naissance, $race){
 	if(empty($nom)) $nom='NULL';else $nom="'".$nom."'";
 	if(empty($code)) $code='NULL';
 	if(empty($taille)) $taille='NULL';
@@ -133,7 +133,7 @@ function updateAnimalClient($id_animal, $id_client, $nom, $code, $taille, $poids
 	if(empty($date_naissance)) $date_naissance='NULL';else $date_naissance="'".$date_naissance."'";
 	if(empty($race)) $race='NULL';else $race="'".$race."'";
 	$query = "UPDATE Animal
-			SET id_client=".$id_client.", nom=".$nom.", code=".$code.", taille=".$taille.", poids=".$poids.", date_naissance=".$date_naissance.", race=".$race."
+			SET nom=".$nom.", code=".$code.", taille=".$taille.", poids=".$poids.", date_naissance=".$date_naissance.", race=".$race."
 			WHERE id_animal=".$id_animal;
 	execUpdate($query);
 }
