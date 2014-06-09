@@ -7,6 +7,6 @@ $id_animaux=$_GET['id'];
 
 $detail=Array('produits');
 $targetDetail=Array('produitsOrdonnances');
-modifListe(getOrdonnancesAnimal($id_animaux),"modif_ordonnances",$detail,$targetDetail);
+modifListe(getOrdonnancesAnimal($id_animaux),"modif_ordonnances",$detail,$targetDetail,$id_animaux);
 
 include("footer.php");

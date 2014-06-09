@@ -10,7 +10,7 @@ $PARAM_mot_passe='Y0dBxcA4';
 
 try {
 	$GLOBALS["BDD_CONNECTION"] = new PDO('pgsql:host='.$PARAM_hote.';port='.$PARAM_port.';dbname='.$PARAM_nom_bd, $PARAM_utilisateur, $PARAM_mot_passe);
-	echo('Connection reussie !<br/>');
+	// echo('Connection reussie !<br/>');
 } catch(Exception $e) {
 	echo('Erreur : '.$e->getMessage().'<br />');
 	echo('N° : '.$e->getCode());

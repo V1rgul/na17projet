@@ -7,7 +7,6 @@ $id_veterinaire=$_GET['id'];
 
 $detail='';
 $targetDetail='';
-modifListe(getRdvVeterinaire($id_veterinaire),"modif_rdv",$detail,$targetDetail);
-
+modifListe(getRdvVeterinaire($id_veterinaire),"modif_rdv",$detail,$targetDetail,$id_veterinaire);
 
 include("footer.php");

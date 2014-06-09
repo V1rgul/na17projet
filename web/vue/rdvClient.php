@@ -7,6 +7,6 @@ $id_client=$_GET['id'];
 
 $detail='';
 $targetDetail='';
-modifListe(getRdvClient($id_client),"modif_rdv",$detail,$targetDetail);
+modifListe(getRdvClient($id_client),"modif_rdv",$detail,$targetDetail,$id_client);
 
 include("footer.php");
