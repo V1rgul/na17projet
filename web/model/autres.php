@@ -16,7 +16,8 @@ function getProduit($nom){
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Produit
 			WHERE nom='".$nom."';";
-	return execQuery($query, $columns);
+	$data=execQuery($query, $columns);
+	return $data[0];
 }
 
 function addProduit($nom, $quantite, $prix_unitaire){
