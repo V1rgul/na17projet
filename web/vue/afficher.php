@@ -47,7 +47,7 @@ function displayListe($data){
 */
 function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
     if(count($data) == 0){
-        echo("Table vide ! <a href='".$targetModif.".php?id=".$id_parent."&op=ajouter'><button>ajouter</button></a>");
+        echo("Table vide ! <a href='".$targetModif.".php?id=".$id_parent."&id_parent=$id_parent&op=ajouter'><button>ajouter</button></a>");
         return ;
     }
     echo "<table border='1'>\n";
