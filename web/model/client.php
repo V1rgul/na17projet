@@ -5,21 +5,25 @@ require_once("connect.php");
 //Liste des Clients
 function getClients(){
 	$columns = Array("id_client", "nom", "prenom", "email","adresse_num","adresse_rue","adresse_cp","adresse_ville","num_tel");
-	$query = "SELECT ".implode(",", $columns)."
-			FROM client;";
+	$query ="SELECT ".implode(",", $columns)."
+			FROM client
+			ORDER BY nom;";
 	return execQuery($query, $columns);
 }
-
-
 function getClient($id_client){
 	$columns = Array("nom", "prenom", "email","adresse_num","adresse_rue","adresse_cp","adresse_ville","num_tel");
-	$query = "SELECT ".implode(",", $columns)."
+	$query ="SELECT ".implode(",", $columns)."
 			FROM client
 			WHERE id_client=".$id_client.";";
 	$datas=execQuery($query, $columns);
 	return $datas[0];
 }
-
+function deleteClient($id_client){
+	$query ="DELETE
+			FROM client
+			WHERE id_client=".$id_client.";";
+	execUpdate($query);
+}
 function addClient($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel){
 		if(empty($nom)) $nom='NULL';else $nom="'".$nom."'";
 		if(empty($prenom)) $prenom='NULL';else $prenom="'".$prenom."'";
@@ -33,7 +37,6 @@ function addClient($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_c
 			VALUES (".$nom.",".$prenom.",".$email.",".$adresse_num.",".$adresse_rue.",".$adresse_cp.",".$adresse_ville.",".$num_tel.")";
 	execUpdate($query);
 }
-
 function updateClient($id_client, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel){
 	if(empty($nom)) $nom='NULL';else $nom="'".$nom."'";
 	if(empty($prenom)) $prenom='NULL';else $prenom="'".$prenom."'";
@@ -62,7 +65,6 @@ function getRdvClient($idClient){
 			ORDER BY date;";
 	return execQuery($query, $columns);
 }
-
 function getRdv($id_rdv){
 	$columns = Array("id_rdv", "date", "id_animal","id_veterinaire" ,"id_facture", "type");
 	$query = "SELECT ".implode(",", $columns)."
@@ -71,7 +73,12 @@ function getRdv($id_rdv){
 	$datas=execQuery($query, $columns);
 	return $datas[0];
 }
-
+function deleteRdv($id_rdv){
+	$query ="DELETE
+			FROM rdv
+			WHERE id_rdv=".$id_rdv.";";
+	execUpdate($query);
+}
 function addRdvAnimal($date, $id_animal, $id_veterinaire , $id_facture, $type){
 	if(empty($date)) $date='NULL';else $date="'".$date."'";
 	if(empty($id_animal)) $id_animal='NULL';	
@@ -103,14 +110,19 @@ function getAnimauxClient($id_client){
 			ORDER BY nom;";
 	return execQuery($query, $columns);
 }
-
-function getAnimaux($id_animal){
+function getAnimal($id_animal){
 	$columns = Array("id_animal", "nom", "code", "taille", "poids", "date_naissance", "race","id_client");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Animal
 			WHERE id_animal=".$id_animal;
 	$datas=execQuery($query, $columns);
 	return $datas[0];
+}
+function deleteAnimal($id_animal){
+	$query ="DELETE
+			FROM Animal
+			WHERE id_animal=".$id_animal.";";
+	execUpdate($query);
 }
 
 function addAnimalClient($id_client, $nom, $code, $taille, $poids, $date_naissance, $race){
@@ -162,6 +174,12 @@ function getOrdonnance($id_ordonnance){
 	$data=execQuery($query, $columns);
 	return $data[0];
 }
+function deleteOrdonnance($id_ordonnance){
+	$query ="DELETE
+			FROM id_ordonnance
+			WHERE id_ordonnance=".$id_ordonnance.";";
+	execUpdate($query);
+}
 
 function addOrdonnanceAnimal($id_veterinaire){
 	$query = "INSERT INTO Ordonnances (id_veterinaire)
@@ -197,6 +215,12 @@ function getFacture($id_facture){
 			WHERE id_facture =".$id_facture;
 	$datas=execQuery($query, $columns);
 	return $datas[0];
+}
+function deleteFacture($id_facture){
+	$query ="DELETE
+			FROM id_facture
+			WHERE id_facture=".$id_facture.";";
+	execUpdate($query);
 }
 
 function addFactureAnimal($date_payment, $paye, $mode, $id_employe){

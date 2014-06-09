@@ -17,6 +17,7 @@
 				<span>Employ&eacute;</span>
 				<a href="client.php">Clients</a>
 				<a href="rdvClient.php">Rendez Vous</a>
+				<a href="factures.php">Factures</a>
 				<a href="produits.php">Produits</a>
 			</div>
 			<div>
