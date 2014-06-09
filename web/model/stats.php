@@ -48,7 +48,7 @@ function getAgeOfAnimalCaredByProduct(){
 	$columns = Array("nom_produit", "age_moyen");
 	$query ="SELECT AGE_OF_EACH_ANIMAL.nom_produit, avg(AGE_OF_EACH_ANIMAL.age_animal) age_moyen
 			FROM
-				(SELECT P.nom_produit, EXTRACT (YEAR FROM age(A.data_naissance)) age_animal
+				(SELECT P.nom_produit, EXTRACT (YEAR FROM age(A.date_naissance)) age_animal
 				FROM Animal A, Rdv R, Ordonnances O, Prescription P
 				WHERE A.id_animal = R.id_animal
 				AND R.id_veterinaire = O.id_veterinaire

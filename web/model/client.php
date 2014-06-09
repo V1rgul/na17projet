@@ -133,7 +133,7 @@ function updateAnimalClient($id_animal, $id_client, $nom, $code, $taille, $poids
 	if(empty($date_naissance)) $date_naissance='NULL';else $date_naissance="'".$date_naissance."'";
 	if(empty($race)) $race='NULL';else $race="'".$race."'";
 	$query = "UPDATE Animal
-			SET id_client=".$id_client.", nom=".$nom.", code=".$code.", taille=".$taille.", poids=".$poids.", data_naissance=".$data_naissance.", race=".$race."
+			SET id_client=".$id_client.", nom=".$nom.", code=".$code.", taille=".$taille.", poids=".$poids.", date_naissance=".$date_naissance.", race=".$race."
 			WHERE id_animal=".$id_animal;
 	execUpdate($query);
 }
