@@ -23,7 +23,7 @@ else{
 	$id_facture=$_GET['id_parent'];
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
-		deleteRel_facture_produit($nom_produit, $id_facture);
+		deleteRel_facture_produit($nom, $id_facture);
 		echo "supprimer<br>";
 	}
 	else{
@@ -36,7 +36,7 @@ else{
 		}
 ?>
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
-				id facture: <?php echo $id_facture; ?>
+				id facture: <?php echo $id_facture; ?> <br>
 			<?php if ($op=='ajouter'):?>
 				nom: <input type="text" name='nom'><br>
 			<?php else:?>

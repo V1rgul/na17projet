@@ -216,6 +216,15 @@ function getFacture($id_facture){
 	$datas=execQuery($query, $columns);
 	return $datas[0];
 }
+
+function getFactures(){
+	$columns = Array("date_payment", "paye", "mode", "id_employe");
+	$query="SELECT ".implode(",", $columns)."
+			FROM Facture
+			WHERE paye=1 ";
+	return execQuery($query, $columns);
+}
+
 function deleteFacture($id_facture){
 	$query ="DELETE
 			FROM Facture
