@@ -29,9 +29,8 @@ else{
 	else{
 		if ($op=='modifier') {
 			$data=get_produit_de_facture($nom,$id_facture);
-			print_r($data);
-			$remise=$_POST['remise'];
-			$quantite=$_POST['quantite'];
+			$remise=$data['remise'];
+			$quantite=$data['quantite'];
 		}	
 		else if($op=='ajouter'){
 		}
