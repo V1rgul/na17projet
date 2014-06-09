@@ -159,7 +159,8 @@ function getOrdonnance($id_ordonnance){
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Ordonnances
 			WHERE id_ordonnance=".$id_ordonnance;
-	return execQuery($query, $columns);
+	$data=execQuery($query, $columns);
+	return $data[0];
 }
 
 function addOrdonnanceAnimal($id_veterinaire){
