@@ -36,12 +36,8 @@ else{
 		}
 ?>
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
-			<?php if ($op=='ajouter'):?>
-				nom_produit: <input type="text" name='nom'><br>
-			<?php else:?>
-				<input type="hidden" name='nom' value="<?php echo $nom;?>">
-			<?php endif;?>
-			remise: <input type="text" name="remise" value="<?php if ($op=='modifier') echo $prix_unitaire ?>"><br>
+			nom_produit: <?php echo $nom;?>		
+			remise: <input type="text" name="remise" value="<?php if ($op=='modifier') echo $remise ?>"><br>
 			quantite: <input type="number" name="quantite" value="<?php if ($op=='modifier') echo $quantite ?>"><br>
 			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>">
 			<input type="hidden" name='op' value="<?php echo $op;?>">
