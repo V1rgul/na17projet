@@ -1,6 +1,5 @@
 <?php
-require_once("../model/connect.php");
-require_once("../model/requetes.php");
+require_once("../model/autres.php");
 require_once("afficher.php");
 
 if(isset($_POST['nom'])&&!empty($_POST['nom'])){
