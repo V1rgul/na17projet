@@ -218,7 +218,7 @@ function getFacture($id_facture){
 }
 
 function getFactures(){
-	$columns = Array("date_payment", "paye", "mode", "id_employe");
+	$columns = Array("id_facture", "date_payment", "paye", "mode", "id_employe");
 	$query="SELECT ".implode(",", $columns)."
 			FROM Facture
 			WHERE paye=false";
