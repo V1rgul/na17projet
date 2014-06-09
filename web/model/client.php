@@ -176,7 +176,7 @@ function getOrdonnance($id_ordonnance){
 }
 function deleteOrdonnance($id_ordonnance){
 	$query ="DELETE
-			FROM id_ordonnance
+			FROM Ordonnances
 			WHERE id_ordonnance=".$id_ordonnance.";";
 	execUpdate($query);
 }
@@ -218,7 +218,7 @@ function getFacture($id_facture){
 }
 function deleteFacture($id_facture){
 	$query ="DELETE
-			FROM id_facture
+			FROM Facture
 			WHERE id_facture=".$id_facture.";";
 	execUpdate($query);
 }

@@ -21,6 +21,12 @@ function getVeterinaire($id_veterinaire){
 	$datas=execQuery($query, $columns);
 	return $datas[0];
 }
+function deleteVeterinaire($id_veterinaire){
+	$query ="DELETE
+			FROM Veterinaire
+			WHERE id_veterinaire=".$id_veterinaire.";";
+	execUpdate($query);
+}
 
 function addVeterinaire($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel){
 		if(empty($nom)) $nom='NULL';else $nom="'".$nom."'";
