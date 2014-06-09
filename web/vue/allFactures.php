@@ -6,6 +6,14 @@ require_once("afficher.php");
 
 $detail=Array('produit');
 $targetDetail=Array('produitFac');
-modifListe(getFactures(),"modif_factures",$detail,$targetDetail,-1);
+$data=getFactures();
+for ($i=0; $i < sizeof($data); $i++) { 
+	$ligne=$data[$i];
+	$ligne['prix']=prix_facture($ligne[$id_facture]);
+	print_r($ligne);
+	$data[$i]=$ligne;
+	print_r($data[$i]);
+}
+modifListe($data,"modif_factures",$detail,$targetDetail,-1);
 
 include("footer.php");
