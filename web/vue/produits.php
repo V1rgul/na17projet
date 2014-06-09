@@ -6,6 +6,7 @@ require_once("afficher.php");
 
 $detail='';
 $targetDetail='';
+
 modifListe(getProduits(),"modif_produit",$detail,$targetDetail,-1);
 
 
