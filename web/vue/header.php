@@ -7,22 +7,11 @@
 	</head>
 	<body>
 		<div id="sidebar">
-			<div>
-				<span>Veterinaire</span>
-				<a href="rdvVeterinaire.php">Rendez Vous</a>
-				<a href="ordonnances.php">Ordonnances</a>
-				<a href="produitsOrdonnances.php">Produits Ordonnance</a>
-			</div>
-			<div>
-				<span>Employ&eacute;</span>
-				<a href="client.php">Clients</a>
-				<a href="rdvClient.php">Rendez Vous</a>
-				<a href="factures.php">Factures</a>
-				<a href="produits.php">Produits</a>
-			</div>
+			<a href="client.php">Clients</a>
+			<a href="veterinaire.php">V&eacute;t&eacute;rinaires</a>			
 			<div>
 				<span>Clinique</span>
-				<a href="veterinaire.php">V&eacute;t&eacute;rinaires</a>
+				<a href="produits.php">Produits</a>
 				<a href="employe.php">Employ&eacute;s</a>
 			</div>			
 			<a href="stat.php">Statistiques</a>
