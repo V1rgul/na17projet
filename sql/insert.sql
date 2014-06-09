@@ -19,8 +19,8 @@ INSERT INTO Race VALUES
 
 INSERT INTO Client (nom,prenom,email,adresse_num,adresse_rue,adresse_cp,adresse_ville,num_tel) 
     VALUES
-    ( 'tiset', 'sylvain','tisetsyl@etu.utc.fr',1,'square august ancelet','60200', 'Compiegne', '0652186601')
-    ( 'qiao', 'yang','yangqiao@etu.utc.fr',10,'rue des peups','75000', 'Paris', '0652120001')
+    ( 'tiset', 'sylvain','tisetsyl@etu.utc.fr',1,'square august ancelet','60200', 'Compiegne', '0652186601'),
+    ( 'qiao', 'yang','yangqiao@etu.utc.fr',10,'rue des peups','75000', 'Paris', '0652120001'),
     ( 'wozny', 'virgil','woznyvir@etu.utc.fr',1,'la ruche','60200', 'Compiegne', '0600186601');
 
 INSERT INTO Veterinaire (nom,prenom,email,adresse_num,adresse_rue,adresse_cp,adresse_ville,num_tel)
