@@ -169,7 +169,7 @@ function addOrdonnanceAnimal($id_veterinaire){
 	execUpdate($query);
 }
 function updateOrdonnanceAnimal($id_ordonnance, $id_veterinaire){
-	$query = "UPDATE Animal
+	$query = "UPDATE Ordonnances
 			SET id_veterinaire=".$id_veterinaire."
 			WHERE id_ordonnance=".$id_ordonnance;
 	execUpdate($query);
