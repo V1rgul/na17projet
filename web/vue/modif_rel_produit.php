@@ -20,7 +20,7 @@ if(isset($_POST['nom'])&&!empty($_POST['nom'])){
 }
 else{
 	$nom=$_GET['id'];
-	$id_facture=$_GE['id'];
+	$id_facture=$_GET['id_parent'];
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		deleteRel_facture_produit($nom_produit, $id_facture);
