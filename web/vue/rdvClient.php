@@ -3,6 +3,7 @@ include("header.php");
 
 require_once("../model/client.php");
 require_once("afficher.php");
+retour();
 $id_client=$_GET['id'];
 
 $detail='';
