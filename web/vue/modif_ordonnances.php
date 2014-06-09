@@ -19,7 +19,7 @@ else{
 	$id_ordonnance=$_GET['id'];
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
-		eleteOrdonnance($id_ordonnance);
+		deleteOrdonnance($id_ordonnance);
 		echo "supprimer<br>";
 	}
 	else{
