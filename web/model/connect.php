@@ -23,20 +23,24 @@ Exécute une reqûete SQL
 function execQuery($query, $columns){
 	try {
 		$response=$GLOBALS["BDD_CONNECTION"]->query($query);
+		$err=$GLOBALS["BDD_CONNECTION"]->errorInfo();
+		echo $err[2];
 		return constructArrayFromResponse($response, $columns);
 	} catch(Exception $e) {
 		echo('Erreur : '.$e->getMessage().'<br />');
 		echo('N° : '.$e->getCode());
-		die(print_r($GLOBALS["BDD_CONNECTION"]->errorInfo()));
+		die();
 	}
 }
 function execUpdate($query){
 	try {
 		$GLOBALS["BDD_CONNECTION"]->query($query);
+		$err=$GLOBALS["BDD_CONNECTION"]->errorInfo();
+		echo $err[2];
 	} catch(Exception $e) {
 		echo('Erreur : '.$e->getMessage().'<br />');
 		echo('N° : '.$e->getCode());
-		die(print_r($GLOBALS["BDD_CONNECTION"]->errorInfo()));
+		die();
 	}
 }
 
