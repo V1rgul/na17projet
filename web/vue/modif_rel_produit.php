@@ -29,8 +29,7 @@ else{
 	else{
 		if ($op=='modifier') {
 			$data=get_produit_de_facture($nom,$id_facture);
-			$nom=$_POST['nom'];
-			$id_facture=$_POST['id_facture'];
+			print_r($data);
 			$remise=$_POST['remise'];
 			$quantite=$_POST['quantite'];
 		}	
@@ -39,12 +38,12 @@ else{
 ?>
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
 			<?php if ($op=='ajouter'):?>
-				nom: <input type="text" name='nom'><br>
+				nom_produit: <input type="text" name='nom'><br>
 			<?php else:?>
 				<input type="hidden" name='nom' value="<?php echo $nom;?>">
 			<?php endif;?>
+			remise: <input type="text" name="remise" value="<?php if ($op=='modifier') echo $prix_unitaire ?>"><br>
 			quantite: <input type="number" name="quantite" value="<?php if ($op=='modifier') echo $quantite ?>"><br>
-			prix_unitaire: <input type="text" name="prix_unitaire" value="<?php if ($op=='modifier') echo $prix_unitaire ?>"><br>
 			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>">
 			<input type="hidden" name='op' value="<?php echo $op;?>">
 			<input type="submit" value="Send">

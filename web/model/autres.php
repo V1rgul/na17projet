@@ -113,7 +113,7 @@ function get_produit_de_facture($nom,$id_facture){
 	$columns = Array("nom_produit", "remise", "quantite");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Rel_facture_produit
-			WHERE nom_produit='".$nom."'' AND id_facture=".$id_facture;
+			WHERE nom_produit='".$nom."' AND id_facture=".$id_facture;
 	$data=execQuery($query, $columns);
 	return $data[0];
 }
