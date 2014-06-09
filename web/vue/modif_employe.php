@@ -1,5 +1,5 @@
 <?php
-require_once("../model/client.php");
+require_once("../model/autres.php");
 require_once("afficher.php");
 
 if(isset($_POST['id_employe'])&&!empty($_POST['id_employe'])){
