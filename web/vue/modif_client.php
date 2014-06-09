@@ -26,7 +26,7 @@ else{
 	$id_client=$_GET['id'];
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
-		//TODO 	
+		deleteClient($id_client);
 		echo "supprimer<br>";
 	}
 	else{

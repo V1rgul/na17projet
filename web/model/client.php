@@ -216,6 +216,15 @@ function getFacture($id_facture){
 	$datas=execQuery($query, $columns);
 	return $datas[0];
 }
+
+function getFactures(){
+	$columns = Array("id_facture", "date_payment", "paye", "mode", "id_employe");
+	$query="SELECT ".implode(",", $columns)."
+			FROM Facture
+			WHERE paye=false";
+	return execQuery($query, $columns);
+}
+
 function deleteFacture($id_facture){
 	$query ="DELETE
 			FROM Facture
@@ -249,4 +258,12 @@ function payerFactureAnimal($id_facture, $date_payment, $mode_payment){
 			SET date_payment=".$date_payment.", paye=1, mode=".$mode_payment."
 			WHERE id_facture=".$id_facture;
 	execUpdate($query);
+}
+
+function prix_facture($id_facture){
+	$columns=Array("calcprixtotal");
+	$query="select * from calcPrixTotal(".$id_facture.");";
+	$data=execQuery($query, $columns);
+	$data=$data[0];
+	return $data["calcprixtotal"];
 }

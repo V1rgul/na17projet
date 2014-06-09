@@ -37,6 +37,11 @@ function updateProduit($nom, $quantite, $prix_unitaire){
 			  WHERE nom=".$nom;
 	execUpdate($query);
 }
+function deleteProduit($nom){
+	$query = "DELETE FROM Produit
+			  WHERE nom='".$nom."'";
+	execUpdate($query);
+}
 
 // gestion des employes
 function getEmployes(){
@@ -100,6 +105,24 @@ function getRel_facture_produit(){
 			ORDER BY nom_produit, id_facture;";
 	return execQuery($query, $columns);
 }
+
+function get_produits_par_facture($id_facture){
+	$columns = Array("nom_produit", "remise", "quantite");
+	$query = "SELECT ".implode(",", $columns)."
+			FROM Rel_facture_produit
+			WHERE id_facture=".$id_facture;
+	return execQuery($query, $columns);
+}
+
+function get_produit_de_facture($nom,$id_facture){
+	$columns = Array("nom_produit", "remise", "quantite");
+	$query = "SELECT ".implode(",", $columns)."
+			FROM Rel_facture_produit
+			WHERE nom_produit='".$nom."' AND id_facture=".$id_facture;
+	$data=execQuery($query, $columns);
+	return $data[0];
+}
+
 function addRel_facture_produit($nom_produit, $id_facture, $remise, $quantite){
 	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
 	if(empty($id_facture)) $id_facture='NULL';else $id_facture="'".$id_facture."'";
@@ -121,6 +144,8 @@ function updateRel_facture_produit($nom_produit, $id_facture, $remise, $quantite
 	execUpdate($query);
 }
 function deleteRel_facture_produit($nom_produit, $id_facture){
+	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
+	if(empty($id_facture)) $id_facture='NULL';else $id_facture="'".$id_facture."'";
 	$query = "DELETE FROM Rel_facture_produit
 			  WHERE nom_produit=".$nom_produit." AND id_facture=".$id_facture;
 	execUpdate($query);

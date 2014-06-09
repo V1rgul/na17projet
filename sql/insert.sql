@@ -19,21 +19,21 @@ INSERT INTO Race VALUES
 
 INSERT INTO Client (nom,prenom,email,adresse_num,adresse_rue,adresse_cp,adresse_ville,num_tel) 
     VALUES
-    ('yang','qiao','yangqiao0505@me.com',NULL,NULL,NULL,NULL,NULL),
-    ('rocca','joseph','roccajose@gmail.com',NULL,NULL,NULL,NULL,'0333333333'),
-    ( 'TontoneL', 'Chauffard','justatest@etu.utc.fr',1,'rue des peups','17623', 'EasyTown', '0652186601');
-
+    ( 'tiset', 'sylvain','tisetsyl@etu.utc.fr',1,'square august ancelet','60200', 'Compiegne', '0652186601'),
+    ( 'qiao', 'yang','yangqiao@etu.utc.fr',10,'rue des peups','75000', 'Paris', '0652120001'),
+    ( 'wozny', 'virgil','woznyvir@etu.utc.fr',1,'la ruche','60200', 'Compiegne', '0600186601');
 
 INSERT INTO Veterinaire (nom,prenom,email,adresse_num,adresse_rue,adresse_cp,adresse_ville,num_tel)
     VALUES
-    ( 'Izi', 'Joe',NULL,1,'rue dla nation', '09990', 'LTK','0232443322'),
-    ( 'Arnaud', 'Thibaud','hellohello@gmail.com',1,'rue des peups', '17623', 'EasyTown','0000112233');
+    ( 'Izir', 'Joe', 'hellojoe@gmail.com' ,1,'rue de la nation', '75000', 'Paris','0232443322'),
+    ( 'Marchand', 'Abdel', 'helloabdel@gmail.com' ,3,'rue de la nation', '75000', 'Paris','0232443300'),
+    ( 'Arnaud', 'Thibaud','hellothibaut@gmail.com',2,'rue des peupliers', '13000', 'Marseille','0000112233');
 
 INSERT INTO Employe (nom,prenom,email,adresse_num,adresse_rue,adresse_cp,adresse_ville,num_tel)
     VALUES
-    ( 'HAR', 'Zita','test@yahoo.com',NULL,'le parc', '09222', 'FahcileVille','0022113344'),
-    ( 'TtoneL', 'Chffard','justatest@gmail',10,'rue des notre dame','17600', 'EasyTown', '0652182222'),
-    ( 'TontoL', 'Chauffd','justatest@utc.fr',4,'rue des peups','87523', 'EasyTown', '0652444601');
+    ( 'McConnely', 'Marcel','marcel@yahoo.com',4,'le parc', '08222', 'La FrancheVille','0022113344'),
+    ( 'Monk', 'Jean','jeanmonk@gmail',10,'rue des notre dame','75000', 'Paris', '0652182222'),
+    ( 'Melville', 'Adrien','melville@utc.fr',4,'rue des fleures','75000', 'Paris', '0652444601');
 
 INSERT INTO Animal (nom,code,taille,poids,date_naissance,race,id_client)
     VALUES
@@ -46,16 +46,21 @@ INSERT INTO Animal (nom,code,taille,poids,date_naissance,race,id_client)
 
 INSERT INTO Produit (nom,quantite,prix_unitaire)
     VALUES
-    ('Advantage 40 chat et lapin de 1 à 4 kg - 4 pipettes',100,11.2),
-    ('Advantix chien moyen (10 - 25 kg) - 4 pipettes',78,15.45),
-    ('Advantix grand chien (25 - 40 kg) - 6 pipettes',1000,22.35),
-    ('Apiguard',69,38.12),
-    ('Shampooing PRO Dogteur Abricot 250 mL',999,8.99);
+    ('Shampoing pour chien',100,12),
+    ('Shampoing pour chat',70,10),
+    ('Shampoing pour rongeurs',30,20),
+    ('Croquettes pour chien',200,5),
+    ('Os pour chien',80,2),
+    ('Tondeuse',30,20);
 
 INSERT INTO Facture (date_payment,paye,mode,id_employe)
     VALUES
     (NULL,false,'cheque',1),
+    (NULL,false,'carteBleue',1),
+    (NULL,false,NULL,2),
     ('20/09/2009',true,'carteBleue',2),
+    ('21/09/2009',true,'cheque',1),
+    ('22/09/2009',true,'cheque',2),
     ('20/09/2003',true,'especes',3);
 
 INSERT INTO Ordonnances (id_veterinaire)
@@ -65,16 +70,18 @@ INSERT INTO Ordonnances (id_veterinaire)
     (2),
     (2),
     (1),
-    (1);
+    (3);
     
 INSERT INTO Prescription (nom_produit,id_ordonnance,quantite)
     VALUES
-    ('Advantage 40 chat et lapin de 1 à 4 kg - 4 pipettes',1,2),
-    ('Advantage 40 chat et lapin de 1 à 4 kg - 4 pipettes',3,1),
-    ('Advantage 40 chat et lapin de 1 à 4 kg - 4 pipettes',6,3),
-    ('Apiguard',2,2),    
-    ('Apiguard',4,4),
-    ('Apiguard',1,5);
+    ('Shampoing pour chien',1,2),
+    ('Shampoing pour chien',3,1),
+    ('Shampoing pour chat',6,3),
+    ('Shampoing pour chat',2,2),
+    ('Tondeuse',4,4),
+    ('Croquettes pour chien',1,5),
+    ('Os pour chien',1,5),
+    ('Shampoing pour rongeurs',4,4);
 
 -- INSERT INTO Rel_ordonnance_facture (id_ordonnance,id_facture)
 --     VALUES
@@ -87,17 +94,21 @@ INSERT INTO Prescription (nom_produit,id_ordonnance,quantite)
 
 INSERT INTO RDV (date,id_animal,id_veterinaire,id_facture,type)
     VALUES
-    ('20/09/2009',1,1,1,'intervention'),
-    ('20/09/2003',2,1,2,'consultation'),
+    ('10/09/2009',1,1,1,'intervention'),
+    ('11/09/2003',2,1,2,'consultation'),
     ('20/09/2002',3,2,3,'consultation'),
+    ('20/10/2009',4,1,1,'intervention'),
+    ('20/10/2003',5,1,4,'consultation'),
+    ('20/10/2002',3,2,3,'consultationEtIntervention'),
     ('20/09/2012',4,2,NULL,'intervention'),
+    ('10/09/2012',2,2,NULL,'consultationEtIntervention'),
     ('20/10/2008',5,1,NULL,'consultation');
 
 INSERT INTO Rel_facture_produit (nom_produit,id_facture,remise,quantite)
     VALUES
-    ('Apiguard',1,0,5),
-    ('Apiguard',2,0,6),
-    ('Advantage 40 chat et lapin de 1 à 4 kg - 4 pipettes',1,0,2),
-    ('Advantage 40 chat et lapin de 1 à 4 kg - 4 pipettes',3,0,4);
+    ('Os pour chien',1,0,5),
+    ('Os pour chien',2,0,6),
+    ('Croquettes pour chien',1,3,2),
+    ('Tondeuse',3,0,4);
     
 COMMIT;
