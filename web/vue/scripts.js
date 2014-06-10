@@ -48,13 +48,19 @@ function reloadParent(){
 
 		var $resetButton = $("button.reset");
 		if( $resetButton.length > 0 ){ //in a popup
+			var $buttons = $resetButton.add("button.submit");
+			
 			$("input").on('input', function(){
-				$resetButton.attr("disabled", null);
+				$buttons.attr("disabled", null);
 			});
+
 			$resetButton.click(function(){
-				setTimeout(function(){$resetButton.attr("disabled", "disabled")}, 0);
+				setTimeout(function(){$buttons.attr("disabled", "disabled")}, 0);
 				return true;
-			}).click();
+			});
+
+			$buttons.attr("disabled", "disabled");
+
 		}
 		
 
