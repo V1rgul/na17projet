@@ -213,22 +213,25 @@ function getProduitOrd($id_ordonnance,$nom){
 
 function addProduitOrdonnance($nom_produit, $id_ordonnance, $quantite){
 	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
-	if(empty($id_ordonnance)) $id_ordonnance='NULL';else $id_ordonnance="'".$id_ordonnance."'";
-	if(empty($quantite)) $quantite='NULL';else $quantite="'".$quantite."'";
+	if(empty($id_ordonnance)) $id_ordonnance='NULL';
+	if(empty($quantite)) $quantite='NULL';
 	$query = "INSERT INTO Prescription (nom_produit, id_ordonnance, quantite)
 			VALUES (".$nom_produit.",".$id_ordonnance.",".$quantite.")";
 	execUpdate($query);
 }
 function updateProduitOrdonnance($nom_produit, $id_ordonnance, $quantite){
 	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
-	if(empty($id_ordonnance)) $id_ordonnance='NULL';else $id_ordonnance="'".$id_ordonnance."'";
-	if(empty($quantite)) $quantite='NULL';else $quantite="'".$quantite."'";
+	if(empty($id_ordonnance)) $id_ordonnance='NULL';
+	if(empty($quantite)) $quantite='NULL';
 	$query = "UPDATE Prescription
 			  SET quantite=".$quantite."
 			  WHERE nom_produit=".$nom_produit." AND id_ordonnance=".$id_ordonnance;
 	execUpdate($query);
 }
 function deleteProduitOrdonnance($nom_produit, $id_ordonnance){
+	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
+	if(empty($id_ordonnance)) $id_ordonnance='NULL';
+
 	$query = "DELETE FROM Prescription
 			  WHERE nom_produit=".$nom_produit." AND id_ordonnance=".$id_ordonnance;
 	execUpdate($query);
