@@ -42,9 +42,10 @@ body{
 	font-family:sans-serif;
 	position:relative;
 	min-height: 100%;
+	font-size:1em;
 }
 
-a, button{
+a, button, input[type=submit], input[type=reset]{
 	cursor:pointer;
 }
 a{
@@ -56,20 +57,53 @@ a:hover{
 	color:#E80000;
 }
 
-a.button{
+a.button, button{
 	background:#AEEBE4;
 	color:black;
 	border:none;
 	padding: 3px 5px;
 	transition:background .2s, color .2s;
 }
-a.button:hover{
+a.button:hover, button:hover{
 	background:#179C8C;
 	color:white;
 }
-a.button:active{
+a.button:active, button:active{
 	outline:1px solid #179C8C;
 }
+
+a.button[disabled], button[disabled]{
+	background:#9999AA !important;
+	color:black !important;
+}
+
+button.submit, button.reset, button.cancel{
+	color: black;
+	font-family: inherit;
+	font-size: inherit;
+	height: auto;
+}
+button.submit:hover, button.reset:hover, button.cancel:hover{
+	color:white;
+}
+button.submit:before, button.reset:before, button.cancel:before{
+	font-family: "icons";
+	margin:0 5px;
+}
+button.submit:before		{content:'o';}
+button.submit				{background:#00FF00;}
+button.submit:hover			{background:#00AA00;}
+button.submit:active		{outline:1px solid #00AA00;}
+
+button.reset:before			{content:'c';}
+button.reset				{background:#FFAA00;}
+button.reset:hover			{background:#AA6600;}
+button.reset:active			{outline:1px solid #AA6600;}
+
+button.cancel:before		{content:'s';}
+button.cancel				{background:#FF0000;}
+button.cancel:hover			{background:#AA0000;}
+button.cancel:active		{outline:1px solid #AA0000;}
 
 
 
@@ -134,3 +168,6 @@ th:last-child, td:last-child{
 .edit:hover		{color:#FFAA00;}
 .delete			{color:#AA0000;}
 .delete:hover	{color:#FF0000;}
+
+
+

@@ -12,11 +12,11 @@ if(isset($_POST['nom'])&&!empty($_POST['nom'])){
 
 	if ($_POST['op']=='modifier') {
 		updateRel_facture_produit($nom, $id_facture, $remise, $quantite);
-		echo "modif";
+		operationSuccess();
 	}
 	else if ($_POST['op']=='ajouter') {
 		addRel_facture_produit($nom, $id_facture, $remise, $quantite);
-		echo "ajouter";
+		operationSuccess();
 	}
 }
 else{
@@ -25,7 +25,7 @@ else{
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		deleteRel_facture_produit($nom, $id_facture);
-		echo "supprimer<br>";
+		operationSuccess();
 	}
 	else{
 		if ($op=='modifier') {
@@ -48,8 +48,8 @@ else{
 			quantite: <input type="number" name="quantite" value="<?php if ($op=='modifier') echo $quantite ?>"><br>
 			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>">
 			<input type="hidden" name='op' value="<?php echo $op;?>">
-			<input type="submit" value="Send">
-			<input type="reset" value="Reset">
+			
+			<?php controlesPopup() ?>
 		</form>
 
 <?php } } 

@@ -16,11 +16,11 @@ if(isset($_POST['id_veterinaire'])&&!empty($_POST['id_veterinaire'])){
 
 	if ($_POST['op']=='modifier') {
 		updateVeterinaire($id_veterinaire, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
-		echo "modifier<br>";
+		operationSuccess();
 	}
 	else if ($_POST['op']=='ajouter') {
 		addVeterinaire($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
-		echo "ajouter<br>";
+		operationSuccess();
 	}
 }
 else{
@@ -28,7 +28,7 @@ else{
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		deleteVeterinaire($id_veterinaire);
-		echo "supprimer<br>";
+		operationSuccess();
 	}
 	else{
 		if ($op=='modifier') {
@@ -58,8 +58,8 @@ else{
 			numero telephone: <input type="text" name="num_tel" value="<?php if ($op=='modifier') echo $num_tel;?>"><br>
 			<input type="hidden" name='id_veterinaire' value="<?php echo $id_veterinaire;?>">
 			<input type="hidden" name='op' value="<?php echo $op;?>">
-			<input type="submit" value="Send">
-			<input type="reset" value="Reset">
+			
+			<?php controlesPopup() ?>
 		</form>
 
 <?php } } 

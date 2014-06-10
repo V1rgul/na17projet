@@ -14,11 +14,11 @@ if(isset($_POST['id_rdv'])&&!empty($_POST['id_rdv'])){
 
 	if ($_POST['op']=='modifier') {
 		updateRdvAnimal($id_rdv, $date, $id_animal,$id_veterinaire,$id_facture, $type);
-		echo "modifier<br>";
+		operationSuccess();
 	}
 	else if ($_POST['op']=='ajouter') {
 		addRdvAnimal($date, $id_animal,$id_veterinaire,$id_facture, $type);
-		echo "ajouter<br>";
+		operationSuccess();
 	}
 }
 else{
@@ -27,7 +27,7 @@ else{
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		deleteRdv($id_rdv);
-		echo "supprimer<br>";
+		operationSuccess();
 	}
 	else{
 		if ($op=='modifier') {
@@ -56,8 +56,8 @@ else{
 			<input type="hidden" name="id_veterinaire" value="<?php echo $id_veterinaire;?>">
 			<input type="hidden" name='id_rdv' value="<?php echo $id_rdv;?>" >
 			<input type="hidden" name='op' value="<?php echo $op;?>" >
-			<input type="submit" value="Send">
-			<input type="reset" value="Reset">
+			
+			<?php controlesPopup() ?>
 		</form>
 
 <?php } } 

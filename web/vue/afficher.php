@@ -92,3 +92,29 @@ function retour(){
 <a class="button" href="javascript:history.back()" style="display:inline-block;margin-bottom:5px;"><span class='icons'>l</span> retour</a>
 <?php
 }
+
+
+function controlesPopup(){
+?>
+<br />
+<button class="cancel" onclick="window.close();">Annuler</button>
+<button type="reset" class="reset">R&eacute;initialiser</button>
+<button type="submit" class="submit">Envoyer</button>
+<?php   
+}
+
+// Affiche le resultat d'une opération (Ajout, modification, suppression)
+function operationSuccess(){
+    if      ( isset($_POST['op']) && $_POST['op'] === "ajouter" )            $op = "Ajout";
+    else if ( isset($_POST['op']) && $_POST['op'] === "modifier" )       $op = "Modification";
+    else if ( isset($_GET['op'] ) && $_GET['op']  === "supprimer" )          $op = "Supression";
+    else                                                                    $op = "Op&eacute;ration";
+
+    if( !$GLOBALS["BDD_ERROR"] ){ ?>
+        <script>reloadParent();</script>
+        <button onclick="window.close();" class="submit"><?= $op ?> r&eacute;ussi(e) !</button>
+    <?php } else{ ?>
+        <button onclick="window.close();" class="cancel"><?= $op ?> Echou&eacute;(e) !</button>
+    <?php }
+
+}

@@ -8,6 +8,8 @@ $PARAM_nom_bd='dbnf17p165';
 $PARAM_utilisateur='nf17p165';
 $PARAM_mot_passe='Y0dBxcA4';
 
+$GLOBALS["BDD_ERROR"] = FALSE;
+
 try {
 	$GLOBALS["BDD_CONNECTION"] = new PDO('pgsql:host='.$PARAM_hote.';port='.$PARAM_port.';dbname='.$PARAM_nom_bd, $PARAM_utilisateur, $PARAM_mot_passe);
 	// echo('Connection reussie !<br/>');
@@ -27,11 +29,13 @@ function execQuery($query, $columns){
 		if (!empty($err[2])) {
 			echo "error <pre>query= ".$query."</pre><br>";
 			echo "<pre>".$err[2]."</pre><br>";
+			$GLOBALS["BDD_ERROR"] = TRUE;
 		}
 		return constructArrayFromResponse($response, $columns);
 	} catch(Exception $e) {
 		echo('Erreur : <pre>'.$e->getMessage().'</pre><br />');
 		echo('N° : <pre>'.$e->getCode().'</pre>');
+		$GLOBALS["BDD_ERROR"] = TRUE;
 		die();
 	}
 }
@@ -42,12 +46,13 @@ function execUpdate($query){
 		if (!empty($err[2])) {
 			echo "error <pre>query= ".$query."</pre><br>";
 			echo "<pre>".$err[2]."</pre><br>";
+			$GLOBALS["BDD_ERROR"] = TRUE;
 		}
 	} catch(Exception $e) {
 		echo('Erreur : <pre>'.$e->getMessage().'</pre><br />');
 		echo('N° : <pre>'.$e->getCode().'</pre>');
-		die();
-	}
+		$GLOBALS["BDD_ERROR"] = TRUE;
+	}	
 }
 
 /*

@@ -1,5 +1,8 @@
 
-
+function reloadParent(){
+	if( window.opener !== undefined )
+		window.opener.location.reload();
+}
 
 
 
@@ -17,7 +20,7 @@
 				opened.ref.close();
 			}
 
-			var h = 600, w = 400,
+			var h = 400, w = 400,
 				left = (screen.width/2)-(w/2),
 				top = (screen.height/2)-(h/2);
 
@@ -28,7 +31,7 @@
 			opened.ref.onbeforeunload = function(){
 				console.log(opened);
 				opened.url = null;
-			}
+			};
 
 			console.log(opened);
 			
@@ -37,12 +40,25 @@
 
 	$(window).ready(function(){
 
-		$("table a:not(.button)").click(function(){
+		$("a.add, a.edit, a.delete").click(function(){
 			var url = $(this).attr("href");
 			popup(url);
 			return false;
 		});
 
+		var $resetButton = $("button.reset");
+		if( $resetButton.length > 0 ){ //in a popup
+			$("input").on('input', function(){
+				$resetButton.attr("disabled", null);
+			});
+			$resetButton.click(function(){
+				setTimeout(function(){$resetButton.attr("disabled", "disabled")}, 0);
+				return true;
+			}).click();
+		}
+		
+
 	});
+
 
 }

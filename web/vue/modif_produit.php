@@ -11,11 +11,11 @@ if(isset($_POST['nom'])&&!empty($_POST['nom'])){
 
 	if ($_POST['op']=='modifier') {
 		updateProduit($nom, $quantite, $prix_unitaire);
-		echo "modif";
+		operationSuccess();
 	}
 	else if ($_POST['op']=='ajouter') {
 		addProduit($nom,$quantite,$prix_unitaire);
-		echo "ajouter";
+		operationSuccess();
 	}
 }
 else{
@@ -23,6 +23,7 @@ else{
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		deleteProduit($nom);
+		operationSuccess();
 	}
 	else{
 		if ($op=='modifier') {
@@ -42,8 +43,8 @@ else{
 			quantite: <input type="number" name="quantite" value="<?php if ($op=='modifier') echo $quantite ?>"><br>
 			prix_unitaire: <input type="text" name="prix_unitaire" value="<?php if ($op=='modifier') echo $prix_unitaire ?>"><br>
 			<input type="hidden" name='op' value="<?php echo $op;?>">
-			<input type="submit" value="Send">
-			<input type="reset" value="Reset">
+			
+			<?php controlesPopup() ?>
 		</form>
 
 <?php } } 

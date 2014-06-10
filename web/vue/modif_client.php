@@ -16,11 +16,11 @@ if(isset($_POST['id_client'])&&!empty($_POST['id_client'])){
 
 	if ($_POST['op']=='modifier') {
 		updateClient($id_client, $nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
-		echo "modifier<br>";
+		operationSuccess();
 	}
 	else if ($_POST['op']=='ajouter') {
 		addClient($nom, $prenom, $email, $adresse_num, $adresse_rue, $adresse_cp, $adresse_ville, $num_tel);
-		echo "ajouter<br>";
+		operationSuccess();
 	}
 }
 else{
@@ -28,7 +28,7 @@ else{
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		deleteClient($id_client);
-		echo "supprimer<br>";
+		operationSuccess();
 	}
 	else{
 		if ($op=='modifier') {
@@ -58,8 +58,8 @@ else{
 			numero telephone: <input type="text" name="num_tel" value="<?php if ($op=='modifier') echo $num_tel;?>"><br>
 			<input type="hidden" name='id_client' value="<?php echo $id_client;?>">
 			<input type="hidden" name='op' value="<?php echo $op;?>">
-			<input type="submit" value="Send">
-			<input type="reset" value="Reset">
+
+			<?php controlesPopup() ?>
 		</form>
 
 <?php } } 

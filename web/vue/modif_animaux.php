@@ -15,11 +15,11 @@ if(isset($_POST['id_animal'])&&!empty($_POST['id_animal'])){
 
 	if ($_POST['op']=='modifier') {
 		updateAnimalClient($id_animal, $nom, $code, $taille, $poids, $date_naissance, $race);
-		echo "modifier";
+		operationSuccess();
 	}
 	else if ($_POST['op']=='ajouter') {
 		addAnimalClient($id_client, $nom, $code, $taille, $poids, $date_naissance, $race);
-		echo "ajouter";
+		operationSuccess();
 	}
 }
 else{
@@ -29,7 +29,7 @@ else{
 	$keyVals=Array($id_animal);
 	if ($op=='supprimer') {
 		deleteAnimal($id_animal);
-		echo "supprimer<br>";
+		operationSuccess();
 	}
 	else{
 		if ($op=='modifier') {
@@ -57,8 +57,8 @@ else{
 			<input type="hidden" name="id_client" value="<?php echo $id_client;?>"> 
 			<input type="hidden" name='id_animal' value="<?php echo $id_animal;?>">
 			<input type="hidden" name='op' value="<?php echo $op;?>" >
-			<input type="submit" value="Send">
-			<input type="reset" value="Reset">
+
+			<?php controlesPopup() ?>
 		</form>
 
 <?php } } 

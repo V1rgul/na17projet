@@ -9,11 +9,11 @@ if(isset($_POST['id_ordonnance'])&&!empty($_POST['id_ordonnance'])){
 
 	if ($_POST['op']=='modifier') {
 		updateOrdonnanceAnimal($id_ordonnance, $id_veterinaire);
-		echo "modifier";
+		operationSuccess();
 	}
 	else if ($_POST['op']=='ajouter') {
 		addOrdonnanceAnimal($id_veterinaire);
-		echo "ajouter";
+		operationSuccess();
 	}
 }
 else{
@@ -21,7 +21,7 @@ else{
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		deleteOrdonnance($id_ordonnance);
-		echo "supprimer<br>";
+		operationSuccess();
 	}
 	else{
 		if ($op=='modifier') {
@@ -39,8 +39,8 @@ else{
 			
 			<input type="hidden" name="id_ordonnance" value="<?php echo $id_ordonnance;?>"> 
 			<input type="hidden" name='op' value="<?php echo $op;?>" >
-			<input type="submit" value="Send">
-			<input type="reset" value="Reset">
+			
+			<?php controlesPopup() ?>
 		</form>
 
 <?php } } 

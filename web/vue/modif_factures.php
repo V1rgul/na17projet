@@ -15,11 +15,11 @@ if(isset($_POST['id_facture'])&&!empty($_POST['id_facture'])){
 	$values=Array($id_facture,$date_payment,$paye,$mode,$id_employe);
 	if ($_POST['op']=='modifier') {
 		updateFactureAnimal($id_facture, $date_payment, $paye, $mode, $id_employe);
-		echo "modifier<br>";
+		operationSuccess();
 	}
 	else if ($_POST['op']=='ajouter') {
 		addFactureAnimal($date_payment, $paye, $mode, $id_employe);
-		echo "ajouter<br>";
+		operationSuccess();
 	}
 }
 else{
@@ -27,7 +27,7 @@ else{
 	$op=$_GET['op'];
 	if ($op=='supprimer') {
 		deleteFacture($id_facture);
-		echo "suppression reussie!<br>";
+		operationSuccess();
 	}
 	else{
 		if ($op=='modifier') {
@@ -52,8 +52,8 @@ else{
 				</select><br>
 			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>">
 			<input type="hidden" name='op' value="<?php echo $op;?>" >
-			<input type="submit" value="Send">
-			<input type="reset" value="Reset">
+			
+			<?php controlesPopup() ?>
 		</form>
 
 <?php } } 
