@@ -99,6 +99,7 @@ INSERT INTO Prescription (nom_produit,id_ordonnance,quantite)
 INSERT INTO RDV (date,id_animal,id_veterinaire,id_facture,type)
     VALUES
     ('10/09/2009',1,1,1,'intervention'),
+    ('10/09/2009',2,2,1,'intervention'),
     ('11/09/2003',2,1,2,'consultation'),
     ('20/10/2003',5,1,4,'consultation'),
     ('20/10/2002',3,2,3,'consultationEtIntervention'),
