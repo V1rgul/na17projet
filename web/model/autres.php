@@ -216,3 +216,8 @@ function updateProduitOrdonnance($nom_produit, $id_ordonnance, $quantite){
 			  WHERE nom_produit=".$nom_produit.", id_ordonnance=".$id_ordonnance;
 	execUpdate($query);
 }
+function deleteProduitOrdonnance($nom_produit, $id_ordonnance){
+	$query = "DELETE FROM Prescription
+			  WHERE nom_produit=".$nom_produit.", id_ordonnance=".$id_ordonnance;
+	execUpdate($query);
+}

@@ -112,9 +112,9 @@ function operationSuccess(){
 
     if( !$GLOBALS["BDD_ERROR"] ){ ?>
         <script>reloadParent();</script>
-        <button onclick="window.close();" class="submit"><?= $op ?> r&eacute;ussi(e) !</button>
+        <button onclick="window.close();" class="submit"><?php echo($op) ?> r&eacute;ussi(e) !</button>
     <?php } else{ ?>
-        <button onclick="window.close();" class="cancel"><?= $op ?> Echou&eacute;(e) !</button>
+        <button onclick="window.close();" class="cancel"><?php echo($op) ?> Echou&eacute;(e) !</button>
     <?php }
 
 }
