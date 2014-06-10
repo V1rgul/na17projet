@@ -198,6 +198,19 @@ function getProduitsOrdonnance($id_ordonnance){
 		ORDER BY Produit.nom;";
 	return execQuery($query, $columns);
 }
+
+function getProduitOrd($id_ordonnance,$nom){
+	$columns = Array("nom", "quantite", "prix_unitaire");
+	
+	if(empty($nom)) $nom='NULL';else $nom="'".$nom."'";
+	if(empty($id_ordonnance)) $date='NULL';
+	$query = "SELECT Produit.nom, Prescription.quantite, Produit.prix_unitaire
+		FROM Produit, Prescription
+		WHERE Produit.nom =".$nom." AND Prescription.id_ordonnance=".$id_ordonnance;
+	$data=execQuery($query, $columns);
+	return $data[0];
+}
+
 function addProduitOrdonnance($nom_produit, $id_ordonnance, $quantite){
 	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
 	if(empty($id_ordonnance)) $id_ordonnance='NULL';else $id_ordonnance="'".$id_ordonnance."'";

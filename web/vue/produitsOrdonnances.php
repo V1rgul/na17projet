@@ -6,6 +6,9 @@ require_once("afficher.php");
 retour();
 $id_ordonnance=$_GET['id'];
 
-displayListe(getProduitsOrdonnance($id_ordonnance));
+$detail='';
+$targetDetail='';
+
+modifListe(getProduitsOrdonnance($id_ordonnance),"modif_produitsOrd",$detail,$targetDetail,$id_ordonnance);
 
 include("footer.php");
