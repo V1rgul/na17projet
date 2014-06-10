@@ -129,6 +129,8 @@ function addRel_facture_produit($nom_produit, $id_facture, $remise, $quantite){
 	if(empty($remise)) $remise=0;
 	if(empty($quantite)) $quantite='NULL';else $quantite="'".$quantite."'";
 
+	echo("Remise:".$remise.";");
+
 	$query = "INSERT INTO Rel_facture_produit (nom_produit, id_facture, remise, quantite)
 			VALUES (".$nom_produit.",".$id_facture.",".$remise.",".$quantite.")";
 	execUpdate($query);
