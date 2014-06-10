@@ -128,17 +128,14 @@ function addRel_facture_produit($nom_produit, $id_facture, $remise, $quantite){
 	if(empty($id_facture)) $id_facture='NULL';
 	if(empty($remise)) $remise=0;
 	if(empty($quantite)) $quantite='NULL';else $quantite="'".$quantite."'";
-
-	echo("Remise:".$remise.";");
-
 	$query = "INSERT INTO Rel_facture_produit (nom_produit, id_facture, remise, quantite)
 			VALUES (".$nom_produit.",".$id_facture.",".$remise.",".$quantite.")";
 	execUpdate($query);
 }
 function updateRel_facture_produit($nom_produit, $id_facture, $remise, $quantite){
 	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
-	if(empty($id_facture)) $id_facture='NULL';else $id_facture="'".$id_facture."'";
-	if(empty($remise)) $remise='NULL';else $remise="'".$remise."'";
+	if(empty($id_facture)) $id_facture='NULL';
+	if(empty($remise)) $remise=0;
 	if(empty($quantite)) $quantite='NULL';else $quantite="'".$quantite."'";
 	$query = "UPDATE Rel_facture_produit
 			SET remise=".$remise.", quantite=".$quantite."
@@ -147,7 +144,7 @@ function updateRel_facture_produit($nom_produit, $id_facture, $remise, $quantite
 }
 function deleteRel_facture_produit($nom_produit, $id_facture){
 	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
-	if(empty($id_facture)) $id_facture='NULL';else $id_facture="'".$id_facture."'";
+	if(empty($id_facture)) $id_facture='NULL';
 	$query = "DELETE FROM Rel_facture_produit
 			  WHERE nom_produit=".$nom_produit." AND id_facture=".$id_facture;
 	execUpdate($query);
