@@ -8,6 +8,7 @@
 				<span>Clinique</span>
 				<a href="produits.php">Produits</a>
 				<a href="employe.php">Employ&eacute;s</a>
+				<a href="allFactures.php">Factures</a>
 			</div>			
 			<a href="stat.php">Statistiques</a>
 		</div>
