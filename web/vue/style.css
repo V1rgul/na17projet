@@ -63,6 +63,8 @@ a.button, button{
 	border:none;
 	padding: 3px 5px;
 	transition:background .2s, color .2s;
+	margin-top:0 1px;
+	display:inline-block;
 }
 a.button:hover, button:hover{
 	background:#179C8C;

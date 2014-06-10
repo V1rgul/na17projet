@@ -89,7 +89,7 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
 
 function retour(){
 ?>
-<a class="button" href="javascript:history.back()" style="display:inline-block;margin-bottom:5px;"><span class='icons'>l</span> retour</a>
+<a class="button" href="javascript:history.back()" style="display:inline-block;margin-bottom:5px;"><span class='icons'>l</span> retour</a><br />
 <?php
 }
 
