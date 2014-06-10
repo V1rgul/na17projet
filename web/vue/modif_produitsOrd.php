@@ -17,7 +17,7 @@ if(isset($_POST['nom'])&&!empty($_POST['nom'])){
 	}
 	else if ($_POST['op']=='ajouter') {
 		addProduitOrdonnance($nom_produit, $id_ordonnance, $quantite);
-		copyFromPrescriptionsToFacture($nom_produit, $id_facture, $quantite){
+		copyFromPrescriptionsToFacture($nom_produit, $id_facture, $quantite);
 		operationSuccess();
 	}
 }
@@ -47,7 +47,7 @@ else{
 			<?php endif;?>
 			id_facture:<input type="number" name="id_facture" ><br>
 			quantite: <input type="number" name="quantite" value="<?php if ($op=='modifier') echo $quantite ?>"><br>
-			prix_unitaire: <<?php echo $prix_unitaire ?>><br>
+			prix_unitaire: <?php echo $prix_unitaire ?><br>
 			<input type="hidden" name='op' value="<?php echo $op;?>">
 			<input type="hidden" name='id_ordonnance' value="<?php echo $id_ordonnance;?>">
 			
