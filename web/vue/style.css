@@ -84,6 +84,7 @@ button.submit, button.reset, button.cancel{
 	font-family: inherit;
 	font-size: inherit;
 	height: auto;
+	margin:0 5px;
 }
 button.submit:hover, button.reset:hover, button.cancel:hover{
 	color:white;
@@ -120,7 +121,7 @@ button.cancel:active		{outline:1px solid #AA0000;}
 	left:0;
 	top:0;
 	bottom:0;
-	width:200px;
+	width:140px;
 	background:#EFFCFA;
 }
 #sidebar > div, #sidebar > a{
@@ -138,7 +139,7 @@ button.cancel:active		{outline:1px solid #AA0000;}
 
 
 #main{
-	margin-left:220px;
+	margin-left:160px;
 }
 
 table{
