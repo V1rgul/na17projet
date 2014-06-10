@@ -125,8 +125,8 @@ function get_produit_de_facture($nom,$id_facture){
 
 function addRel_facture_produit($nom_produit, $id_facture, $remise, $quantite){
 	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
-	if(empty($id_facture)) $id_facture='NULL';else $id_facture="'".$id_facture."'";
-	if(empty($remise)) $remise='NULL';else $remise="'".$remise."'";
+	if(empty($id_facture)) $id_facture='NULL';
+	if(empty($remise)) $remise=0;
 	if(empty($quantite)) $quantite='NULL';else $quantite="'".$quantite."'";
 
 	$query = "INSERT INTO Rel_facture_produit (nom_produit, id_facture, remise, quantite)
