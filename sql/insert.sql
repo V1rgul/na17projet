@@ -100,8 +100,6 @@ INSERT INTO RDV (date,id_animal,id_veterinaire,id_facture,type)
     VALUES
     ('10/09/2009',1,1,1,'intervention'),
     ('11/09/2003',2,1,2,'consultation'),
-    ('20/09/2002',3,2,3,'consultation'),
-    ('20/10/2009',4,1,1,'intervention'),
     ('20/10/2003',5,1,4,'consultation'),
     ('20/10/2002',3,2,3,'consultationEtIntervention'),
     ('20/09/2012',4,2,NULL,'intervention'),
