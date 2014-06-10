@@ -113,6 +113,9 @@ INSERT INTO Rel_facture_produit (nom_produit,id_facture,remise,quantite)
     ('Os pour chien',2,0,6),
     ('Soin dantaire',2,0,1),
     ('Croquettes pour chien',1,3,2),
+    ('Os pour chien',5,0,6),
+    ('Soin dantaire',6,0,1),
+    ('Croquettes pour chien',7,3,2),
     ('Tondeuse',3,0,4);
     
 COMMIT;
