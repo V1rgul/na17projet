@@ -28,7 +28,7 @@ else{
 	}
 	else{
 		if ($op=='modifier') {
-			$data=getProduitOrd($id_ordonnance,$nom)
+			$data=getProduitOrd($id_ordonnance,$nom);
 			$quantite=$data['quantite'];
 			$prix_unitaire=$data['prix_unitaire'];
 		}	

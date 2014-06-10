@@ -225,12 +225,12 @@ function updateProduitOrdonnance($nom_produit, $id_ordonnance, $quantite){
 	if(empty($quantite)) $quantite='NULL';else $quantite="'".$quantite."'";
 	$query = "UPDATE Prescription
 			  SET quantite=".$quantite."
-			  WHERE nom_produit=".$nom_produit.", id_ordonnance=".$id_ordonnance;
+			  WHERE nom_produit=".$nom_produit." AND id_ordonnance=".$id_ordonnance;
 	execUpdate($query);
 }
 function deleteProduitOrdonnance($nom_produit, $id_ordonnance){
 	$query = "DELETE FROM Prescription
-			  WHERE nom_produit=".$nom_produit.", id_ordonnance=".$id_ordonnance;
+			  WHERE nom_produit=".$nom_produit." AND id_ordonnance=".$id_ordonnance;
 	execUpdate($query);
 }
 // ATTENTION, IL FAUT RÉCUPÉRER L'ID_FACTURE !
@@ -239,15 +239,15 @@ function copyFromPrescriptionsToFacture($nom_produit, $id_facture, $quantite){
 	if(empty($quantite)) $quantite='NULL';
 	if(empty($id_facture)) $id_facture='NULL';
 
-	if (get_produit_de_facture($nom_produit,$id_facture)=NULL) // ou empty? 
+	if (get_produit_de_facture($nom_produit,$id_facture)==NULL)
 	{
 		$query = "INSERT INTO Rel_facture_produit (nom_produit, id_facture, remise, quantite)
-			VALUES (".$nom_produit.",".$id_facture.", ".0.", ".$quantite.")";
+			VALUES (".$nom_produit.",".$id_facture.", 0, ".$quantite.")";
 	}
 	else
 	{
 		$query = "UPDATE Rel_facture_produit
-			  SET quantite=".$quantite.", remise=".0."
+			  SET quantite=".$quantite.", remise=0
 			  WHERE nom_produit=".$nom_produit.", id_ordonnance=".$id_ordonnance;
 	}
 
