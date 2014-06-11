@@ -73,6 +73,7 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
 
     $detailPopup = Array();
     for ($i=0; $i < count($detail); $i++) { 
+        $index = strpos($detail[$i], "#");
         if( strpos($detail[$i], "#") === 0 ){
             $detail[$i] = substr($detail[$i], 1);
             $detailPopup[] = TRUE;

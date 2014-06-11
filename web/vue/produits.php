@@ -4,8 +4,8 @@ include("header.php");
 require_once("../model/autres.php");
 require_once("afficher.php");
 
-$detail='';
-$targetDetail='';
+$detail=Array();
+$targetDetail=Array();
 
 modifListe(getProduits(),"modif_produit",$detail,$targetDetail,-1);
 
