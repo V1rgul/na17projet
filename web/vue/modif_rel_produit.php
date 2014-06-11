@@ -23,11 +23,8 @@ if(isset($_POST['nom'])&&!empty($_POST['nom'])){
 	
 	$id_facture=$_POST['id_facture'];
 	$remise=$_POST['remise'];
-	$quantite=$_POST['quantite'];
 	$id_ordonnance=$_POST['id_ordonnance'];
 
-	
-	addRel_facture_produit($nom, $id_facture, $remise, $quantite);
 	copyFromPrescriptionsToFacture($id_ordonnance, $id_facture, $remise);
 	operationSuccess();
 	
@@ -54,7 +51,7 @@ else{
 			id_ordonnance: <input type="number" name="id_ordonnance" ><br>
 			remise: <input type="text" name="remise"><br>
 			<input type="hidden" name='op' value="<?php echo $op;?>">
-			
+			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>">
 			<?php controlesPopup() ?>
 		</form>
 <?php
