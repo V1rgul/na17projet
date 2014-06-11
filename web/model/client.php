@@ -274,6 +274,7 @@ function addFactureRdv($id_rdv, $date_payment, $paye, $mode, $id_employe){
 	if(empty($mode)) $mode='NULL';else $mode="'".$mode."'";
 	if(empty($id_employe)) $id_employe='NULL';
 	if(empty($id_rdv)) $id_rdv='NULL';
+	if(empty($paye)) $paye='FALSE';
 
 	$query ="SELECT *
 			FROM addFactureFromRdv(".$id_rdv.", ".$date_payment.", ".$paye.", ".$mode.", ".$id_employe.") ;";
