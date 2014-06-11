@@ -50,7 +50,7 @@ else{
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
 			id_ordonnance: <input type="number" name="id_ordonnance" ><br>
 			remise: <input type="text" name="remise"><br>
-			<input type="hidden" name='op' value="<?php echo $op;?>">
+			<input type="hidden" name='op' value="ajouter">
 			<input type="hidden" name='id_facture' value="<?php echo $id_facture;?>">
 			<?php controlesPopup() ?>
 		</form>
