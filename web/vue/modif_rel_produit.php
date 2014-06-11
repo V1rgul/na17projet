@@ -9,9 +9,11 @@ if(isset($_POST['nom'])&&!empty($_POST['nom'])){
 	$id_facture=$_POST['id_facture'];
 	$remise=$_POST['remise'];
 	$quantite=$_POST['quantite'];
+	$id_ordonnance=$_POST['id_ordonnance'];
 
 	if ($_POST['op']=='modifier') {
 		updateRel_facture_produit($nom, $id_facture, $remise, $quantite);
+		
 		operationSuccess();
 	}
 	else if ($_POST['op']=='ajouter') {
@@ -36,6 +38,13 @@ else{
 		else if($op=='ajouter'){
 		}
 ?>
+		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
+			id_ordonnance: <input type="number" name="id_ordonnance" ><br>
+			remise: <input type="text" name="remise" value="<?php if ($op=='modifier') echo $remise ?>"><br>
+			<input type="hidden" name='op' value="<?php echo $op;?>">
+			
+			<?php controlesPopup() ?>
+		</form>
 		<form action=<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?> method="post">
 				id facture: <?php echo $id_facture; ?> <br>
 			<?php if ($op=='ajouter'):?>

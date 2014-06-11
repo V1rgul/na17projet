@@ -236,6 +236,7 @@ function deleteProduitOrdonnance($nom_produit, $id_ordonnance){
 			  WHERE nom_produit=".$nom_produit." AND id_ordonnance=".$id_ordonnance;
 	execUpdate($query);
 }
+
 // ATTENTION, IL FAUT RÉCUPÉRER L'ID_FACTURE !
 function copyFromPrescriptionsToFacture($nom_produit, $id_facture, $quantite){
 	$data=get_produit_de_facture($nom_produit,$id_facture);
