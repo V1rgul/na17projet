@@ -40,7 +40,7 @@ function reloadParent(){
 
 	$(window).ready(function(){
 
-		$("a.add, a.edit, a.delete").click(function(){
+		$(".popup").click(function(){
 			var url = $(this).attr("href");
 			popup(url);
 			return false;
