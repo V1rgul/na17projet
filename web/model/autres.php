@@ -240,7 +240,7 @@ function deleteProduitOrdonnance($nom_produit, $id_ordonnance){
 // ATTENTION, IL FAUT RÉCUPÉRER L'ID_FACTURE !
 function copyFromPrescriptionsToFacture($id_ordonnance, $id_facture, $remise){
 	if(empty($nom_produit)) $nom_produit='NULL';else $nom_produit="'".$nom_produit."'";
-	if(empty($remise)) $remise='NULL';
+	if(empty($remise)) $remise=0;
 	if(empty($id_facture)) $id_facture='NULL';
 
 	$query = "INSERT INTO Rel_facture_produit (nom_produit, id_facture, remise, quantite)
