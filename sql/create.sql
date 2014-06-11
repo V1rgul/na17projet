@@ -148,6 +148,25 @@ CREATE TABLE Rel_facture_produit(
 --     FOREIGN KEY(id_facture)     REFERENCES  Facture(id_facture)
 -- );
 
+
+
+CREATE OR REPLACE function addFactureFromRdv(_id_rdv integer, _date_payment date, _paye BOOLEAN, _mode enum_payment, _id_employe integer)
+RETURNS integer AS $$
+DECLARE id_fact INTEGER;
+BEGIN
+    INSERT INTO Facture (date_payment, paye, mode, id_employe) 
+    VALUES (_date_payment, _paye, _mode, _id_employe) 
+    RETURNING id_facture INTO id_fact;
+
+    UPDATE rdv 
+    SET id_facture=id_fact
+    WHERE rdv.id_rdv=_id_rdv;
+
+    return id_fact;
+END;
+$$ language plpgsql;
+
+
 -- Calcul le prix total d'une facture
 CREATE OR REPLACE function calcPrixTotal(num_facture integer)
 returns float AS
@@ -197,9 +216,7 @@ WHERE CALC_PRIX_FACTURE.id_facture = num_facture
 GROUP BY CALC_PRIX_FACTURE.id_facture;
 
 return prix_facture;
-END;
-$$
-language plpgsql;
+END; $$ language plpgsql;
 
 -- test :)
 -- select * from calcPrixTotal(1);
@@ -233,6 +250,7 @@ END IF;
 
 END;
 $update_stock_on_product$ LANGUAGE plpgsql;
+
 
 CREATE TRIGGER update_stock_on_product
 BEFORE INSERT ON Rel_facture_produit
