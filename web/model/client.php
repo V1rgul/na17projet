@@ -269,3 +269,44 @@ function payerFactureAnimal($id_facture, $date_payment, $mode_payment){
 	execUpdate($query);
 }
 
+function addFactureRdv($id_rdv, $date_payment, $paye, $mode, $id_employe){
+	if(empty($date_payment)) $date_payment='NULL';else $date_payment="'".$date_payment."'";
+	if(empty($mode)) $mode='NULL';else $mode="'".$mode."'";
+	if(empty($id_employe)) $id_employe='NULL';
+	if(empty($id_rdv)) $id_rdv='NULL';
+
+	$query ="
+				UPDATE rdv
+				SET id_facture=data.id_fact
+				FROM (
+					INSERT INTO Facture (date_payment, paye, mode, id_employe)
+					VALUES (".$date_payment.", '".$paye."', ".$mode.", ".$id_employe.")
+					RETURNING id_facture as id_fact
+				) AS data
+				WHERE rdv.id_rdv=".$id_rdv."
+			";
+	execUpdate($query);	
+}
+
+/*
+				UPDATE rdv
+				SET id_facture=data.id_fact
+				FROM (
+					INSERT INTO Facture (date_payment, paye, mode, id_employe)
+					VALUES (".$date_payment.", '".$paye."', ".$mode.", ".$id_employe.")
+					RETURNING id_facture as id_fact
+				) AS data
+				WHERE rdv.id_rdv=".$id_rdv."
+
+				DO $$
+				DECLARE id_fact INTEGER;
+				BEGIN
+				    INSERT INTO Facture (date_payment, paye, mode, id_employe) 
+				    VALUES (".$date_payment.", '".$paye."', ".$mode.", ".$id_employe.") 
+				    RETURNING id_facture INTO id_fact;
+
+				    UPDATE rdv 
+				    SET id_facture=id_fact
+				    WHERE rdv.id_rdv=".$id_rdv."
+				END$$;
+*/
