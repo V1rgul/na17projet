@@ -70,6 +70,18 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
     if($detail!='') echo "<th></th>\n";
     echo "</tr></thead>\n";
     echo "<tbody>\n";
+
+    $detailPopup = Array();
+    for ($i=0; $i < count($detail); $i++) { 
+        if( strpos($detail[$i], "#") === 0 ){
+            $detail[$i] = substr($detail[$i], 1);
+            $detailPopup[] = TRUE;
+        }else 
+            $detailPopup[] = FALSE;
+    }
+
+
+
     foreach($data as $ligne)    {
         $contents=array_values($ligne);
         $id=$contents[0];
@@ -86,13 +98,7 @@ function modifListe($data,$targetModif,$detail,$targetDetail,$id_parent){
         if($detail!=''){
             echo "<td>";
             for ($i=0; $i < count($detail); $i++) { 
-                $popup = "";
-                if( strpos($detail[$i], "#") === 0 ){
-                    $detail[$i] = substr($detail[$i], 1);
-                    $popup = " popup";
-                }
-
-                echo "<a href='".$targetDetail[$i].".php?id=$id&id_parent=$id_parent&op=detail".$idList."' class='button".$popup."'>".$detail[$i]."</a>\n";
+                echo "<a href='".$targetDetail[$i].".php?id=$id&id_parent=$id_parent&op=detail".$idList."' class='button".($detailPopup[$i]?" popup":"")."'>".$detail[$i]."</a>\n";
             }
             echo "</td>";
             
