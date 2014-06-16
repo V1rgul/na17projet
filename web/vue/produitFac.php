@@ -3,6 +3,7 @@ include("header.php");
 
 require_once("../model/autres.php");
 require_once("afficher.php");
+retour();
 
 $id_facture=$_GET['id'];
 

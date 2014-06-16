@@ -154,15 +154,11 @@ function updateAnimalClient($id_animal, $nom, $code, $taille, $poids, $date_nais
 
 
 //Renvoie la liste des ordonnances d'un animal (idAnimal)
-function getOrdonnancesAnimal($id_animal){
+function getOrdonnances($id_veterinaire){
 	$columns = Array("id_ordonnance","id_veterinaire");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Ordonnances
-			WHERE id_veterinaire
-			IN(
-				SELECT id_veterinaire
-				FROM RDV
-				WHERE id_animal=$id_animal);";
+			WHERE id_veterinaire =".$id_veterinaire;
 	return execQuery($query, $columns);
 }
 
