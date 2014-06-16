@@ -158,7 +158,7 @@ function getOrdonnances($id_veterinaire){
 	$columns = Array("id_ordonnance","id_veterinaire");
 	$query = "SELECT ".implode(",", $columns)."
 			FROM Ordonnances
-			WHERE id_veterinaire =."$id_veterinaire;
+			WHERE id_veterinaire =".$id_veterinaire;
 	return execQuery($query, $columns);
 }
 
