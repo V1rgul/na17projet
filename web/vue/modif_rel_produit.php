@@ -9,7 +9,7 @@ if(isset($_POST['nom'])&&!empty($_POST['nom'])){
 	$id_facture=$_POST['id_facture'];
 	$remise=$_POST['remise'];
 	$quantite=$_POST['quantite'];
-	$id_ordonnance=$_POST['id_ordonnance'];
+	if(isset($_POST['id_ordonnance'])&&!empty($_POST['id_ordonnance']))$id_ordonnance=$_POST['id_ordonnance'];
 
 	if ($_POST['op']=='modifier') {
 		updateRel_facture_produit($nom, $id_facture, $remise, $quantite);

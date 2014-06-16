@@ -45,7 +45,7 @@ else{
 
 			date:<input type="date" name="date" value="<?php if ($op=='modifier') echo $date;?>"><br>
 			id_animal:<input type="number" name="id_animal" value="<?php if ($op=='modifier') echo $id_animal;?>"><br>
-			id_veterinaire:<input type="number" name="id_veterinaire" value="<?php if ($op=='modifier') echo $id_veterinaire;?>">
+			id_veterinaire:<input type="number" name="id_veterinaire" value="<?php if ($op=='modifier') echo $id_veterinaire;?>"><br>
 			
 			id_facture:<input type="number" name="id_facture" value="<?php if ($op=='modifier') echo $id_facture;?>"><br>
 			type:<select name="type">
