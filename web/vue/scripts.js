@@ -50,7 +50,7 @@ function reloadParent(){
 		if( $resetButton.length > 0 ){ //in a popup
 			var $buttons = $resetButton.add("button.submit");
 			
-			$("input").on('change', function(){
+			$("input, select").on("change", function(){
 				$buttons.attr("disabled", null);
 			});
 
