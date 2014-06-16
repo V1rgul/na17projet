@@ -5,9 +5,9 @@ include("include.php");
 
 if(isset($_POST['nom'])&&!empty($_POST['nom'])){
 	
-	$nom_produit=$_POST['nom'];
-	$id_ordonnance=$_POST['id_ordonnance'];
-	$quantite=$_POST['quantite'];
+	if(!empty($_POST['nom'])) $nom_produit=$_POST['nom'];
+	if(!empty($_POST['id_ordonnance'])) $id_ordonnance=$_POST['id_ordonnance'];
+	if(!empty($_POST['quantite'])) $quantite=$_POST['quantite'];
 
 	if ($_POST['op']=='modifier') {
 		updateProduitOrdonnance($nom_produit, $id_ordonnance, $quantite);
