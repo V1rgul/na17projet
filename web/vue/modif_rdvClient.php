@@ -45,6 +45,7 @@ else{
 
 			date:<input type="date" name="date" value="<?php if ($op=='modifier') echo $date;?>"><br>
 			id_animal:<input type="number" name="id_animal" value="<?php if ($op=='modifier') echo $id_animal;?>"><br>
+			id_veterinaire:<input type="number" name="id_veterinaire" value="<?php if ($op=='modifier') echo $id_veterinaire;?>">
 			
 			id_facture:<input type="number" name="id_facture" value="<?php if ($op=='modifier') echo $id_facture;?>"><br>
 			type:<select name="type">
@@ -52,7 +53,6 @@ else{
 				  <option value="intervention" <?php if ($op=='modifier'&& $type=='intervention') echo 'selected';?> >intervention</option>
 				  <option value="consultationEtIntervention" <?php if ($op=='modifier'&& $type=='consultationEtIntervention') echo 'selected';?> >consultationEtIntervention</option>
 				</select><br>
-			id_veterinaire:<input type="number" name="id_veterinaire" value="<?php if ($op=='modifier') echo $id_veterinaire;?>">
 			<input type="hidden" name='id_rdv' value="<?php echo $id_rdv;?>" >
 			<input type="hidden" name='op' value="<?php echo $op;?>" >
 			
